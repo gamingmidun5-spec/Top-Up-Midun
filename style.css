@@ -543,3 +543,541 @@ display:none;
 }
 
 }
+/* =========================
+          FITUR
+========================= */
+
+.fitur{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.fitur div{
+
+    flex:1;
+
+    min-width:180px;
+
+    max-width:220px;
+
+    background:rgba(255,255,255,.35);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.35);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.35s;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.08);
+
+}
+
+.fitur div:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 40px rgba(0,0,0,.12);
+
+}
+
+.fitur i{
+
+    font-size:35px;
+
+    color:#0d7cff;
+
+    margin-bottom:15px;
+
+}
+
+.fitur h4{
+
+    color:#0044aa;
+
+    margin-bottom:8px;
+
+}
+
+.fitur p{
+
+    margin:0;
+
+    font-size:14px;
+
+    color:#55769f;
+
+}
+
+/* =========================
+          SOCIAL
+========================= */
+
+#social{
+
+    padding:100px 8%;
+
+    text-align:center;
+
+}
+
+#social h2{
+
+    font-size:50px;
+
+    color:#0044aa;
+
+    margin-bottom:12px;
+
+}
+
+#social p{
+
+    color:#6485b0;
+
+    margin-bottom:50px;
+
+    font-size:17px;
+
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    text-decoration:none;
+
+    color:#fff;
+
+    padding:40px 30px;
+
+    border-radius:24px;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(255,255,255,.08);
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.card:hover::before{
+
+    opacity:1;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px) scale(1.02);
+
+}
+
+.card i{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+}
+
+.card h3{
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+.card span{
+
+    font-size:15px;
+
+    opacity:.95;
+
+}
+
+/* Warna */
+
+.tiktok{
+
+    background:#000;
+
+}
+
+.instagram{
+
+    background:linear-gradient(
+        45deg,
+        #f58529,
+        #dd2a7b,
+        #8134af,
+        #515bd4
+    );
+
+}
+
+.youtube{
+
+    background:#ff0000;
+
+}
+
+/* =========================
+          FOOTER
+========================= */
+
+footer{
+
+    background:#0059d6;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:30px;
+
+    font-weight:600;
+
+    margin-top:80px;
+
+}
+/* ===================================
+        RESPONSIVE DESIGN
+=================================== */
+
+/* Laptop */
+@media (max-width:1200px){
+
+.hero{
+
+    gap:40px;
+
+}
+
+.left h1{
+
+    font-size:55px;
+
+}
+
+.right img{
+
+    max-width:550px;
+
+}
+
+}
+
+/* Tablet */
+@media (max-width:992px){
+
+header{
+
+    padding:18px 6%;
+
+}
+
+.hero{
+
+    flex-direction:column-reverse;
+
+    text-align:center;
+
+    padding:120px 6% 70px;
+
+}
+
+.left,
+.right{
+
+    width:100%;
+
+}
+
+.left p{
+
+    margin:auto auto 35px;
+
+}
+
+.left h1{
+
+    font-size:46px;
+
+}
+
+.buttons{
+
+    justify-content:center;
+
+}
+
+.fitur{
+
+    justify-content:center;
+
+}
+
+.right img{
+
+    max-width:450px;
+
+}
+
+}
+
+/* HP */
+@media (max-width:768px){
+
+header{
+
+    flex-direction:column;
+
+    gap:15px;
+
+    padding:18px;
+
+}
+
+.logo{
+
+    font-size:22px;
+
+}
+
+.logo i{
+
+    font-size:28px;
+
+}
+
+nav{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.hero{
+
+    padding:150px 25px 60px;
+
+}
+
+.left h3{
+
+    font-size:16px;
+
+    letter-spacing:2px;
+
+}
+
+.left h1{
+
+    font-size:36px;
+
+}
+
+.left p{
+
+    font-size:16px;
+
+}
+
+.buttons{
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.btn1,
+.btn2{
+
+    width:100%;
+
+    max-width:320px;
+
+    text-align:center;
+
+}
+
+.fitur{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.fitur div{
+
+    max-width:none;
+
+}
+
+.cards{
+
+    grid-template-columns:1fr;
+
+}
+
+#social{
+
+    padding:70px 25px;
+
+}
+
+#social h2{
+
+    font-size:36px;
+
+}
+
+.card{
+
+    padding:30px;
+
+}
+
+}
+
+/* HP kecil */
+@media (max-width:480px){
+
+header{
+
+    padding:15px;
+
+}
+
+.hero{
+
+    padding:150px 18px 50px;
+
+}
+
+.left{
+
+    min-width:100%;
+
+}
+
+.right{
+
+    min-width:100%;
+
+}
+
+.left h1{
+
+    font-size:30px;
+
+}
+
+.left h3{
+
+    font-size:15px;
+
+}
+
+.left p{
+
+    font-size:14px;
+
+}
+
+.right img{
+
+    max-width:300px;
+
+}
+
+.logo{
+
+    font-size:20px;
+
+}
+
+.logo i{
+
+    font-size:24px;
+
+}
+
+#social h2{
+
+    font-size:30px;
+
+}
+
+.card{
+
+    padding:25px;
+
+}
+
+.card h3{
+
+    font-size:22px;
+
+}
+
+.card i{
+
+    font-size:45px;
+
+}
+
+footer{
+
+    font-size:14px;
+
+    padding:25px;
+
+}
+
+}
