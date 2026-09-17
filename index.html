@@ -1,0 +1,2941 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Dukung Midun — Mobile Legends</title>
+
+<meta name="description"
+content="Dukung Midun dalam perjalanan Mobile Legends.">
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#050507;
+
+    color:#fff;
+
+    overflow-x:hidden;
+
+    transition:.4s;
+
+}
+
+body.light{
+
+    background:#f5f5f7;
+
+    color:#111;
+
+}
+
+a{
+
+    color:inherit;
+
+    text-decoration:none;
+
+}
+
+button{
+
+    font:inherit;
+
+    cursor:pointer;
+
+}
+
+::selection{
+
+    background:#7c3aed;
+
+    color:white;
+
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --purple:#7c3aed;
+
+    --violet:#a78bfa;
+
+    --blue:#22d3ee;
+
+    --pink:#ec4899;
+
+    --gold:#facc15;
+
+    --text:#fff;
+
+    --muted:#92929d;
+
+    --border:
+    rgba(255,255,255,.1);
+
+    --glass:
+    rgba(255,255,255,.045);
+
+}
+
+body.light{
+
+    --text:#111;
+
+    --muted:#666;
+
+    --border:
+    rgba(0,0,0,.1);
+
+    --glass:
+    rgba(0,0,0,.035);
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#050507;
+
+    z-index:99999;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+    opacity .7s,
+    visibility .7s;
+
+}
+
+.loader.hide{
+
+    opacity:0;
+
+    visibility:hidden;
+
+}
+
+.loader-logo{
+
+    font-size:42px;
+
+    font-weight:900;
+
+    letter-spacing:-3px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #22d3ee,
+        #ec4899
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.loader-text{
+
+    margin-top:15px;
+
+    color:#777;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+}
+
+.loader-bar{
+
+    width:170px;
+
+    height:3px;
+
+    margin-top:20px;
+
+    background:#222;
+
+    overflow:hidden;
+
+    border-radius:50px;
+
+}
+
+.loader-bar::after{
+
+    content:"";
+
+    display:block;
+
+    width:50%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #22d3ee
+    );
+
+    animation:
+    loading 1s infinite;
+
+}
+
+@keyframes loading{
+
+    from{
+        transform:translateX(-120%);
+    }
+
+    to{
+        transform:translateX(300%);
+    }
+
+}
+
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.bg{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-10;
+
+    overflow:hidden;
+
+}
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+        rgba(255,255,255,.035) 1px,
+        transparent 1px
+    ),
+
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.035) 1px,
+        transparent 1px
+    );
+
+    background-size:50px 50px;
+
+    mask-image:
+    linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+    );
+
+}
+
+.orb{
+
+    position:absolute;
+
+    width:500px;
+
+    height:500px;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    opacity:.16;
+
+    animation:
+    orbMove 12s infinite
+    alternate ease-in-out;
+
+}
+
+.orb1{
+
+    background:#7c3aed;
+
+    left:-250px;
+
+    top:-250px;
+
+}
+
+.orb2{
+
+    background:#22d3ee;
+
+    right:-300px;
+
+    top:30%;
+
+    animation-delay:-4s;
+
+}
+
+.orb3{
+
+    background:#ec4899;
+
+    bottom:-350px;
+
+    left:30%;
+
+    animation-delay:-7s;
+
+}
+
+@keyframes orbMove{
+
+    to{
+
+        transform:
+        translate(100px,80px)
+        scale(1.2);
+
+    }
+
+}
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+.cursor{
+
+    position:fixed;
+
+    width:22px;
+
+    height:22px;
+
+    border:
+    1px solid
+    rgba(255,255,255,.8);
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transform:
+    translate(-50%,-50%);
+
+    transition:
+    width .2s,
+    height .2s,
+    background .2s;
+
+}
+
+.cursor-dot{
+
+    position:fixed;
+
+    width:5px;
+
+    height:5px;
+
+    background:white;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:10000;
+
+    transform:
+    translate(-50%,-50%);
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+
+    width:
+    min(
+        calc(100% - 40px),
+        1200px
+    );
+
+    margin:auto;
+
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+header{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    z-index:1000;
+
+    padding:20px 0;
+
+    transition:.4s;
+
+}
+
+header.scrolled{
+
+    background:
+    rgba(5,5,7,.7);
+
+    backdrop-filter:
+    blur(20px);
+
+    border-bottom:
+    1px solid var(--border);
+
+}
+
+body.light header.scrolled{
+
+    background:
+    rgba(245,245,247,.8);
+
+}
+
+.nav{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.logo{
+
+    font-size:22px;
+
+    font-weight:900;
+
+    letter-spacing:-1.5px;
+
+}
+
+.logo span{
+
+    color:var(--purple);
+
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:30px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.nav-links a{
+
+    transition:.25s;
+
+}
+
+.nav-links a:hover{
+
+    color:var(--text);
+
+}
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.icon{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:12px;
+
+    border:
+    1px solid var(--border);
+
+    background:var(--glass);
+
+    color:var(--text);
+
+}
+
+.menu{
+
+    display:none;
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:
+    13px 21px;
+
+    border-radius:13px;
+
+    border:
+    1px solid transparent;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    transition:.25s;
+
+}
+
+.btn:hover{
+
+    transform:
+    translateY(-3px);
+
+}
+
+.btn-support{
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #a855f7
+    );
+
+    box-shadow:
+    0 15px 45px
+    rgba(124,58,237,.35);
+
+}
+
+.btn-support:hover{
+
+    box-shadow:
+    0 20px 55px
+    rgba(124,58,237,.55);
+
+}
+
+.btn-outline{
+
+    border-color:
+    var(--border);
+
+    background:
+    var(--glass);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-top:130px;
+
+}
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1.05fr .95fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:
+    8px 13px;
+
+    border:
+    1px solid var(--border);
+
+    background:
+    var(--glass);
+
+    border-radius:50px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-bottom:25px;
+
+}
+
+.status{
+
+    width:7px;
+
+    height:7px;
+
+    background:#34d399;
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 15px #34d399;
+
+}
+
+.hero h1{
+
+    font-size:
+    clamp(
+        55px,
+        8vw,
+        100px
+    );
+
+    line-height:.88;
+
+    letter-spacing:-6px;
+
+}
+
+.gradient{
+
+    background:
+    linear-gradient(
+        90deg,
+        #7c3aed,
+        #22d3ee,
+        #ec4899
+    );
+
+    background-size:200%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    gradientMove 5s infinite;
+
+}
+
+@keyframes gradientMove{
+
+    0%,100%{
+        background-position:0%;
+    }
+
+    50%{
+        background-position:100%;
+    }
+
+}
+
+.hero p{
+
+    max-width:600px;
+
+    color:var(--muted);
+
+    font-size:17px;
+
+    margin-top:30px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    margin-top:32px;
+
+}
+
+.hero-meta{
+
+    display:flex;
+
+    gap:28px;
+
+    margin-top:35px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+.hero-meta strong{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:21px;
+
+}
+
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-art{
+
+    height:520px;
+
+    position:relative;
+
+    display:grid;
+
+    place-items:center;
+
+}
+
+.ml-core{
+
+    width:270px;
+
+    height:270px;
+
+    border-radius:50%;
+
+    position:relative;
+
+    background:
+
+    radial-gradient(
+        circle at 35% 25%,
+        #fff,
+        #a78bfa 8%,
+        #7c3aed 25%,
+        #312e81 48%,
+        #09090b 75%
+    );
+
+    box-shadow:
+
+    0 0 80px
+    rgba(124,58,237,.5),
+
+    inset
+    -30px -30px 60px
+    rgba(0,0,0,.7);
+
+    animation:
+    coreFloat 5s infinite
+    ease-in-out;
+
+}
+
+.ml-core::before{
+
+    content:"ML";
+
+    position:absolute;
+
+    inset:0;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:55px;
+
+    font-weight:900;
+
+    letter-spacing:-5px;
+
+    color:white;
+
+    text-shadow:
+    0 0 30px
+    rgba(255,255,255,.5);
+
+}
+
+.ml-core::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-70px;
+
+    border:
+    1px solid
+    rgba(124,58,237,.45);
+
+    border-radius:50%;
+
+    transform:
+    rotateX(70deg)
+    rotateZ(15deg);
+
+}
+
+@keyframes coreFloat{
+
+    0%,100%{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-20px)
+        rotate(7deg);
+
+    }
+
+}
+
+.float{
+
+    position:absolute;
+
+    padding:
+    13px 16px;
+
+    border:
+    1px solid var(--border);
+
+    background:
+    rgba(15,15,20,.72);
+
+    backdrop-filter:
+    blur(20px);
+
+    border-radius:15px;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    animation:
+    floatCard 4s infinite
+    ease-in-out;
+
+}
+
+body.light .float{
+
+    background:
+    rgba(255,255,255,.75);
+
+}
+
+.float strong{
+
+    display:block;
+
+    color:var(--text);
+
+    font-size:16px;
+
+    margin-top:2px;
+
+}
+
+.f1{
+
+    top:80px;
+
+    right:0;
+
+}
+
+.f2{
+
+    bottom:80px;
+
+    left:0;
+
+    animation-delay:-2s;
+
+}
+
+@keyframes floatCard{
+
+    50%{
+
+        transform:
+        translateY(-12px);
+
+    }
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+section{
+
+    padding:120px 0;
+
+}
+
+.section-head{
+
+    max-width:700px;
+
+    margin-bottom:55px;
+
+}
+
+.kicker{
+
+    color:#a78bfa;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:15px;
+
+}
+
+.section-head h2{
+
+    font-size:
+    clamp(
+        38px,
+        5vw,
+        62px
+    );
+
+    line-height:.95;
+
+    letter-spacing:-3px;
+
+}
+
+.section-head p{
+
+    color:var(--muted);
+
+    margin-top:20px;
+
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+}
+
+.stat{
+
+    padding:35px;
+
+    text-align:center;
+
+    background:
+    var(--glass);
+
+    border-right:
+    1px solid var(--border);
+
+}
+
+.stat:last-child{
+
+    border-right:0;
+
+}
+
+.stat strong{
+
+    font-size:35px;
+
+    letter-spacing:-2px;
+
+}
+
+.stat p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   WHY SUPPORT
+===================================================== */
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+
+}
+
+.card{
+
+    padding:30px;
+
+    border:
+    1px solid var(--border);
+
+    background:
+    var(--glass);
+
+    border-radius:23px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+}
+
+.card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:
+    rgba(124,58,237,.45);
+
+}
+
+.card-icon{
+
+    width:52px;
+
+    height:52px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:15px;
+
+    background:
+    rgba(124,58,237,.12);
+
+    border:
+    1px solid
+    rgba(124,58,237,.2);
+
+    font-size:22px;
+
+    margin-bottom:24px;
+
+}
+
+.card h3{
+
+    font-size:19px;
+
+    margin-bottom:10px;
+
+}
+
+.card p{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+
+/* =====================================================
+   MIDUN SECTION
+===================================================== */
+
+.midun{
+
+    display:grid;
+
+    grid-template-columns:
+    .8fr 1.2fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+.midun-box{
+
+    min-height:420px;
+
+    border:
+    1px solid var(--border);
+
+    border-radius:30px;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(124,58,237,.22),
+        transparent 60%
+    );
+
+    display:grid;
+
+    place-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.midun-logo{
+
+    font-size:120px;
+
+    font-weight:900;
+
+    letter-spacing:-10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #fff,
+        #a78bfa,
+        #22d3ee
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.midun-content h2{
+
+    font-size:
+    clamp(
+        40px,
+        5vw,
+        70px
+    );
+
+    line-height:.9;
+
+    letter-spacing:-4px;
+
+}
+
+.midun-content p{
+
+    color:var(--muted);
+
+    margin-top:25px;
+
+    max-width:580px;
+
+}
+
+.highlight{
+
+    color:#a78bfa;
+
+}
+
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+
+    text-align:center;
+
+    padding:
+    80px 30px;
+
+    border:
+    1px solid
+    rgba(124,58,237,.3);
+
+    border-radius:30px;
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(124,58,237,.14),
+        transparent 65%
+    );
+
+}
+
+.cta h2{
+
+    font-size:
+    clamp(
+        42px,
+        6vw,
+        75px
+    );
+
+    line-height:.9;
+
+    letter-spacing:-4px;
+
+}
+
+.cta p{
+
+    color:var(--muted);
+
+    max-width:550px;
+
+    margin:
+    20px auto 30px;
+
+}
+
+.cta .btn{
+
+    padding:
+    15px 28px;
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+.faq{
+
+    max-width:800px;
+
+    margin:auto;
+
+}
+
+.faq-item{
+
+    border-bottom:
+    1px solid var(--border);
+
+}
+
+.faq-question{
+
+    width:100%;
+
+    background:none;
+
+    border:0;
+
+    color:var(--text);
+
+    padding:22px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    text-align:left;
+
+    font-weight:700;
+
+}
+
+.faq-question span{
+
+    transition:.3s;
+
+}
+
+.answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    transition:
+    max-height .4s,
+    padding .4s;
+
+}
+
+.faq-item.active
+.answer{
+
+    max-height:150px;
+
+    padding-bottom:20px;
+
+}
+
+.faq-item.active
+.faq-question span{
+
+    transform:
+    rotate(45deg);
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+
+    padding:40px 0;
+
+    border-top:
+    1px solid var(--border);
+
+}
+
+.footer{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+    translateY(35px);
+
+    transition:
+    opacity .8s,
+    transform .8s;
+
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:900px){
+
+    .nav-links{
+
+        position:fixed;
+
+        top:75px;
+
+        left:20px;
+
+        right:20px;
+
+        padding:25px;
+
+        background:
+        rgba(10,10,14,.95);
+
+        backdrop-filter:
+        blur(25px);
+
+        border:
+        1px solid var(--border);
+
+        border-radius:20px;
+
+        flex-direction:column;
+
+        transform:
+        translateY(-20px);
+
+        opacity:0;
+
+        pointer-events:none;
+
+    }
+
+    body.light .nav-links{
+
+        background:
+        rgba(255,255,255,.95);
+
+    }
+
+    .nav-links.open{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+        pointer-events:auto;
+
+    }
+
+    .menu{
+
+        display:block;
+
+    }
+
+    .nav-right > .btn{
+
+        display:none;
+
+    }
+
+    .hero-grid,
+    .midun{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-art{
+
+        height:430px;
+
+    }
+
+    .features{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .container{
+
+        width:
+        calc(100% - 28px);
+
+    }
+
+    section{
+
+        padding:85px 0;
+
+    }
+
+    .hero h1{
+
+        font-size:56px;
+
+        letter-spacing:-4px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .hero-buttons .btn{
+
+        width:100%;
+
+    }
+
+    .stats{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+    }
+
+    .stat{
+
+        padding:25px 10px;
+
+        border-bottom:
+        1px solid var(--border);
+
+    }
+
+    .features{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .midun-box{
+
+        min-height:320px;
+
+    }
+
+    .midun-logo{
+
+        font-size:90px;
+
+    }
+
+    .footer{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        align-items:flex-start;
+
+    }
+
+    .cursor,
+    .cursor-dot{
+
+        display:none;
+
+    }
+
+}
+@media(max-width:600px){
+    .f1{
+        right:10px;
+    }
+
+    .f2{
+        left:10px;
+    }
+}
+@media(max-width:600px){
+    .ml-core{
+        width:220px;
+        height:220px;
+    }
+
+    .ml-core::before{
+        font-size:45px;
+    }
+
+    .ml-core::after{
+        inset:-45px;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOADING
+===================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-logo">
+        MIDUN
+    </div>
+
+    <div class="loader-text">
+        MOBILE LEGENDS CREATOR
+    </div>
+
+    <div class="loader-bar"></div>
+
+</div>
+
+
+<!-- =====================================================
+     CURSOR
+===================================================== -->
+
+<div class="cursor"
+id="cursor"></div>
+
+<div class="cursor-dot"
+id="cursorDot"></div>
+
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="bg">
+
+    <div class="grid"></div>
+
+    <div class="orb orb1"></div>
+
+    <div class="orb orb2"></div>
+
+    <div class="orb orb3"></div>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header id="header">
+
+<div class="container nav">
+
+
+<a href="#home"
+class="logo">
+
+MIDUN<span>.</span>
+
+</a>
+
+
+<nav
+class="nav-links"
+id="nav">
+
+<a href="#home">
+Home
+</a>
+
+<a href="#about">
+Tentang Midun
+</a>
+
+<a href="#support">
+Kenapa Dukung?
+</a>
+
+<a href="#faq">
+FAQ
+</a>
+
+</nav>
+
+
+<div class="nav-right">
+
+<button
+class="icon"
+id="theme">
+
+☾
+
+</button>
+
+
+<button
+class="icon menu"
+id="menu">
+
+☰
+
+</button>
+
+
+<a
+href="https://sociabuzz.com/miduun/tribe?_ref=linkbio"
+class="btn btn-support">
+
+Dukung ❤️
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<main>
+
+
+<section
+class="hero"
+id="home">
+
+<div class="container hero-grid">
+
+
+<div class="reveal">
+
+
+<div class="badge">
+
+<span class="status"></span>
+
+MIDUN • MOBILE LEGENDS
+
+</div>
+
+
+<h1>
+
+Dukung
+
+<span class="gradient">
+
+Midun.
+
+</span>
+
+</h1>
+
+
+<p>
+
+Mari ikut menjadi bagian dari perjalanan
+Midun di dunia Mobile Legends.
+Setiap dukungan berarti dan membantu
+Midun terus berkarya.
+
+</p>
+
+
+<div class="hero-buttons">
+
+
+<a
+href="https://sociabuzz.com/miduun/tribe?_ref=linkbio"
+class="btn btn-support">
+
+❤️ Dukung Midun
+
+</a>
+
+
+<a
+href="#about"
+class="btn btn-outline">
+
+Kenal Midun ↓
+
+</a>
+
+
+</div>
+
+
+<div class="hero-meta">
+
+<div>
+
+<strong>
+MLBB
+</strong>
+
+Mobile Legends
+
+</div>
+
+
+<div>
+
+<strong>
+100%
+</strong>
+
+Passion
+
+</div>
+
+
+<div>
+
+<strong>
+∞
+</strong>
+
+Perjalanan
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- HERO ART -->
+
+<div
+class="hero-art reveal">
+
+
+<div
+class="ml-core">
+</div>
+
+
+<div class="float f1">
+
+CONTENT CREATOR
+
+<strong>
+MIDUN
+</strong>
+
+</div>
+
+
+<div class="float f2">
+
+STATUS
+
+<strong>
+KEEP GRINDING ⚡
+</strong>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="stats reveal">
+
+
+<div class="stat">
+
+<strong>
+100%
+</strong>
+
+<p>
+Passion
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+24/7
+</strong>
+
+<p>
+Grinding
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+∞
+</strong>
+
+<p>
+Semangat
+</p>
+
+</div>
+
+
+<div class="stat">
+
+<strong>
+1
+</strong>
+
+<p>
+Community
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT MIDUN
+===================================================== -->
+
+<section
+id="about">
+
+<div class="container midun">
+
+
+<div class="midun-box reveal">
+
+<div class="midun-logo">
+
+M
+
+</div>
+
+</div>
+
+
+<div class="midun-content reveal">
+
+
+<div class="kicker">
+Tentang Midun
+</div>
+
+
+<h2>
+
+Satu game.
+
+<br>
+
+<span class="highlight">
+Satu perjalanan.
+</span>
+
+</h2>
+
+
+<p>
+
+Midun adalah seorang content creator
+yang membangun perjalanan di dunia
+Mobile Legends. Mulai dari bermain,
+berbagi konten, hingga membangun
+community bersama para player.
+
+</p>
+
+
+<p>
+
+Dukungan dari kalian menjadi salah satu
+alasan untuk terus membuat konten,
+terus berkembang, dan terus melakukan
+yang terbaik.
+
+</p>
+
+
+<br>
+
+
+<a
+href="https://sociabuzz.com/miduun/tribe?_ref=linkbio"
+class="btn btn-support">
+
+Dukung Sekarang ❤️
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY SUPPORT
+===================================================== -->
+
+<section
+id="support">
+
+<div class="container">
+
+
+<div class="section-head reveal">
+
+<div class="kicker">
+WHY SUPPORT?
+</div>
+
+
+<h2>
+
+Dukungan kecil.
+
+<br>
+
+Dampak besar.
+
+</h2>
+
+
+<p>
+
+Setiap dukungan membantu Midun
+untuk terus berkembang dan berkarya.
+
+</p>
+
+</div>
+
+
+<div class="features">
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+🎮
+</div>
+
+<h3>
+Terus Bermain
+</h3>
+
+<p>
+
+Dukungan membantu menjaga semangat
+untuk terus bermain dan menikmati
+perjalanan Mobile Legends.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+🎬
+</div>
+
+<h3>
+Terus Berkarya
+</h3>
+
+<p>
+
+Membantu Midun menghasilkan lebih
+banyak konten dan membagikan
+momen-momen seru.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+⚡
+</div>
+
+<h3>
+Terus Berkembang
+</h3>
+
+<p>
+
+Setiap dukungan menjadi bagian dari
+proses untuk membuat konten
+yang semakin baik.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+💜
+</div>
+
+<h3>
+Support Creator
+</h3>
+
+<p>
+
+Menjadi bagian dari perjalanan
+Midun sebagai content creator
+Mobile Legends.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+🔥
+</div>
+
+<h3>
+Keep Grinding
+</h3>
+
+<p>
+
+Karena perjalanan seorang creator
+tidak selalu mudah. Dukungan kalian
+membuat perjalanan terasa berbeda.
+
+</p>
+
+</div>
+
+
+
+<div class="card reveal">
+
+<div class="card-icon">
+👑
+</div>
+
+<h3>
+Build Community
+</h3>
+
+<p>
+
+Bersama-sama membangun community
+yang positif dan seru untuk
+para player Mobile Legends.
+
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+
+<div class="cta reveal">
+
+
+<div class="kicker">
+YOUR SUPPORT MATTERS
+</div>
+
+
+<h2>
+
+Yuk, dukung
+
+<span class="gradient">
+Midun.
+</span>
+
+</h2>
+
+
+<p>
+
+Kalau kamu menikmati konten dan
+perjalanan Midun, kamu bisa memberikan
+dukungan melalui halaman resmi.
+
+</p>
+
+
+<a
+href="https://sociabuzz.com/miduun/tribe?_ref=linkbio"
+class="btn btn-support">
+
+❤️ Dukung Midun
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+id="faq">
+
+<div class="container">
+
+
+<div class="section-head reveal">
+
+<div class="kicker">
+FAQ
+</div>
+
+
+<h2>
+
+Ada pertanyaan?
+
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<div class="faq-item reveal">
+
+
+<button
+class="faq-question">
+
+Dukungan diberikan melalui apa?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="answer">
+
+Dukungan diarahkan melalui
+halaman Sociabuzz resmi Midun.
+
+</div>
+
+
+</div>
+
+
+
+<div class="faq-item reveal">
+
+
+<button
+class="faq-question">
+
+Apakah harus memberikan dukungan?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="answer">
+
+Tidak. Dukungan bersifat sukarela.
+Menonton, mengikuti, memberikan
+like, dan membagikan konten juga
+sangat berarti.
+
+</div>
+
+
+</div>
+
+
+
+<div class="faq-item reveal">
+
+
+<button
+class="faq-question">
+
+Untuk apa dukungan digunakan?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="answer">
+
+Dukungan membantu perjalanan Midun
+sebagai creator dan mendukung proses
+pembuatan konten Mobile Legends.
+
+</div>
+
+
+</div>
+
+
+
+<div class="faq-item reveal">
+
+
+<button
+class="faq-question">
+
+Bagaimana cara mendukung Midun?
+
+<span>
++
+</span>
+
+</button>
+
+
+<div class="answer">
+
+Tekan tombol "Dukung" di website ini,
+kemudian kamu akan diarahkan ke
+halaman Sociabuzz Midun.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section>
+
+<div class="container">
+
+<div class="cta reveal">
+
+
+<div class="kicker">
+MIDUN MOBILE LEGENDS
+</div>
+
+
+<h2>
+
+Keep Playing.
+
+<br>
+
+Keep Grinding.
+
+<br>
+
+Keep Supporting.
+
+</h2>
+
+
+<p>
+
+Terima kasih sudah menjadi bagian
+dari perjalanan Midun. 💜
+
+</p>
+
+
+<a
+href="https://sociabuzz.com/miduun/tribe?_ref=linkbio"
+class="btn btn-support">
+
+❤️ DUKUNG MIDUN
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer">
+
+
+<div>
+
+© 2026 MIDUN.
+All rights reserved.
+
+</div>
+
+
+<div>
+
+Mobile Legends Creator 🎮
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener(
+"load",
+function(){
+
+    setTimeout(
+    function(){
+
+        document
+        .getElementById("loader")
+        .classList
+        .add("hide");
+
+    },
+    900);
+
+});
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+const header =
+document.getElementById("header");
+
+window.addEventListener(
+"scroll",
+function(){
+
+    if(
+    window.scrollY > 30
+    ){
+
+        header
+        .classList
+        .add("scrolled");
+
+    }else{
+
+        header
+        .classList
+        .remove("scrolled");
+
+    }
+
+});
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menu =
+document.getElementById("menu");
+
+const nav =
+document.getElementById("nav");
+
+menu.addEventListener(
+"click",
+function(){
+
+    nav
+    .classList
+    .toggle("open");
+
+    menu.textContent =
+    nav.classList.contains("open")
+    ? "✕"
+    : "☰";
+
+});
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(
+function(link){
+
+    link.addEventListener(
+    "click",
+    function(){
+
+        nav
+        .classList
+        .remove("open");
+
+        menu.textContent="☰";
+
+    });
+
+});
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+const theme =
+document.getElementById("theme");
+
+theme.addEventListener(
+"click",
+function(){
+
+    document.body
+    .classList
+    .toggle("light");
+
+    const light =
+    document.body
+    .classList
+    .contains("light");
+
+    theme.textContent =
+    light ? "☀" : "☾";
+
+    localStorage.setItem(
+    "midun-theme",
+    light
+    ? "light"
+    : "dark"
+    );
+
+});
+
+
+if(
+localStorage.getItem("midun-theme")
+==="light"
+){
+
+    document.body
+    .classList
+    .add("light");
+
+    theme.textContent="☀";
+
+}
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+const cursor =
+document.getElementById("cursor");
+
+const dot =
+document.getElementById("cursorDot");
+
+
+document.addEventListener(
+"mousemove",
+function(e){
+
+    cursor.style.left =
+    e.clientX+"px";
+
+    cursor.style.top =
+    e.clientY+"px";
+
+    dot.style.left =
+    e.clientX+"px";
+
+    dot.style.top =
+    e.clientY+"px";
+
+});
+
+
+document
+.querySelectorAll("a,button")
+.forEach(
+function(el){
+
+    el.addEventListener(
+    "mouseenter",
+    function(){
+
+        cursor.style.width="45px";
+
+        cursor.style.height="45px";
+
+        cursor.style.background=
+        "rgba(124,58,237,.12)";
+
+    });
+
+
+    el.addEventListener(
+    "mouseleave",
+    function(){
+
+        cursor.style.width="22px";
+
+        cursor.style.height="22px";
+
+        cursor.style.background=
+        "transparent";
+
+    });
+
+});
+
+
+/* =====================================================
+   REVEAL
+===================================================== */
+
+const observer =
+new IntersectionObserver(
+function(entries){
+
+    entries.forEach(
+    function(entry){
+
+        if(
+        entry.isIntersecting
+        ){
+
+            entry.target
+            .classList
+            .add("show");
+
+        }
+
+    });
+
+},
+{
+    threshold:.12
+});
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(
+function(el){
+
+    observer.observe(el);
+
+});
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+document
+.querySelectorAll(".faq-question")
+.forEach(
+function(question){
+
+    question.addEventListener(
+    "click",
+    function(){
+
+        const item =
+        question.parentElement;
+
+        document
+        .querySelectorAll(".faq-item")
+        .forEach(
+        function(other){
+
+            if(
+            other !== item
+            ){
+
+                other
+                .classList
+                .remove("active");
+
+            }
+
+        });
+
+
+        item
+        .classList
+        .toggle("active");
+
+    });
+
+});
+
+
+/* =====================================================
+   PARALLAX
+===================================================== */
+
+const core =
+document.querySelector(".ml-core");
+
+document.addEventListener(
+"mousemove",
+function(e){
+
+    if(
+    window.innerWidth > 900
+    ){
+
+        const x =
+        (
+            e.clientX /
+            window.innerWidth
+            - .5
+        ) * 20;
+
+
+        const y =
+        (
+            e.clientY /
+            window.innerHeight
+            - .5
+        ) * 20;
+
+
+        core.style.transform =
+        `translate(${x}px,${y}px)`;
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
