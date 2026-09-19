@@ -1,8 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#05030b">
 
 <title>Top Up Mobile Legends — Miduun</title>
@@ -11,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet"
 >
 
 <style>
@@ -23,18 +25,21 @@
 
 :root{
     --purple:#9b4dff;
-    --purple2:#6d28d9;
+    --purple-dark:#6d28d9;
     --blue:#26b7ff;
     --pink:#ff3df2;
 
     --bg:#05030b;
 
-    --card:rgba(17,12,30,.72);
+    --card:rgba(16,11,28,.82);
+    --card2:rgba(255,255,255,.035);
 
     --line:rgba(255,255,255,.09);
 
     --text:#fff;
-    --muted:#a9a3b8;
+    --muted:#9f98ae;
+
+    --success:#4ade80;
 }
 
 
@@ -71,28 +76,28 @@ body{
 
 .background{
     position:fixed;
-
     inset:0;
 
-    z-index:-5;
+    z-index:-10;
 
     overflow:hidden;
 
     background:
+
         radial-gradient(
-            circle at 15% 15%,
-            rgba(155,77,255,.13),
+            circle at 10% 10%,
+            rgba(155,77,255,.14),
             transparent 28%
         ),
 
         radial-gradient(
-            circle at 85% 25%,
+            circle at 90% 25%,
             rgba(38,183,255,.10),
             transparent 30%
         ),
 
         radial-gradient(
-            circle at 55% 100%,
+            circle at 50% 100%,
             rgba(255,61,242,.08),
             transparent 35%
         ),
@@ -107,17 +112,18 @@ body{
 
     inset:-50%;
 
-    opacity:.13;
+    opacity:.08;
 
     background-image:
+
         linear-gradient(
-            rgba(155,77,255,.35) 1px,
+            rgba(155,77,255,.4) 1px,
             transparent 1px
         ),
 
         linear-gradient(
             90deg,
-            rgba(38,183,255,.25) 1px,
+            rgba(38,183,255,.3) 1px,
             transparent 1px
         );
 
@@ -126,8 +132,6 @@ body{
     transform:
         perspective(600px)
         rotateX(62deg);
-
-    transform-origin:center;
 }
 
 .orb{
@@ -137,15 +141,17 @@ body{
 
     pointer-events:none;
 
-    opacity:.23;
+    filter:blur(10px);
+
+    opacity:.22;
 }
 
 .orb1{
-    width:360px;
-    height:360px;
+    width:400px;
+    height:400px;
 
-    left:-180px;
-    top:150px;
+    left:-220px;
+    top:160px;
 
     background:
         radial-gradient(
@@ -156,11 +162,11 @@ body{
 }
 
 .orb2{
-    width:380px;
-    height:380px;
+    width:420px;
+    height:420px;
 
-    right:-180px;
-    top:300px;
+    right:-220px;
+    top:280px;
 
     background:
         radial-gradient(
@@ -171,11 +177,11 @@ body{
 }
 
 .orb3{
-    width:300px;
-    height:300px;
+    width:350px;
+    height:350px;
 
-    left:42%;
-    bottom:-190px;
+    left:40%;
+    bottom:-230px;
 
     background:
         radial-gradient(
@@ -197,7 +203,7 @@ body{
 
     z-index:100;
 
-    height:72px;
+    height:70px;
 
     display:flex;
 
@@ -205,15 +211,15 @@ body{
 
     justify-content:space-between;
 
-    padding:0 6%;
+    padding:0 clamp(18px,5vw,70px);
 
     background:rgba(5,3,11,.78);
 
     border-bottom:1px solid var(--line);
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(18px);
 
-    -webkit-backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(18px);
 }
 
 .logo{
@@ -225,7 +231,7 @@ body{
 
     font-weight:900;
 
-    letter-spacing:-1px;
+    letter-spacing:-1.2px;
 }
 
 .logo span{
@@ -238,26 +244,31 @@ body{
         );
 
     -webkit-background-clip:text;
-
     background-clip:text;
 
     color:transparent;
 }
 
 .back{
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
     color:#ddd7e8;
 
     text-decoration:none;
 
-    font-size:14px;
+    font-size:12px;
 
     font-weight:700;
 
-    padding:10px 16px;
+    padding:9px 14px;
 
     border:1px solid var(--line);
 
-    border-radius:12px;
+    border-radius:11px;
 
     background:rgba(255,255,255,.035);
 
@@ -265,8 +276,9 @@ body{
 }
 
 .back:hover{
-    border-color:
-        rgba(155,77,255,.55);
+    border-color:rgba(155,77,255,.55);
+
+    background:rgba(155,77,255,.07);
 
     transform:translateY(-1px);
 }
@@ -277,11 +289,11 @@ body{
 ========================================================= */
 
 .page{
-    width:min(1180px,92%);
+    width:min(1160px,92%);
 
     margin:auto;
 
-    padding:54px 0 80px;
+    padding:55px 0 70px;
 }
 
 
@@ -300,25 +312,23 @@ body{
 
     align-items:center;
 
-    gap:7px;
+    gap:8px;
 
     padding:8px 13px;
 
-    border:1px solid
-        rgba(155,77,255,.3);
+    border:1px solid rgba(155,77,255,.28);
 
     border-radius:999px;
 
-    background:
-        rgba(155,77,255,.08);
+    background:rgba(155,77,255,.07);
 
-    color:#d9c7ff;
+    color:#d8c5ff;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:800;
 
-    margin-bottom:16px;
+    letter-spacing:.3px;
 }
 
 .badge i{
@@ -330,16 +340,17 @@ body{
     background:var(--blue);
 
     box-shadow:
-        0 0 10px var(--blue);
+        0 0 12px var(--blue);
 }
 
 .heading h1{
-    font-size:
-        clamp(32px,5vw,58px);
+    margin-top:16px;
+
+    font-size:clamp(34px,5vw,56px);
 
     line-height:1;
 
-    letter-spacing:-2.5px;
+    letter-spacing:-2.7px;
 
     font-weight:900;
 }
@@ -348,28 +359,26 @@ body{
     background:
         linear-gradient(
             90deg,
-            #fff,
             var(--purple),
             var(--blue)
         );
 
     -webkit-background-clip:text;
-
     background-clip:text;
 
     color:transparent;
 }
 
 .heading p{
-    margin:15px auto 0;
+    max-width:620px;
 
-    max-width:590px;
+    margin:16px auto 0;
 
     color:var(--muted);
 
     line-height:1.7;
 
-    font-size:14px;
+    font-size:13px;
 }
 
 
@@ -381,8 +390,8 @@ body{
     display:grid;
 
     grid-template-columns:
-        minmax(0,1.45fr)
-        minmax(290px,.75fr);
+        minmax(0,1fr)
+        340px;
 
     gap:22px;
 
@@ -404,16 +413,16 @@ body{
     padding:24px;
 
     box-shadow:
-        0 18px 60px rgba(0,0,0,.2);
+        0 20px 70px rgba(0,0,0,.24);
 
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(14px);
 
-    -webkit-backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(14px);
 }
 
 
 /* =========================================================
-   CARD TITLE
+   LEFT CONTENT
 ========================================================= */
 
 .card-title{
@@ -430,6 +439,8 @@ body{
     width:42px;
     height:42px;
 
+    flex-shrink:0;
+
     display:grid;
 
     place-items:center;
@@ -439,31 +450,32 @@ body{
     background:
         linear-gradient(
             135deg,
-            rgba(155,77,255,.22),
-            rgba(38,183,255,.13)
+            rgba(155,77,255,.20),
+            rgba(38,183,255,.10)
         );
 
-    border:1px solid
-        rgba(155,77,255,.22);
+    border:1px solid rgba(155,77,255,.22);
 
-    font-size:20px;
+    font-size:19px;
 }
 
 .card-title h2{
-    font-size:17px;
+    font-size:16px;
+
+    font-weight:800;
 }
 
 .card-title p{
+    margin-top:3px;
+
     color:#8e879f;
 
-    font-size:11px;
-
-    margin-top:3px;
+    font-size:10px;
 }
 
 
 /* =========================================================
-   INPUT
+   ACCOUNT
 ========================================================= */
 
 .input-label{
@@ -471,9 +483,9 @@ body{
 
     color:#ddd7e8;
 
-    font-size:12px;
+    font-size:11px;
 
-    font-weight:700;
+    font-weight:800;
 
     margin-bottom:8px;
 }
@@ -482,7 +494,7 @@ body{
     display:grid;
 
     grid-template-columns:
-        1fr
+        minmax(0,1fr)
         150px;
 
     gap:10px;
@@ -491,66 +503,77 @@ body{
 .input{
     width:100%;
 
-    height:50px;
+    height:49px;
 
     border:1px solid var(--line);
 
     border-radius:13px;
 
-    background:
-        rgba(255,255,255,.045);
+    background:rgba(255,255,255,.045);
 
     color:white;
 
     outline:none;
 
-    padding:0 15px;
+    padding:0 14px;
 
     font:
-        600 13px Inter;
+        600 12px Inter;
 
     transition:.2s;
 }
 
 .input::placeholder{
-    color:#716a80;
+    color:#70697f;
 }
 
 .input:focus{
-    border-color:
-        rgba(155,77,255,.65);
+    border-color:rgba(155,77,255,.65);
+
+    background:rgba(155,77,255,.045);
 
     box-shadow:
-        0 0 0 3px
-        rgba(155,77,255,.08);
+        0 0 0 3px rgba(155,77,255,.08);
 }
 
 
 /* =========================================================
-   INFORMATION
+   INFO
 ========================================================= */
 
 .info-box{
-    margin-top:18px;
+    margin-top:15px;
 
-    padding:14px;
+    padding:13px 14px;
 
-    border-radius:14px;
+    border-radius:13px;
 
-    background:
-        rgba(255,255,255,.035);
+    background:rgba(255,255,255,.028);
 
     border:1px solid var(--line);
 
-    color:#8f889e;
+    color:#858093;
 
-    font-size:11px;
+    font-size:10px;
 
-    line-height:1.6;
+    line-height:1.65;
 }
 
 .info-box strong{
-    color:#ddd7e8;
+    color:#dcd5e8;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider{
+    height:1px;
+
+    background:var(--line);
+
+    margin:25px 0;
 }
 
 
@@ -559,13 +582,25 @@ body{
 ========================================================= */
 
 .section-label{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.section-label span:first-child{
     font-size:13px;
 
     font-weight:800;
+}
 
-    margin:
-        25px 0
-        12px;
+.section-label small{
+    color:#70697d;
+
+    font-size:9px;
 }
 
 
@@ -577,7 +612,7 @@ body{
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3,minmax(0,1fr));
 
     gap:10px;
 }
@@ -585,30 +620,56 @@ body{
 .product{
     position:relative;
 
+    min-height:125px;
+
     border:1px solid var(--line);
 
-    background:
-        rgba(255,255,255,.035);
+    background:rgba(255,255,255,.028);
 
     border-radius:15px;
 
-    padding:15px 12px;
+    padding:14px 12px;
 
     cursor:pointer;
 
-    transition:.2s ease;
-
     overflow:hidden;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+}
+
+.product::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:0;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(155,77,255,.15),
+            transparent 65%
+        );
+
+    transition:.2s;
 }
 
 .product:hover{
     transform:translateY(-2px);
 
-    border-color:
-        rgba(155,77,255,.45);
+    border-color:rgba(155,77,255,.42);
 
-    background:
-        rgba(155,77,255,.07);
+    background:rgba(155,77,255,.045);
+}
+
+.product:hover::before{
+    opacity:1;
 }
 
 .product.active{
@@ -617,24 +678,20 @@ body{
     background:
         linear-gradient(
             145deg,
-            rgba(155,77,255,.16),
-            rgba(38,183,255,.06)
+            rgba(155,77,255,.15),
+            rgba(38,183,255,.055)
         );
 
     box-shadow:
-        0 0 0 1px
-        rgba(155,77,255,.15),
-
-        0 8px 25px
-        rgba(109,40,217,.12);
+        0 0 0 1px rgba(155,77,255,.12),
+        0 8px 28px rgba(109,40,217,.13);
 }
 
 .product-check{
     position:absolute;
 
     top:8px;
-
-    right:9px;
+    right:8px;
 
     width:19px;
     height:19px;
@@ -642,7 +699,6 @@ body{
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     border-radius:50%;
@@ -654,9 +710,11 @@ body{
             var(--blue)
         );
 
-    font-size:10px;
+    font-size:9px;
 
     font-weight:900;
+
+    z-index:2;
 }
 
 .product.active .product-check{
@@ -664,41 +722,47 @@ body{
 }
 
 .product-icon{
-    font-size:22px;
+    position:relative;
+
+    font-size:21px;
 
     margin-bottom:8px;
 }
 
 .product-name{
+    position:relative;
+
     display:block;
 
-    font-size:13px;
+    padding-right:17px;
+
+    font-size:12px;
 
     font-weight:800;
 
     line-height:1.35;
-
-    padding-right:20px;
 }
 
 .product-desc{
-    display:block;
+    position:relative;
 
     margin-top:5px;
 
-    color:#938ca2;
+    color:#898294;
 
-    font-size:10px;
+    font-size:9px;
 
     line-height:1.4;
 }
 
 .product-price{
-    margin-top:10px;
+    position:relative;
 
-    color:#c4b5fd;
+    margin-top:9px;
 
-    font-size:13px;
+    color:#cbbaff;
+
+    font-size:12px;
 
     font-weight:800;
 }
@@ -718,25 +782,31 @@ body{
 }
 
 .payment{
+    min-height:66px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
     border:1px solid var(--line);
 
-    background:
-        rgba(255,255,255,.035);
+    background:rgba(255,255,255,.028);
 
-    border-radius:14px;
+    border-radius:13px;
 
-    padding:13px 10px;
+    padding:11px;
 
     cursor:pointer;
-
-    text-align:center;
 
     transition:.2s;
 }
 
 .payment:hover{
-    border-color:
-        rgba(155,77,255,.45);
+    border-color:rgba(155,77,255,.4);
 
     transform:translateY(-1px);
 }
@@ -744,22 +814,28 @@ body{
 .payment.active{
     border-color:var(--blue);
 
-    background:
-        rgba(38,183,255,.07);
+    background:rgba(38,183,255,.065);
 
     box-shadow:
-        0 0 0 1px
-        rgba(38,183,255,.1);
+        0 0 0 1px rgba(38,183,255,.08);
 }
 
 .payment-icon{
-    font-size:19px;
+    width:28px;
+    height:28px;
 
-    margin-bottom:6px;
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    background:rgba(255,255,255,.055);
+
+    font-size:14px;
 }
 
 .payment strong{
-    font-size:11px;
+    font-size:10px;
 }
 
 
@@ -770,7 +846,9 @@ body{
 .summary{
     position:sticky;
 
-    top:94px;
+    top:92px;
+
+    overflow:hidden;
 }
 
 .game-banner{
@@ -782,7 +860,7 @@ body{
 
     padding-bottom:20px;
 
-    margin-bottom:20px;
+    margin-bottom:17px;
 
     border-bottom:1px solid var(--line);
 }
@@ -812,78 +890,96 @@ body{
             #090d25
         );
 
-    border:1px solid
-        rgba(38,183,255,.3);
+    border:1px solid rgba(38,183,255,.3);
 
     box-shadow:
-        0 0 25px
-        rgba(38,183,255,.1);
+        0 0 25px rgba(38,183,255,.1);
 
-    font-size:26px;
+    font-size:25px;
 }
 
 .game-banner h2{
-    font-size:16px;
+    font-size:15px;
+
+    font-weight:800;
 }
 
 .game-banner p{
-    color:#8f889e;
+    color:#898294;
 
-    font-size:11px;
+    font-size:10px;
 
     margin-top:4px;
 }
 
+
+/* =========================================================
+   SUMMARY DETAIL
+========================================================= */
+
 .detail{
     display:flex;
 
+    align-items:center;
+
     justify-content:space-between;
 
-    gap:20px;
+    gap:15px;
 
     padding:10px 0;
 
-    color:#9992a7;
+    color:#918a9e;
 
-    font-size:12px;
+    font-size:11px;
 }
 
 .detail strong{
-    color:#eee;
-
-    text-align:right;
-
-    max-width:180px;
+    max-width:190px;
 
     overflow:hidden;
 
     text-overflow:ellipsis;
 
     white-space:nowrap;
+
+    color:#eee;
+
+    text-align:right;
+
+    font-size:11px;
 }
 
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
 .total{
-    margin-top:12px;
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-top:10px;
 
     padding-top:17px;
 
     border-top:1px solid var(--line);
-
-    display:flex;
-
-    align-items:end;
-
-    justify-content:space-between;
 }
 
 .total span{
-    color:#9c95aa;
+    color:#918a9e;
 
-    font-size:12px;
+    font-size:11px;
 }
 
 .total strong{
-    font-size:25px;
+    font-size:24px;
+
+    font-weight:900;
 
     background:
         linear-gradient(
@@ -893,7 +989,6 @@ body{
         );
 
     -webkit-background-clip:text;
-
     background-clip:text;
 
     color:transparent;
@@ -901,15 +996,17 @@ body{
 
 
 /* =========================================================
-   ORDER
+   ORDER BUTTON
 ========================================================= */
 
 .order-btn{
+    position:relative;
+
     width:100%;
 
     height:52px;
 
-    margin-top:20px;
+    margin-top:19px;
 
     border:0;
 
@@ -917,32 +1014,60 @@ body{
 
     cursor:pointer;
 
+    overflow:hidden;
+
     color:white;
 
     font:
-        800 13px Inter;
+        800 12px Inter;
 
     background:
         linear-gradient(
             110deg,
-            var(--purple2),
+            var(--purple-dark),
             var(--purple),
             var(--blue)
         );
 
     box-shadow:
-        0 10px 30px
-        rgba(109,40,217,.25);
+        0 10px 30px rgba(109,40,217,.25);
 
     transition:.2s ease;
+}
+
+.order-btn::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.18),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    transition:.5s;
+}
+
+.order-btn:hover::before{
+    left:130%;
 }
 
 .order-btn:hover{
     transform:translateY(-2px);
 
     box-shadow:
-        0 13px 35px
-        rgba(109,40,217,.35);
+        0 14px 38px rgba(109,40,217,.35);
 }
 
 .order-btn:active{
@@ -959,18 +1084,44 @@ body{
     box-shadow:none;
 }
 
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
 .notice{
     display:flex;
 
-    gap:9px;
+    gap:8px;
 
-    margin-top:14px;
+    margin-top:13px;
 
-    color:#817a90;
+    color:#716b7d;
 
-    font-size:10px;
+    font-size:9px;
 
-    line-height:1.5;
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   SECURE
+========================================================= */
+
+.secure{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    margin-top:18px;
+
+    color:#625c6c;
+
+    font-size:9px;
 }
 
 
@@ -979,14 +1130,13 @@ body{
 ========================================================= */
 
 footer{
+    padding:0 0 35px;
+
     text-align:center;
 
     color:#5f596b;
 
-    font-size:10px;
-
-    padding:
-        0 0 35px;
+    font-size:9px;
 }
 
 
@@ -998,33 +1148,30 @@ footer{
     position:fixed;
 
     left:50%;
-
-    bottom:25px;
+    bottom:24px;
 
     z-index:999;
 
     transform:
-        translate(-50%,100px);
+        translate(-50%,90px);
 
     opacity:0;
 
     max-width:
         calc(100% - 30px);
 
-    padding:13px 18px;
+    padding:12px 17px;
 
-    border-radius:13px;
+    border-radius:12px;
 
-    background:
-        rgba(20,15,35,.96);
+    background:rgba(20,15,35,.96);
 
     border:1px solid var(--line);
 
     box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.4);
+        0 15px 40px rgba(0,0,0,.4);
 
-    font-size:12px;
+    font-size:11px;
 
     text-align:center;
 
@@ -1040,23 +1187,24 @@ footer{
 
 
 /* =========================================================
-   RESPONSIVE
+   TABLET
 ========================================================= */
 
 @media(max-width:900px){
 
     .topup-layout{
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
 
     .summary{
-        position:static;
+        position:relative;
+
+        top:auto;
     }
 
     .products{
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(3,1fr);
     }
 }
 
@@ -1065,7 +1213,7 @@ footer{
    MOBILE
 ========================================================= */
 
-@media(max-width:520px){
+@media(max-width:600px){
 
     .navbar{
         height:64px;
@@ -1078,29 +1226,31 @@ footer{
     }
 
     .back{
-        padding:9px 12px;
+        padding:8px 11px;
 
-        font-size:11px;
+        font-size:10px;
     }
 
     .page{
         width:94%;
 
-        padding-top:35px;
+        padding:
+            35px 0
+            55px;
     }
 
     .heading{
-        margin-bottom:27px;
+        margin-bottom:28px;
     }
 
     .heading h1{
-        font-size:36px;
+        font-size:35px;
 
         letter-spacing:-1.8px;
     }
 
     .heading p{
-        font-size:13px;
+        font-size:12px;
     }
 
     .card{
@@ -1117,27 +1267,29 @@ footer{
     .products{
         grid-template-columns:
             repeat(2,1fr);
+
+        gap:8px;
+    }
+
+    .product{
+        min-height:120px;
+
+        padding:13px 10px;
     }
 
     .payment-grid{
         grid-template-columns:
             repeat(2,1fr);
+
+        gap:8px;
     }
 
-    .product{
-        padding:14px 11px;
-    }
-
-    .product-name{
-        font-size:12px;
-    }
-
-    .product-price{
-        font-size:12px;
+    .payment{
+        min-height:62px;
     }
 
     .total strong{
-        font-size:22px;
+        font-size:21px;
     }
 }
 
@@ -1146,23 +1298,35 @@ footer{
    SMALL MOBILE
 ========================================================= */
 
-@media(max-width:360px){
-
-    .input-row{
-        grid-template-columns:
-            1fr;
-    }
+@media(max-width:370px){
 
     .heading h1{
-        font-size:32px;
+        font-size:31px;
+    }
+
+    .input-row{
+        grid-template-columns:1fr;
     }
 
     .products{
-        gap:8px;
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
-    .payment-grid{
-        gap:8px;
+    .product-name{
+        font-size:11px;
+    }
+
+    .product-desc{
+        font-size:8px;
+    }
+
+    .product-price{
+        font-size:11px;
+    }
+
+    .payment strong{
+        font-size:9px;
     }
 }
 
@@ -1196,9 +1360,7 @@ footer{
 <div class="background">
 
     <div class="orb orb1"></div>
-
     <div class="orb orb2"></div>
-
     <div class="orb orb3"></div>
 
 </div>
@@ -1234,421 +1396,400 @@ footer{
 <main class="page">
 
 
-    <!-- =================================================
-         HEADER
-    ================================================== -->
+<header class="heading">
 
-    <header class="heading">
+    <div class="badge">
 
-        <div class="badge">
+        <i></i>
 
-            <i></i>
+        TOP UP CEPAT & MUDAH
 
-            TOP UP CEPAT & MUDAH
+    </div>
+
+
+    <h1>
+
+        Mobile Legends
+        <span>Top Up</span>
+
+    </h1>
+
+
+    <p>
+
+        Isi Diamond Mobile Legends dengan mudah.
+        Masukkan User ID dan Zone ID, pilih nominal,
+        lalu lakukan pembayaran melalui QRIS.
+
+    </p>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="topup-layout">
+
+
+<!-- =====================================================
+     LEFT
+===================================================== -->
+
+<section class="card">
+
+
+    <!-- ACCOUNT -->
+
+    <div class="card-title">
+
+        <div class="card-icon">
+            🎮
+        </div>
+
+        <div>
+
+            <h2>
+                Data Akun
+            </h2>
+
+            <p>
+                Masukkan informasi akun Mobile Legends
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <label
+        class="input-label"
+        for="userId"
+    >
+        User ID
+    </label>
+
+
+    <div class="input-row">
+
+        <input
+            id="userId"
+            class="input"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="Contoh: 123456789"
+        >
+
+
+        <input
+            id="zoneId"
+            class="input"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            placeholder="Zone ID"
+        >
+
+    </div>
+
+
+    <div class="info-box">
+
+        <strong>📌 Informasi</strong>
+
+        <br><br>
+
+        Pastikan User ID dan Zone ID Mobile Legends
+        sudah benar sebelum melakukan order.
+
+        <br><br>
+
+        Data tersebut dapat ditemukan
+        pada bagian profil akun Mobile Legends.
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="section-label">
+
+        <span>
+            💎 Pilih Diamond
+        </span>
+
+        <small>
+            Pilih salah satu
+        </small>
+
+    </div>
+
+
+    <div
+        class="products"
+        id="products"
+    ></div>
+
+
+    <div class="divider"></div>
+
+
+    <!-- PAYMENT -->
+
+    <div class="section-label">
+
+        <span>
+            💳 Metode Pembayaran
+        </span>
+
+        <small>
+            Pembayaran aman
+        </small>
+
+    </div>
+
+
+    <div class="payment-grid">
+
+
+        <div
+            class="payment active"
+            data-payment="QRIS"
+        >
+
+            <div class="payment-icon">
+                ▦
+            </div>
+
+            <strong>
+                QRIS
+            </strong>
 
         </div>
 
 
-        <h1>
+        <div
+            class="payment"
+            data-payment="DANA"
+        >
 
-            Mobile Legends
-            <span>Top Up</span>
-
-        </h1>
-
-
-        <p>
-
-            Isi Diamond Mobile Legends kamu
-            dengan proses yang simpel.
-            Masukkan ID, pilih nominal,
-            lalu pilih metode pembayaran.
-
-        </p>
-
-    </header>
-
-
-    <!-- =================================================
-         MAIN LAYOUT
-    ================================================== -->
-
-    <div class="topup-layout">
-
-
-        <!-- =================================================
-             LEFT : ACCOUNT
-        ================================================== -->
-
-        <section class="card">
-
-
-            <div class="card-title">
-
-                <div class="card-icon">
-                    🎮
-                </div>
-
-                <div>
-
-                    <h2>
-                        Data Akun
-                    </h2>
-
-                    <p>
-                        Masukkan informasi akun Mobile Legends
-                    </p>
-
-                </div>
-
+            <div class="payment-icon">
+                💙
             </div>
 
+            <strong>
+                DANA
+            </strong>
 
-            <!-- USER ID -->
-
-            <label
-                class="input-label"
-                for="userId"
-            >
-                User ID
-            </label>
+        </div>
 
 
-            <div class="input-row">
+        <div
+            class="payment"
+            data-payment="OVO"
+        >
 
-                <input
-                    id="userId"
-                    class="input"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Contoh: 123456789"
-                >
-
-
-                <input
-                    id="zoneId"
-                    class="input"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Zone ID"
-                >
-
+            <div class="payment-icon">
+                🟣
             </div>
 
+            <strong>
+                OVO
+            </strong>
 
-            <!-- INFORMATION -->
+        </div>
 
-            <div class="info-box">
 
-                <strong>
-                    📌 Informasi
-                </strong>
+        <div
+            class="payment"
+            data-payment="GoPay"
+        >
 
-                <br><br>
-
-                Pastikan User ID dan Zone ID
-                Mobile Legends yang kamu masukkan
-                sudah benar sebelum melakukan order.
-
-                <br><br>
-
-                User ID dan Zone ID dapat dilihat
-                pada bagian profil akun
-                Mobile Legends.
-
+            <div class="payment-icon">
+                🟦
             </div>
 
+            <strong>
+                GoPay
+            </strong>
 
-        </section>
-
-
-        <!-- =================================================
-             RIGHT : PRODUCTS + PAYMENT
-        ================================================== -->
-
-        <section class="card">
+        </div>
 
 
-            <!-- PRODUCT TITLE -->
+        <div
+            class="payment"
+            data-payment="ShopeePay"
+        >
 
-            <div class="card-title">
-
-                <div class="card-icon">
-                    💎
-                </div>
-
-                <div>
-
-                    <h2>
-                        Pilih Diamond
-                    </h2>
-
-                    <p>
-                        Pilih nominal yang ingin kamu beli
-                    </p>
-
-                </div>
-
+            <div class="payment-icon">
+                🟠
             </div>
 
+            <strong>
+                ShopeePay
+            </strong>
 
-            <!-- PRODUCTS -->
-
-            <div
-                class="products"
-                id="products"
-            ></div>
+        </div>
 
 
-            <!-- PAYMENT -->
+        <div
+            class="payment"
+            data-payment="VA"
+        >
 
-            <div class="section-label">
-
-                💳 Metode Pembayaran
-
+            <div class="payment-icon">
+                🏦
             </div>
 
-
-            <div class="payment-grid">
-
-
-                <div
-                    class="payment active"
-                    data-payment="QRIS"
-                >
-
-                    <div class="payment-icon">
-                        ▦
-                    </div>
-
-                    <strong>
-                        QRIS
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="payment"
-                    data-payment="DANA"
-                >
-
-                    <div class="payment-icon">
-                        💙
-                    </div>
-
-                    <strong>
-                        DANA
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="payment"
-                    data-payment="OVO"
-                >
-
-                    <div class="payment-icon">
-                        🟣
-                    </div>
-
-                    <strong>
-                        OVO
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="payment"
-                    data-payment="GoPay"
-                >
-
-                    <div class="payment-icon">
-                        🟦
-                    </div>
-
-                    <strong>
-                        GoPay
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="payment"
-                    data-payment="ShopeePay"
-                >
-
-                    <div class="payment-icon">
-                        🟠
-                    </div>
-
-                    <strong>
-                        ShopeePay
-                    </strong>
-
-                </div>
-
-
-                <div
-                    class="payment"
-                    data-payment="VA"
-                >
-
-                    <div class="payment-icon">
-                        🏦
-                    </div>
-
-                    <strong>
-                        Virtual Account
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-        <!-- =================================================
-             RIGHT SUMMARY
-        ================================================== -->
-
-        <aside class="card summary">
-
-
-            <div class="game-banner">
-
-                <div class="ml-logo">
-                    ⚔️
-                </div>
-
-
-                <div>
-
-                    <h2>
-                        Mobile Legends
-                    </h2>
-
-                    <p>
-                        Diamond • Instant Top Up
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="detail">
-
-                <span>
-                    User ID
-                </span>
-
-                <strong id="summaryId">
-                    -
-                </strong>
-
-            </div>
-
-
-            <div class="detail">
-
-                <span>
-                    Zone ID
-                </span>
-
-                <strong id="summaryZone">
-                    -
-                </strong>
-
-            </div>
-
-
-            <div class="detail">
-
-                <span>
-                    Produk
-                </span>
-
-                <strong id="summaryProduct">
-                    -
-                </strong>
-
-            </div>
-
-
-            <div class="detail">
-
-                <span>
-                    Pembayaran
-                </span>
-
-                <strong id="summaryPayment">
-                    QRIS
-                </strong>
-
-            </div>
-
-
-            <div class="total">
-
-                <span>
-                    Total Bayar
-                </span>
-
-                <strong id="summaryPrice">
-                    Rp0
-                </strong>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="order-btn"
-                id="orderBtn"
-            >
-
-                ⚡ ORDER SEKARANG
-
-            </button>
-
-
-            <div class="notice">
-
-                🔒
-
-                <span>
-
-                    Transaksi akan diproses
-                    setelah pembayaran berhasil.
-                    Pastikan User ID dan Zone ID
-                    sudah benar.
-
-                </span>
-
-            </div>
-
-
-        </aside>
+            <strong>
+                Virtual Account
+            </strong>
+
+        </div>
 
 
     </div>
 
 
-</main>
+</section>
 
 
 <!-- =====================================================
-     FOOTER
+     SUMMARY
 ===================================================== -->
+
+<aside class="card summary">
+
+
+    <div class="game-banner">
+
+        <div class="ml-logo">
+            ⚔️
+        </div>
+
+        <div>
+
+            <h2>
+                Mobile Legends
+            </h2>
+
+            <p>
+                Diamond • Instant Top Up
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="detail">
+
+        <span>
+            User ID
+        </span>
+
+        <strong id="summaryId">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="detail">
+
+        <span>
+            Zone ID
+        </span>
+
+        <strong id="summaryZone">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="detail">
+
+        <span>
+            Produk
+        </span>
+
+        <strong id="summaryProduct">
+            -
+        </strong>
+
+    </div>
+
+
+    <div class="detail">
+
+        <span>
+            Pembayaran
+        </span>
+
+        <strong id="summaryPayment">
+            QRIS
+        </strong>
+
+    </div>
+
+
+    <div class="total">
+
+        <span>
+            Total Bayar
+        </span>
+
+        <strong id="summaryPrice">
+            Rp0
+        </strong>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="order-btn"
+        id="orderBtn"
+    >
+        ⚡ ORDER SEKARANG
+    </button>
+
+
+    <div class="notice">
+
+        🔒
+
+        <span>
+
+            Transaksi akan diproses setelah
+            pembayaran berhasil. Pastikan
+            User ID dan Zone ID sudah benar.
+
+        </span>
+
+    </div>
+
+
+    <div class="secure">
+
+        🔐 Pembayaran diproses dengan aman
+
+    </div>
+
+
+</aside>
+
+
+</div>
+
+</main>
+
 
 <footer>
 
@@ -1657,10 +1798,6 @@ footer{
 </footer>
 
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
-
 <div
     class="toast"
     id="toast"
@@ -1668,7 +1805,6 @@ footer{
 
 
 <script>
-
 
 /* =========================================================
    BACKEND MIDUUN
@@ -1837,57 +1973,53 @@ function renderProducts(){
 
     productsContainer.innerHTML = "";
 
-    products.forEach(
-        (product,index) => {
+    products.forEach(product => {
 
-            const element =
-                document.createElement("div");
+        const element =
+            document.createElement("div");
 
-            element.className =
-                "product";
+        element.className =
+            "product";
 
-            element.innerHTML = `
+        element.innerHTML = `
 
-                <div class="product-check">
-                    ✓
-                </div>
+            <div class="product-check">
+                ✓
+            </div>
 
-                <div class="product-icon">
-                    💎
-                </div>
+            <div class="product-icon">
+                💎
+            </div>
 
-                <div class="product-name">
-                    ${product.name}
-                </div>
+            <div class="product-name">
+                ${product.name}
+            </div>
 
-                <div class="product-desc">
-                    ${product.desc}
-                </div>
+            <div class="product-desc">
+                ${product.desc}
+            </div>
 
-                <div class="product-price">
-                    ${rupiah(product.price)}
-                </div>
+            <div class="product-price">
+                ${rupiah(product.price)}
+            </div>
 
-            `;
+        `;
 
-            element.addEventListener(
-                "click",
-                () => {
+        element.addEventListener(
+            "click",
+            () => {
 
-                    selectProduct(
-                        product,
-                        element
-                    );
+                selectProduct(
+                    product,
+                    element
+                );
 
-                }
-            );
+            }
+        );
 
-            productsContainer.appendChild(
-                element
-            );
+        productsContainer.appendChild(element);
 
-        }
-    );
+    });
 
 }
 
@@ -1896,10 +2028,7 @@ function renderProducts(){
    SELECT PRODUCT
 ========================================================= */
 
-function selectProduct(
-    product,
-    element
-){
+function selectProduct(product,element){
 
     selectedProduct =
         product;
@@ -1908,15 +2037,11 @@ function selectProduct(
         .querySelectorAll(".product")
         .forEach(item => {
 
-            item.classList.remove(
-                "active"
-            );
+            item.classList.remove("active");
 
         });
 
-    element.classList.add(
-        "active"
-    );
+    element.classList.add("active");
 
     updateSummary();
 
@@ -1929,7 +2054,7 @@ function selectProduct(
 
 
 /* =========================================================
-   SELECT PAYMENT
+   PAYMENT
 ========================================================= */
 
 document
@@ -1944,15 +2069,11 @@ document
                     .querySelectorAll(".payment")
                     .forEach(item => {
 
-                        item.classList.remove(
-                            "active"
-                        );
+                        item.classList.remove("active");
 
                     });
 
-                payment.classList.add(
-                    "active"
-                );
+                payment.classList.add("active");
 
                 selectedPayment =
                     payment.dataset.payment;
@@ -2048,8 +2169,6 @@ async function prosesOrder(){
         zoneId.value.trim();
 
 
-    /* VALIDASI */
-
     if(!id || !zone){
 
         alert(
@@ -2093,8 +2212,6 @@ async function prosesOrder(){
     }
 
 
-    /* KONFIRMASI */
-
     const confirmOrder =
         confirm(
 
@@ -2130,8 +2247,6 @@ async function prosesOrder(){
 
     }
 
-
-    /* LOADING */
 
     try{
 
@@ -2210,8 +2325,6 @@ async function prosesOrder(){
         );
 
 
-        /* SUCCESS */
-
         if(
             data.result === true
         ){
@@ -2252,9 +2365,6 @@ async function prosesOrder(){
             );
 
         }
-
-
-        /* ERROR */
 
         else{
 
@@ -2354,3 +2464,4 @@ updateSummary();
 
 </body>
 </html>
+```
