@@ -771,7 +771,7 @@ footer{
 
             <div class="detail">
                 <span>Produk</span>
-                <strong id="summaryProduct">86 Diamonds</strong>
+                <strong id="summaryProduct">55 Diamonds</strong>
             </div>
 
             <div class="detail">
@@ -781,11 +781,11 @@ footer{
 
             <div class="total">
                 <span>Total Bayar</span>
-                <strong id="summaryPrice">Rp20.000</strong>
+                <strong id="summaryPrice">Rp16.000</strong>
             </div>
 
             <button class="order-btn" id="orderBtn">
-                LANJUTKAN PEMBAYARAN →
+                TES ORDER VIPAYMENT →
             </button>
 
             <div class="notice">
@@ -938,7 +938,7 @@ async function updateNickname(){
 userId.addEventListener("blur", updateNickname);
 zoneId.addEventListener("blur", updateNickname);
 
-orderBtn.addEventListener("click", () => {
+orderBtn.addEventListener("click", async () => {
 
     const id = userId.value.trim();
     const zone = zoneId.value.trim();
@@ -951,16 +951,79 @@ orderBtn.addEventListener("click", () => {
         return;
     }
 
-    alert(
-        "DEMO ORDER\\n\\n" +
-        "Mobile Legends\\n" +
-        selectedProduct.diamond + " Diamonds\\n" +
-        "ID: " + id + "\\n" +
-        "Zone: " + zone + "\\n" +
-        "Pembayaran: " + selectedPayment + "\\n" +
-        "Total: " + rupiah(selectedProduct.price) +
-        "\\n\\nPayment Gateway akan kita sambungkan pada tahap berikutnya."
+    if(!selectedProduct.service){
+        alert("Produk belum memiliki service VIPayment.");
+        return;
+    }
+
+    if(!nickname.classList.contains("success")){
+        alert("Silakan cek nickname terlebih dahulu sampai nickname berhasil muncul.");
+        return;
+    }
+
+    const confirmed = confirm(
+        "⚠️ TES ORDER VIPAYMENT\n\n" +
+        "Produk: " + selectedProduct.name + "\n" +
+        "Harga jual Miduun: " + rupiah(selectedProduct.price) + "\n" +
+        "Service: " + selectedProduct.service + "\n" +
+        "User ID: " + id + "\n" +
+        "Zone ID: " + zone + "\n\n" +
+        "PERHATIAN: tombol ini mengirim ORDER NYATA ke VIPayment dan dapat menggunakan saldo VIPayment.\n\n" +
+        "Lanjutkan?"
     );
+
+    if(!confirmed) return;
+
+    const originalText = orderBtn.textContent;
+    orderBtn.disabled = true;
+    orderBtn.textContent = "MEMPROSES ORDER...";
+
+    try {
+        const response = await fetch("https://miduun-api.vercel.app/api/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: id,
+                zone_id: zone,
+                service: selectedProduct.service
+            })
+        });
+
+        const result = await response.json();
+        console.log("Response VIPayment:", result);
+
+        if(result.result === true){
+            const data = result.data || {};
+            const trxid = data.trxid || data.trx_id || data.transaction_id || "-";
+            const status = data.status || "-";
+            const price = data.price || "-";
+
+            alert(
+                "✅ ORDER VIPAYMENT BERHASIL\n\n" +
+                "Produk: " + selectedProduct.name + "\n" +
+                "TRX ID: " + trxid + "\n" +
+                "Status: " + status + "\n" +
+                "Harga supplier: " + price
+            );
+        } else {
+            alert(
+                "❌ ORDER GAGAL\n\n" +
+                (result.message || "VIPayment menolak order.")
+            );
+        }
+
+    } catch(error) {
+        console.error("Order API error:", error);
+        alert(
+            "❌ Gagal terhubung ke server order.\n\n" +
+            error.message
+        );
+    } finally {
+        orderBtn.disabled = false;
+        orderBtn.textContent = originalText;
+    }
 });
 
 updateSummary();
