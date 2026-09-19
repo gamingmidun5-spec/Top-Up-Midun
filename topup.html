@@ -23,15 +23,9 @@
     --muted:#a9a3b8;
 }
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
-html{
-    scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
     font-family:Inter,Arial,sans-serif;
@@ -42,7 +36,6 @@ body{
 }
 
 /* BACKGROUND */
-
 .background{
     position:fixed;
     inset:0;
@@ -76,31 +69,24 @@ body{
 }
 
 .orb1{
-    width:360px;
-    height:360px;
-    left:-180px;
-    top:150px;
+    width:360px;height:360px;
+    left:-180px;top:150px;
     background:radial-gradient(circle,rgba(155,77,255,.55),transparent 68%);
 }
 
 .orb2{
-    width:380px;
-    height:380px;
-    right:-180px;
-    top:300px;
+    width:380px;height:380px;
+    right:-180px;top:300px;
     background:radial-gradient(circle,rgba(38,183,255,.48),transparent 68%);
 }
 
 .orb3{
-    width:300px;
-    height:300px;
-    left:42%;
-    bottom:-190px;
+    width:300px;height:300px;
+    left:42%;bottom:-190px;
     background:radial-gradient(circle,rgba(255,61,242,.42),transparent 68%);
 }
 
 /* NAVBAR */
-
 .navbar{
     position:sticky;
     top:0;
@@ -149,7 +135,6 @@ body{
 }
 
 /* PAGE */
-
 .page{
     width:min(1180px,92%);
     margin:auto;
@@ -206,7 +191,6 @@ body{
 }
 
 /* LAYOUT */
-
 .topup-layout{
     display:grid;
     grid-template-columns:minmax(0,1.45fr) minmax(290px,.75fr);
@@ -230,8 +214,7 @@ body{
 }
 
 .card-icon{
-    width:42px;
-    height:42px;
+    width:42px;height:42px;
     display:grid;
     place-items:center;
     border-radius:13px;
@@ -251,7 +234,6 @@ body{
 }
 
 /* INPUT */
-
 .input-label{
     display:block;
     color:#ddd7e8;
@@ -279,59 +261,24 @@ body{
     transition:.2s;
 }
 
-.input::placeholder{
-    color:#716a80;
-}
+.input::placeholder{color:#716a80}
 
 .input:focus{
     border-color:rgba(155,77,255,.65);
     box-shadow:0 0 0 3px rgba(155,77,255,.08);
 }
 
-.nickname-row{
-    margin-top:10px;
-}
-
 .nickname{
+    margin-top:10px;
     min-height:20px;
     font-size:11px;
     color:#8f889e;
 }
 
-.nickname.success{
-    color:#63e6a8;
-}
-
-.nickname.error{
-    color:#ff7c9b;
-}
-
-.check-nickname-btn{
-    margin-top:8px;
-    border:1px solid rgba(155,77,255,.35);
-    background:rgba(155,77,255,.08);
-    color:#d9c7ff;
-    border-radius:10px;
-    padding:9px 13px;
-    cursor:pointer;
-    font:700 11px Inter;
-    transition:.2s ease;
-}
-
-.check-nickname-btn:hover{
-    background:rgba(155,77,255,.16);
-    border-color:rgba(155,77,255,.65);
-    transform:translateY(-1px);
-}
-
-.check-nickname-btn:disabled{
-    opacity:.6;
-    cursor:not-allowed;
-    transform:none;
-}
+.nickname.success{color:#63e6a8}
+.nickname.error{color:#ff7c9b}
 
 /* PRODUCTS */
-
 .section-label{
     font-size:13px;
     font-weight:800;
@@ -370,10 +317,8 @@ body{
 .product.active:after{
     content:"✓";
     position:absolute;
-    top:8px;
-    right:9px;
-    width:19px;
-    height:19px;
+    top:8px;right:9px;
+    width:19px;height:19px;
     display:grid;
     place-items:center;
     border-radius:50%;
@@ -400,7 +345,6 @@ body{
 }
 
 /* PAYMENT */
-
 .payments{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -417,9 +361,7 @@ body{
     transition:.2s;
 }
 
-.payment:hover{
-    border-color:rgba(155,77,255,.45);
-}
+.payment:hover{border-color:rgba(155,77,255,.45)}
 
 .payment.active{
     border-color:var(--blue);
@@ -437,7 +379,6 @@ body{
 }
 
 /* SUMMARY */
-
 .summary{
     position:sticky;
     top:94px;
@@ -453,8 +394,7 @@ body{
 }
 
 .ml-logo{
-    width:54px;
-    height:54px;
+    width:54px;height:54px;
     display:grid;
     place-items:center;
     border-radius:16px;
@@ -466,15 +406,8 @@ body{
     font-size:26px;
 }
 
-.game-banner h2{
-    font-size:16px;
-}
-
-.game-banner p{
-    color:#8f889e;
-    font-size:11px;
-    margin-top:4px;
-}
+.game-banner h2{font-size:16px}
+.game-banner p{color:#8f889e;font-size:11px;margin-top:4px}
 
 .detail{
     display:flex;
@@ -534,9 +467,7 @@ body{
     box-shadow:0 13px 35px rgba(109,40,217,.35);
 }
 
-.order-btn:active{
-    transform:translateY(0);
-}
+.order-btn:active{transform:translateY(0)}
 
 .notice{
     display:flex;
@@ -548,7 +479,6 @@ body{
 }
 
 /* FOOTER */
-
 footer{
     text-align:center;
     color:#5f596b;
@@ -557,9 +487,7 @@ footer{
 }
 
 /* RESPONSIVE */
-
 @media(max-width:800px){
-
     .topup-layout{
         grid-template-columns:1fr;
     }
@@ -570,15 +498,12 @@ footer{
 }
 
 @media(max-width:520px){
-
     .navbar{
         height:64px;
         padding:0 4%;
     }
 
-    .logo{
-        font-size:20px;
-    }
+    .logo{font-size:20px}
 
     .back{
         padding:9px 12px;
@@ -622,20 +547,15 @@ footer{
 }
 
 @media(max-width:360px){
-
     .input-row{
         grid-template-columns:1fr;
     }
 
-    .heading h1{
-        font-size:32px;
-    }
+    .heading h1{font-size:32px}
 }
 
 /* Reduced motion */
-
 @media(prefers-reduced-motion:reduce){
-
     *{
         scroll-behavior:auto!important;
         transition:none!important;
@@ -661,158 +581,131 @@ footer{
 <main class="page">
 
     <header class="heading">
-
-        <div class="badge">
-            <i></i>
-            TOP UP CEPAT & MUDAH
-        </div>
-
-        <h1>
-            Mobile Legends <span>Top Up</span>
-        </h1>
-
+        <div class="badge"><i></i> TOP UP CEPAT & MUDAH</div>
+        <h1>Mobile Legends <span>Top Up</span></h1>
         <p>
             Isi Diamond Mobile Legends kamu dengan proses yang simpel.
             Masukkan ID, pilih nominal, lalu pilih metode pembayaran.
         </p>
-
     </header>
 
     <div class="topup-layout">
 
         <!-- LEFT -->
-
         <section class="card">
 
             <div class="card-title">
-
-                <div class="card-icon">
-                    🎮
-                </div>
-
+                <div class="card-icon">🎮</div>
                 <div>
                     <h2>Data Akun</h2>
                     <p>Masukkan informasi akun Mobile Legends</p>
                 </div>
-
             </div>
 
-            <label class="input-label" for="userId">
-                User ID
-            </label>
+            <label class="input-label" for="userId">User ID</label>
 
             <div class="input-row">
-
-                <input
-                    id="userId"
-                    class="input"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Contoh: 123456789"
-                >
-
-                <input
-                    id="zoneId"
-                    class="input"
-                    type="text"
-                    inputmode="numeric"
-                    autocomplete="off"
-                    placeholder="Zone ID"
-                >
-
+                <input id="userId" class="input" type="text" inputmode="numeric"
+                       placeholder="Contoh: 123456789">
+                <input id="zoneId" class="input" type="text" inputmode="numeric"
+                       placeholder="Zone ID">
             </div>
 
-            <div class="nickname-row">
-
-                <div id="nickname" class="nickname">
-                    Masukkan User ID dan Zone ID untuk melanjutkan.
-                </div>
-
-                <button
-                    type="button"
-                    class="check-nickname-btn"
-                    id="checkNicknameBtn"
-                >
-                    🔍 Cek Nickname
-                </button>
-
+            <div id="nickname" class="nickname">
+                Masukkan User ID dan Zone ID untuk melanjutkan.
             </div>
 
-            <div class="section-label">
-                💎 Pilih Diamond
-            </div>
+            <div class="section-label">💎 Pilih Diamond</div>
 
             <div class="products" id="products">
 
-                <div
-                    class="product active"
-                    data-diamond="86"
-                    data-price="20000"
-                    data-service="MLGLOBAL13-S14"
-                >
+                <div class="product active" data-name="55 Diamonds" data-diamond="55" data-price="16000" data-service="MLGLOBAL22590-S14">
+                    <div class="diamond">💎</div>
+                    <strong>55 Diamonds</strong>
+                    <small>Rp16.000</small>
+                </div>
+
+                <div class="product" data-name="86 Diamonds" data-diamond="86" data-price="25000" data-service="MLGLOBAL13-S14">
                     <div class="diamond">💎</div>
                     <strong>86 Diamonds</strong>
-                    <small>Rp20.000</small>
+                    <small>Rp25.000</small>
                 </div>
 
-                <div
-                    class="product"
-                    data-diamond="172"
-                    data-price="39000"
-                    data-service="MLGLOBAL23-S14"
-                >
+                <div class="product" data-name="Weekly Diamond Pass" data-diamond="" data-price="31000" data-service="MLGLOBAL16642-S14">
+                    <div class="diamond">🎟️</div>
+                    <strong>Weekly Diamond Pass</strong>
+                    <small>Rp31.000</small>
+                </div>
+
+                <div class="product" data-name="165 Diamonds" data-diamond="165" data-price="46000" data-service="MLGLOBAL22591-S14">
+                    <div class="diamond">💎</div>
+                    <strong>165 Diamonds</strong>
+                    <small>Rp46.000</small>
+                </div>
+
+                <div class="product" data-name="172 Diamonds" data-diamond="172" data-price="48000" data-service="MLGLOBAL23-S14">
                     <div class="diamond">💎</div>
                     <strong>172 Diamonds</strong>
-                    <small>Rp39.000</small>
+                    <small>Rp48.000</small>
                 </div>
 
-                <div
-                    class="product"
-                    data-diamond="257"
-                    data-price="57000"
-                    data-service="MLGLOBAL25-S14"
-                >
+                <div class="product" data-name="257 Diamonds" data-diamond="257" data-price="69000" data-service="MLGLOBAL25-S14">
                     <div class="diamond">💎</div>
                     <strong>257 Diamonds</strong>
-                    <small>Rp57.000</small>
+                    <small>Rp69.000</small>
                 </div>
 
-                <div
-                    class="product"
-                    data-diamond="344"
-                    data-price="76000"
-                >
+                <div class="product" data-name="275 Diamonds" data-diamond="275" data-price="73000" data-service="MLGLOBAL22592-S14">
                     <div class="diamond">💎</div>
-                    <strong>344 Diamonds</strong>
-                    <small>Rp76.000</small>
+                    <strong>275 Diamonds</strong>
+                    <small>Rp73.000</small>
                 </div>
 
-                <div
-                    class="product"
-                    data-diamond="429"
-                    data-price="94000"
-                >
+                <div class="product" data-name="565 Diamonds" data-diamond="565" data-price="145000" data-service="MLGLOBAL22593-S14">
                     <div class="diamond">💎</div>
-                    <strong>429 Diamonds</strong>
-                    <small>Rp94.000</small>
+                    <strong>565 Diamonds</strong>
+                    <small>Rp145.000</small>
                 </div>
 
-                <div
-                    class="product"
-                    data-diamond="514"
-                    data-price="112000"
-                >
+                <div class="product" data-name="Twilight Pass" data-diamond="" data-price="152000" data-service="MLGLOBAL33-S14">
+                    <div class="diamond">🌙</div>
+                    <strong>Twilight Pass</strong>
+                    <small>Rp152.000</small>
+                </div>
+
+                <div class="product" data-name="706 Diamonds" data-diamond="706" data-price="180000" data-service="MLGLOBAL26-S14">
                     <div class="diamond">💎</div>
-                    <strong>514 Diamonds</strong>
-                    <small>Rp112.000</small>
+                    <strong>706 Diamonds</strong>
+                    <small>Rp180.000</small>
+                </div>
+
+                <div class="product" data-name="2.195 Diamonds" data-diamond="2195" data-price="530000" data-service="MLGLOBAL27-S14">
+                    <div class="diamond">💎</div>
+                    <strong>2.195 Diamonds</strong>
+                    <small>Rp530.000</small>
+                </div>
+
+                <div class="product" data-name="3.688 Diamonds" data-diamond="3688" data-price="880000" data-service="MLGLOBAL28-S14">
+                    <div class="diamond">💎</div>
+                    <strong>3.688 Diamonds</strong>
+                    <small>Rp880.000</small>
+                </div>
+
+                <div class="product" data-name="5.532 Diamonds" data-diamond="5532" data-price="1330000" data-service="MLGLOBAL29-S14">
+                    <div class="diamond">💎</div>
+                    <strong>5.532 Diamonds</strong>
+                    <small>Rp1.330.000</small>
+                </div>
+
+                <div class="product" data-name="9.288 Diamonds" data-diamond="9288" data-price="2200000" data-service="MLGLOBAL30-S14">
+                    <div class="diamond">💎</div>
+                    <strong>9.288 Diamonds</strong>
+                    <small>Rp2.200.000</small>
                 </div>
 
             </div>
 
-            <div class="section-label">
-                💳 Metode Pembayaran
-            </div>
+            <div class="section-label">💳 Metode Pembayaran</div>
 
             <div class="payments">
 
@@ -851,25 +744,14 @@ footer{
         </section>
 
         <!-- RIGHT -->
-
         <aside class="card summary">
 
             <div class="game-banner">
-
-                <div class="ml-logo">
-                    ⚔️
-                </div>
-
+                <div class="ml-logo">⚔️</div>
                 <div>
-
                     <h2>Mobile Legends</h2>
-
-                    <p>
-                        Diamond • Instant Top Up
-                    </p>
-
+                    <p>Diamond • Instant Top Up</p>
                 </div>
-
             </div>
 
             <div class="detail">
@@ -898,443 +780,153 @@ footer{
             </div>
 
             <div class="total">
-
                 <span>Total Bayar</span>
-
-                <strong id="summaryPrice">
-                    Rp20.000
-                </strong>
-
+                <strong id="summaryPrice">Rp20.000</strong>
             </div>
 
-            <button
-                class="order-btn"
-                id="orderBtn"
-            >
+            <button class="order-btn" id="orderBtn">
                 LANJUTKAN PEMBAYARAN →
             </button>
 
             <div class="notice">
-
                 🔒
-
-                <span>
-                    Transaksi akan diproses setelah pembayaran berhasil.
-                    Jangan bagikan data akun kepada orang lain.
-                </span>
-
+                <span>Transaksi akan diproses setelah pembayaran berhasil. Jangan bagikan data akun kepada orang lain.</span>
             </div>
 
         </aside>
 
     </div>
-
 </main>
 
 <footer>
     © 2026 Miduun • Mobile Legends Top Up
 </footer>
 
-
 <script>
-
-/* =========================================================
-   BACKEND MIDUUN
-   =========================================================
-
-   NANTI GANTI DENGAN URL BACKEND KAMU.
-
-   CONTOH:
-   const BACKEND_URL =
-       "https://nama-backend-kamu.com/api/nickname";
-
-   JANGAN MASUKKAN API KEY VIPAYMENT DI SINI.
-   ========================================================= */
-
-const BACKEND_URL = "https://miduun-api.vercel.app/api/nickname";
-
-
-/* ELEMENT */
-
 const userId = document.getElementById("userId");
 const zoneId = document.getElementById("zoneId");
 const nickname = document.getElementById("nickname");
 
-const checkNicknameBtn =
-    document.getElementById("checkNicknameBtn");
-
-const summaryId =
-    document.getElementById("summaryId");
-
-const summaryZone =
-    document.getElementById("summaryZone");
-
-const summaryNick =
-    document.getElementById("summaryNick");
-
-const summaryProduct =
-    document.getElementById("summaryProduct");
-
-const summaryPayment =
-    document.getElementById("summaryPayment");
-
-const summaryPrice =
-    document.getElementById("summaryPrice");
-
-const orderBtn =
-    document.getElementById("orderBtn");
-
-
-/* SELECTED PRODUCT */
+const summaryId = document.getElementById("summaryId");
+const summaryZone = document.getElementById("summaryZone");
+const summaryNick = document.getElementById("summaryNick");
+const summaryProduct = document.getElementById("summaryProduct");
+const summaryPayment = document.getElementById("summaryPayment");
+const summaryPrice = document.getElementById("summaryPrice");
+const orderBtn = document.getElementById("orderBtn");
 
 let selectedProduct = {
-    diamond: 86,
-    price: 20000,
-    service: "MLGLOBAL13-S14"
+    name: "55 Diamonds",
+    diamond: 55,
+    price: 16000,
+    service: "MLGLOBAL22590-S14"
 };
-
-
-/* SELECTED PAYMENT */
 
 let selectedPayment = "QRIS";
 
-
-/* RUPIAH */
-
 function rupiah(number){
-
     return new Intl.NumberFormat("id-ID", {
         style:"currency",
         currency:"IDR",
         maximumFractionDigits:0
     }).format(number);
-
 }
-
-
-/* SUMMARY */
 
 function updateSummary(){
-
-    summaryId.textContent =
-        userId.value.trim() || "-";
-
-    summaryZone.textContent =
-        zoneId.value.trim() || "-";
-
-    summaryProduct.textContent =
-        selectedProduct.diamond + " Diamonds";
-
-    summaryPayment.textContent =
-        selectedPayment;
-
-    summaryPrice.textContent =
-        rupiah(selectedProduct.price);
-
+    summaryId.textContent = userId.value.trim() || "-";
+    summaryZone.textContent = zoneId.value.trim() || "-";
+    summaryProduct.textContent = selectedProduct.name;
+    summaryPayment.textContent = selectedPayment;
+    summaryPrice.textContent = rupiah(selectedProduct.price);
 }
 
-
-/* INPUT USER ID */
-
 userId.addEventListener("input", updateSummary);
-
-
-/* INPUT ZONE ID */
-
 zoneId.addEventListener("input", updateSummary);
 
-
-/* PRODUCT */
-
 document.querySelectorAll(".product").forEach(product => {
-
     product.addEventListener("click", () => {
 
-        document.querySelectorAll(".product").forEach(item => {
-            item.classList.remove("active");
-        });
+        document.querySelectorAll(".product").forEach(item =>
+            item.classList.remove("active")
+        );
 
         product.classList.add("active");
 
         selectedProduct = {
-            diamond: Number(product.dataset.diamond),
+            name: product.dataset.name,
+            diamond: product.dataset.diamond ? Number(product.dataset.diamond) : null,
             price: Number(product.dataset.price),
-            service: product.dataset.service || ""
+            service: product.dataset.service
         };
 
         updateSummary();
-
     });
-
 });
-
-
-/* PAYMENT */
 
 document.querySelectorAll(".payment").forEach(payment => {
-
     payment.addEventListener("click", () => {
 
-        document.querySelectorAll(".payment").forEach(item => {
-            item.classList.remove("active");
-        });
+        document.querySelectorAll(".payment").forEach(item =>
+            item.classList.remove("active")
+        );
 
         payment.classList.add("active");
-
-        selectedPayment =
-            payment.dataset.payment;
+        selectedPayment = payment.dataset.payment;
 
         updateSummary();
-
     });
-
 });
 
-
-/* =========================================================
-   CEK NICKNAME MOBILE LEGENDS
-   ========================================================= */
-
-async function updateNickname(){
-
-    const id =
-        userId.value.trim();
-
-    const zone =
-        zoneId.value.trim();
-
-
-    /* VALIDASI */
+function updateNickname(){
+    const id = userId.value.trim();
+    const zone = zoneId.value.trim();
 
     if(!id || !zone){
-
         nickname.textContent =
-            "⚠️ User ID dan Zone ID wajib diisi.";
-
-        nickname.className =
-            "nickname error";
-
-        summaryNick.textContent =
-            "-";
-
+            "Masukkan User ID dan Zone ID untuk melanjutkan.";
+        nickname.className = "nickname";
+        summaryNick.textContent = "-";
         return;
     }
 
-
-    /* LOADING */
-
-    checkNicknameBtn.disabled = true;
-
-    checkNicknameBtn.textContent =
-        "⏳ Mengecek...";
-
+    /* FRONTEND DEMO:
+       Nanti bagian ini diganti API nickname VIPayment. */
     nickname.textContent =
-        "Sedang mengecek nickname Mobile Legends...";
+        "✓ Data akun siap diproses. Cek nickname akan terhubung ke API.";
+    nickname.className = "nickname success";
 
-    nickname.className =
-        "nickname";
-
-    summaryNick.textContent =
-        "Mengecek...";
-
-
-    try {
-
-        const response = await fetch(
-            BACKEND_URL,
-            {
-                method:"POST",
-
-                headers:{
-                    "Content-Type":"application/json"
-                },
-
-                body:JSON.stringify({
-
-                    user_id:id,
-
-                    zone_id:zone,
-
-                    code:"mobile-legends"
-
-                })
-            }
-        );
-
-
-        /* CEK HTTP */
-
-        if(!response.ok){
-
-            throw new Error(
-                "HTTP Error " + response.status
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
-
-        /* BERHASIL */
-
-        if(result.result){
-
-            nickname.textContent =
-                "✓ Nickname: " + result.data;
-
-            nickname.className =
-                "nickname success";
-
-            summaryNick.textContent =
-                result.data;
-
-        }
-
-        /* GAGAL */
-
-        else{
-
-            nickname.textContent =
-                "⚠️ " +
-                (
-                    result.message ||
-                    "Nickname tidak ditemukan."
-                );
-
-            nickname.className =
-                "nickname error";
-
-            summaryNick.textContent =
-                "-";
-
-        }
-
-
-    }catch(error){
-
-        console.error(
-            "Nickname Error:",
-            error
-        );
-
-        nickname.textContent =
-            "⚠️ Gagal menghubungi server.";
-
-        nickname.className =
-            "nickname error";
-
-        summaryNick.textContent =
-            "-";
-
-    }
-
-
-    /* RESET BUTTON */
-
-    checkNicknameBtn.disabled =
-        false;
-
-    checkNicknameBtn.textContent =
-        "🔍 Cek Nickname";
-
+    summaryNick.textContent = "Akan dicek";
 }
 
-
-/* BUTTON CEK NICKNAME */
-
-checkNicknameBtn.addEventListener(
-    "click",
-    updateNickname
-);
-
-
-/* =========================================================
-   ORDER
-   ========================================================= */
+userId.addEventListener("blur", updateNickname);
+zoneId.addEventListener("blur", updateNickname);
 
 orderBtn.addEventListener("click", () => {
 
-    const id =
-        userId.value.trim();
-
-    const zone =
-        zoneId.value.trim();
-
+    const id = userId.value.trim();
+    const zone = zoneId.value.trim();
 
     if(!id || !zone){
-
         nickname.textContent =
             "⚠️ User ID dan Zone ID wajib diisi.";
-
-        nickname.className =
-            "nickname error";
-
+        nickname.className = "nickname error";
         userId.focus();
-
         return;
     }
 
-
-    /*
-       UNTUK SEKARANG MASIH DEMO.
-
-       PAYMENT GATEWAY AKAN DISAMBUNGKAN
-       SETELAH NICKNAME BERHASIL.
-    */
-
     alert(
-
-        "DEMO ORDER\n\n" +
-
-        "Mobile Legends\n" +
-
-        selectedProduct.diamond +
-        " Diamonds\n" +
-
-        "ID: " +
-        id +
-        "\n" +
-
-        "Zone: " +
-        zone +
-        "\n" +
-
-        "Nickname: " +
-        (
-            summaryNick.textContent ||
-            "-"
-        ) +
-        "\n" +
-
-        "Produk: " +
-        (
-            selectedProduct.service ||
-            "-"
-        ) +
-        "\n" +
-
-        "Pembayaran: " +
-        selectedPayment +
-        "\n" +
-
-        "Total: " +
-        rupiah(selectedProduct.price) +
-
-        "\n\n" +
-
-        "Payment Gateway akan kita sambungkan pada tahap berikutnya."
-
+        "DEMO ORDER\\n\\n" +
+        "Mobile Legends\\n" +
+        selectedProduct.diamond + " Diamonds\\n" +
+        "ID: " + id + "\\n" +
+        "Zone: " + zone + "\\n" +
+        "Pembayaran: " + selectedPayment + "\\n" +
+        "Total: " + rupiah(selectedProduct.price) +
+        "\\n\\nPayment Gateway akan kita sambungkan pada tahap berikutnya."
     );
-
 });
 
-
-/* INITIAL */
-
 updateSummary();
-
 </script>
 
 </body>
