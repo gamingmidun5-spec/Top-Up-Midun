@@ -1822,6 +1822,68 @@ footer{
     }
 }
 
+
+/* ================================
+   MIDUUN MOBILE PERFORMANCE
+   Visual tetap dipertahankan.
+   Hanya mengurangi pekerjaan GPU yang
+   paling mahal pada layar kecil.
+================================ */
+@media (max-width: 700px) {
+    /* Particle glow tetap ada, tetapi lebih murah */
+    .particle {
+        box-shadow: 0 0 6px rgba(168,85,247,.75), 0 0 12px rgba(124,58,237,.45);
+    }
+
+    /* Background grid tetap terlihat, tetapi tidak terus bergerak */
+    .background::before {
+        animation-duration: 24s;
+    }
+
+    /* Blur sedikit diperkecil hanya di mobile.
+       Bentuk/glow tetap terlihat. */
+    .orb {
+        filter: blur(70px);
+    }
+
+    .character-glow {
+        filter: blur(60px);
+    }
+
+    /* Kurangi beban area glass yang besar tanpa menghilangkan efek */
+    .navbar {
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+
+    .live-card,
+    .stats,
+    .stat {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Animasi tetap hidup, tetapi tidak memaksa browser
+       mengoptimalkan terlalu banyak properti */
+    .orb,
+    .character,
+    .ring,
+    .live-card,
+    .stream-preview {
+        will-change: transform;
+    }
+}
+
+@media (max-width: 390px) {
+    .orb {
+        filter: blur(60px);
+    }
+
+    .character-glow {
+        filter: blur(50px);
+    }
+}
+
 </style>
 </head>
 
@@ -2327,7 +2389,8 @@ footer{
 const particleContainer =
     document.getElementById("particles");
 
-for(let i = 0; i < 80; i++){
+const particleCount = window.innerWidth <= 700 ? 40 : 80;
+for(let i = 0; i < particleCount; i++){
 
     const particle =
         document.createElement("div");
