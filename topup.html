@@ -877,7 +877,10 @@ document.querySelectorAll(".payment").forEach(payment => {
     });
 });
 
-function updateNickname(){
+const BACKEND_URL = "https://miduun-api.vercel.app/api/nickname";
+let nicknameRequestRunning = false;
+
+async function updateNickname(){
     const id = userId.value.trim();
     const zone = zoneId.value.trim();
 
@@ -889,13 +892,47 @@ function updateNickname(){
         return;
     }
 
-    /* FRONTEND DEMO:
-       Nanti bagian ini diganti API nickname VIPayment. */
-    nickname.textContent =
-        "✓ Data akun siap diproses. Cek nickname akan terhubung ke API.";
-    nickname.className = "nickname success";
+    if(nicknameRequestRunning) return;
 
-    summaryNick.textContent = "Akan dicek";
+    nicknameRequestRunning = true;
+    nickname.textContent = "⏳ Sedang mengecek nickname...";
+    nickname.className = "nickname";
+    summaryNick.textContent = "Mengecek...";
+
+    try {
+        const response = await fetch(BACKEND_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: id,
+                zone_id: zone
+            })
+        });
+
+        const result = await response.json();
+
+        if(result.result === true && result.data){
+            nickname.textContent = "✓ Nickname: " + result.data;
+            nickname.className = "nickname success";
+            summaryNick.textContent = result.data;
+        } else {
+            nickname.textContent =
+                "⚠️ " + (result.message || "Nickname tidak ditemukan.");
+            nickname.className = "nickname error";
+            summaryNick.textContent = "Tidak ditemukan";
+        }
+
+    } catch(error) {
+        console.error("Nickname API error:", error);
+        nickname.textContent =
+            "⚠️ Gagal terhubung ke server nickname.";
+        nickname.className = "nickname error";
+        summaryNick.textContent = "Gagal dicek";
+    } finally {
+        nicknameRequestRunning = false;
+    }
 }
 
 userId.addEventListener("blur", updateNickname);
