@@ -1824,63 +1824,81 @@ footer{
 
 
 /* ================================
-   MIDUUN MOBILE PERFORMANCE
-   Visual tetap dipertahankan.
-   Hanya mengurangi pekerjaan GPU yang
-   paling mahal pada layar kecil.
+   MIDUUN MOBILE PERFORMANCE V2
+   Visual tetap dipertahankan semaksimal mungkin.
 ================================ */
 @media (max-width: 700px) {
-    /* Particle glow tetap ada, tetapi lebih murah */
     .particle {
-        box-shadow: 0 0 6px rgba(168,85,247,.75), 0 0 12px rgba(124,58,237,.45);
+        /* Tetap glowing, tetapi tanpa glow berlapis yang mahal */
+        box-shadow: 0 0 5px rgba(168,85,247,.7);
+        animation-duration: 12s;
     }
 
-    /* Background grid tetap terlihat, tetapi tidak terus bergerak */
+    /* Grid tetap terlihat, tetapi gerakannya jauh lebih jarang */
     .background::before {
-        animation-duration: 24s;
+        animation-duration: 30s;
     }
 
-    /* Blur sedikit diperkecil hanya di mobile.
-       Bentuk/glow tetap terlihat. */
+    /* Glow tetap terlihat, area blur lebih kecil */
     .orb {
-        filter: blur(70px);
+        filter: blur(55px);
+        animation-duration: 14s;
     }
 
     .character-glow {
-        filter: blur(60px);
+        filter: blur(45px);
     }
 
-    /* Kurangi beban area glass yang besar tanpa menghilangkan efek */
+    /* Glass tetap ada, tetapi mengurangi pekerjaan blur */
     .navbar {
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
 
     .live-card,
     .stats,
     .stat {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
 
-    /* Animasi tetap hidup, tetapi tidak memaksa browser
-       mengoptimalkan terlalu banyak properti */
+    /* Kurangi repaint akibat efek bayangan yang terlalu luas */
+    .character-body {
+        box-shadow: inset 0 0 25px rgba(255,255,255,.08),
+                    0 0 28px rgba(155,77,255,.22);
+    }
+
+    /* Tetap animasi, tetapi browser lebih mudah memindahkan layer */
     .orb,
     .character,
     .ring,
     .live-card,
-    .stream-preview {
+    .stream-preview,
+    .background::before {
         will-change: transform;
+    }
+
+    /* Jangan lakukan efek 3D/hover pada layar sentuh */
+    .tilt {
+        transform: none !important;
+    }
+
+    /* Konten bawah tidak perlu dirender berat sebelum terlihat */
+    .features,
+    .support,
+    footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 700px;
     }
 }
 
 @media (max-width: 390px) {
     .orb {
-        filter: blur(60px);
+        filter: blur(48px);
     }
 
     .character-glow {
-        filter: blur(50px);
+        filter: blur(38px);
     }
 }
 
@@ -2389,7 +2407,7 @@ footer{
 const particleContainer =
     document.getElementById("particles");
 
-const particleCount = window.innerWidth <= 700 ? 40 : 80;
+const particleCount = window.innerWidth <= 700 ? 24 : 80;
 for(let i = 0; i < particleCount; i++){
 
     const particle =
