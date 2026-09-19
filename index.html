@@ -1902,6 +1902,105 @@ footer{
     }
 }
 
+
+/* =========================================
+   MIDUUN ANDROID LIGHT MODE
+   Desktop tidak disentuh.
+   Mobile mempertahankan desain tetapi mengurangi
+   efek yang paling mahal untuk GPU.
+========================================= */
+@media (max-width: 700px) {
+    /* Particle tetap ada, tetapi tidak memakai shadow */
+    .particle {
+        box-shadow: none !important;
+        width: 2px;
+        height: 2px;
+    }
+
+    /* Background grid tetap tampil, namun benar-benar statis */
+    .background::before {
+        animation: none !important;
+        will-change: auto !important;
+    }
+
+    /* Orb tetap tampil sebagai glow, tetapi tidak dianimasikan/blur besar */
+    .orb {
+        animation: none !important;
+        filter: none !important;
+        opacity: .28;
+        will-change: auto !important;
+    }
+
+    /* Gunakan radial-gradient pada elemen glow sebagai pengganti blur mahal */
+    .orb1 {
+        background: radial-gradient(circle, rgba(155,77,255,.55) 0%, rgba(155,77,255,.22) 38%, transparent 72%) !important;
+    }
+
+    .orb2 {
+        background: radial-gradient(circle, rgba(38,183,255,.48) 0%, rgba(38,183,255,.18) 38%, transparent 72%) !important;
+    }
+
+    .orb3 {
+        background: radial-gradient(circle, rgba(255,61,242,.45) 0%, rgba(255,61,242,.16) 38%, transparent 72%) !important;
+    }
+
+    .character-glow {
+        filter: none !important;
+        opacity: .65;
+        background: radial-gradient(circle, rgba(155,77,255,.42) 0%, rgba(109,40,217,.16) 42%, transparent 72%) !important;
+    }
+
+    /* Glass masih translucent, tetapi backdrop blur dimatikan */
+    .navbar,
+    .live-card,
+    .stats,
+    .stat {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background-color: rgba(10,7,20,.78) !important;
+    }
+
+    /* Hilangkan repaint 3D yang tidak berguna pada touchscreen */
+    .ring {
+        animation-duration: 20s !important;
+        will-change: auto !important;
+    }
+
+    /* Stream preview tetap bergerak, tetapi lebih lambat */
+    .stream-preview {
+        animation-duration: 20s !important;
+        will-change: auto !important;
+    }
+
+    /* Reveal tetap digunakan, tapi setelah muncul tidak perlu layer khusus */
+    .reveal {
+        will-change: auto !important;
+    }
+
+    /* Jangan render efek hover/3D pada touchscreen */
+    .tilt {
+        transform-style: flat !important;
+    }
+
+    /* Bagian bawah halaman tetap bisa muncul normal ketika discroll */
+    .features,
+    .support,
+    footer {
+        content-visibility: auto;
+        contain-intrinsic-size: 600px;
+    }
+}
+
+@media (max-width: 390px) {
+    .orb {
+        opacity: .24;
+    }
+
+    .ring {
+        animation: none !important;
+    }
+}
+
 </style>
 </head>
 
@@ -2407,7 +2506,7 @@ footer{
 const particleContainer =
     document.getElementById("particles");
 
-const particleCount = window.innerWidth <= 700 ? 24 : 80;
+const particleCount = window.innerWidth <= 700 ? 12 : 80;
 for(let i = 0; i < particleCount; i++){
 
     const particle =
