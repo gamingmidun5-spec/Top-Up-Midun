@@ -1,757 +1,1566 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miduun — Top Up Mobile Legends</title>
+<meta name="theme-color" content="#05030b">
+
+<title>Top Up Mobile Legends — Miduun</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --purple:#9b4dff;
+    --purple2:#6d28d9;
+    --blue:#26b7ff;
+    --pink:#ff3df2;
+
+    --bg:#05030b;
+
+    --card:rgba(17,12,30,.72);
+
+    --line:rgba(255,255,255,.09);
+
+    --text:#fff;
+    --muted:#a9a3b8;
 }
 
-:root {
-    --bg: #070812;
-    --card: rgba(17, 20, 40, .72);
-    --border: rgba(255,255,255,.09);
-    --purple: #8b5cf6;
-    --blue: #3b82f6;
-    --pink: #ec4899;
-    --text: #fff;
-    --muted: #9ca3af;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    font-family: Inter, sans-serif;
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+
+    color:var(--text);
+
+    background:var(--bg);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+    position:fixed;
+
+    inset:0;
+
+    z-index:-5;
+
+    overflow:hidden;
+
     background:
-        radial-gradient(circle at 15% 10%, rgba(139,92,246,.18), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(59,130,246,.15), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(236,72,153,.12), transparent 30%),
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(155,77,255,.13),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(38,183,255,.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 55% 100%,
+            rgba(255,61,242,.08),
+            transparent 35%
+        ),
+
         var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    overflow-x: hidden;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
+.background::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-50%;
+
+    opacity:.13;
+
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-    background-size: 45px 45px;
-    mask-image: linear-gradient(to bottom, black, transparent);
+        linear-gradient(
+            rgba(155,77,255,.35) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(38,183,255,.25) 1px,
+            transparent 1px
+        );
+
+    background-size:55px 55px;
+
+    transform:
+        perspective(600px)
+        rotateX(62deg);
+
+    transform-origin:center;
 }
 
-.container {
-    width: min(1180px, calc(100% - 30px));
-    margin: auto;
+.orb{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    opacity:.23;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+.orb1{
+    width:360px;
+    height:360px;
 
-.navbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    backdrop-filter: blur(20px);
-    background: rgba(7,8,18,.72);
-    border-bottom: 1px solid var(--border);
-}
+    left:-180px;
+    top:150px;
 
-.nav-inner {
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    text-decoration: none;
-    color: white;
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: -.8px;
-}
-
-.logo span {
-    background: linear-gradient(90deg, #8b5cf6, #3b82f6, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.nav-link {
-    color: #d1d5db;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    text-align: center;
-    padding: 55px 0 30px;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 8px 14px;
-    border: 1px solid rgba(139,92,246,.3);
-    border-radius: 999px;
-    background: rgba(139,92,246,.1);
-    color: #c4b5fd;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 17px;
-}
-
-.hero h1 {
-    font-size: clamp(34px, 6vw, 62px);
-    line-height: 1;
-    font-weight: 900;
-    letter-spacing: -2px;
-}
-
-.gradient {
-    background: linear-gradient(90deg,#8b5cf6,#3b82f6,#ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    color: var(--muted);
-    max-width: 650px;
-    margin: 18px auto 0;
-    line-height: 1.7;
-    font-size: 14px;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.main-grid {
-    display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 20px;
-    padding-bottom: 60px;
-}
-
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 20px 60px rgba(0,0,0,.22);
-}
-
-/* =========================
-   LEFT
-========================= */
-
-.left-card {
-    padding: 23px;
-    height: fit-content;
-    position: sticky;
-    top: 92px;
-}
-
-.section-title {
-    font-size: 17px;
-    font-weight: 800;
-    margin-bottom: 18px;
-}
-
-.label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    color: #d1d5db;
-    margin-bottom: 8px;
-}
-
-.input-wrap {
-    position: relative;
-    margin-bottom: 15px;
-}
-
-input {
-    width: 100%;
-    border: 1px solid rgba(255,255,255,.1);
-    background: rgba(0,0,0,.25);
-    color: white;
-    border-radius: 13px;
-    padding: 14px;
-    outline: none;
-    font-family: inherit;
-    font-size: 14px;
-    transition: .2s;
-}
-
-input:focus {
-    border-color: rgba(139,92,246,.75);
-    box-shadow: 0 0 0 3px rgba(139,92,246,.1);
-}
-
-.info-box {
-    margin-top: 18px;
-    padding: 14px;
-    border-radius: 14px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid var(--border);
-    font-size: 12px;
-    color: #9ca3af;
-    line-height: 1.6;
-}
-
-/* =========================
-   RIGHT
-========================= */
-
-.right-card {
-    padding: 23px;
-}
-
-.products-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.products-title h2 {
-    font-size: 18px;
-}
-
-.products-title span {
-    font-size: 11px;
-    color: #9ca3af;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.product {
-    position: relative;
-    padding: 17px;
-    min-height: 115px;
-    border-radius: 17px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: .2s ease;
-}
-
-.product:hover {
-    transform: translateY(-2px);
-    border-color: rgba(139,92,246,.5);
-    background: rgba(139,92,246,.07);
-}
-
-.product.active {
-    border-color: var(--purple);
     background:
-        linear-gradient(145deg, rgba(139,92,246,.17), rgba(59,130,246,.06));
+        radial-gradient(
+            circle,
+            rgba(155,77,255,.55),
+            transparent 68%
+        );
+}
+
+.orb2{
+    width:380px;
+    height:380px;
+
+    right:-180px;
+    top:300px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(38,183,255,.48),
+            transparent 68%
+        );
+}
+
+.orb3{
+    width:300px;
+    height:300px;
+
+    left:42%;
+    bottom:-190px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,61,242,.42),
+            transparent 68%
+        );
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    height:72px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,3,11,.78);
+
+    border-bottom:1px solid var(--line);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+}
+
+.logo{
+    color:white;
+
+    text-decoration:none;
+
+    font-size:23px;
+
+    font-weight:900;
+
+    letter-spacing:-1px;
+}
+
+.logo span{
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--blue),
+            var(--pink)
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+.back{
+    color:#ddd7e8;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    padding:10px 16px;
+
+    border:1px solid var(--line);
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.035);
+
+    transition:.25s ease;
+}
+
+.back:hover{
+    border-color:
+        rgba(155,77,255,.55);
+
+    transform:translateY(-1px);
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    width:min(1180px,92%);
+
+    margin:auto;
+
+    padding:54px 0 80px;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading{
+    text-align:center;
+
+    margin-bottom:38px;
+}
+
+.badge{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:8px 13px;
+
+    border:1px solid
+        rgba(155,77,255,.3);
+
+    border-radius:999px;
+
+    background:
+        rgba(155,77,255,.08);
+
+    color:#d9c7ff;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    margin-bottom:16px;
+}
+
+.badge i{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--blue);
+
     box-shadow:
-        0 0 0 1px rgba(139,92,246,.15),
-        0 12px 30px rgba(139,92,246,.1);
+        0 0 10px var(--blue);
 }
 
-.product-check {
-    position: absolute;
-    top: 11px;
-    right: 11px;
-    width: 21px;
-    height: 21px;
-    border-radius: 50%;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    background: var(--purple);
-    font-size: 11px;
+.heading h1{
+    font-size:
+        clamp(32px,5vw,58px);
+
+    line-height:1;
+
+    letter-spacing:-2.5px;
+
+    font-weight:900;
 }
 
-.product.active .product-check {
-    display: flex;
+.heading h1 span{
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            var(--purple),
+            var(--blue)
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
 }
 
-.product-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 11px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg,#8b5cf6,#3b82f6);
-    margin-bottom: 11px;
-    font-size: 17px;
+.heading p{
+    margin:15px auto 0;
+
+    max-width:590px;
+
+    color:var(--muted);
+
+    line-height:1.7;
+
+    font-size:14px;
 }
 
-.product-name {
-    font-size: 13px;
-    font-weight: 800;
-    line-height: 1.35;
-    padding-right: 20px;
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.topup-layout{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0,1.45fr)
+        minmax(290px,.75fr);
+
+    gap:22px;
+
+    align-items:start;
 }
 
-.product-desc {
-    color: #8f96a8;
-    font-size: 10px;
-    margin-top: 4px;
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+    border:1px solid var(--line);
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:24px;
+
+    box-shadow:
+        0 18px 60px rgba(0,0,0,.2);
+
+    backdrop-filter:blur(12px);
+
+    -webkit-backdrop-filter:blur(12px);
 }
 
-.product-price {
-    color: #c4b5fd;
-    font-size: 14px;
-    font-weight: 800;
-    margin-top: 10px;
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.card-title{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:22px;
 }
 
-/* =========================
-   SUMMARY
-========================= */
+.card-icon{
+    width:42px;
+    height:42px;
 
-.summary {
-    margin-top: 20px;
-    padding: 19px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.035);
-    border: 1px solid var(--border);
+    display:grid;
+
+    place-items:center;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(155,77,255,.22),
+            rgba(38,183,255,.13)
+        );
+
+    border:1px solid
+        rgba(155,77,255,.22);
+
+    font-size:20px;
 }
 
-.summary h3 {
-    font-size: 15px;
-    margin-bottom: 15px;
+.card-title h2{
+    font-size:17px;
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 8px 0;
-    font-size: 12px;
+.card-title p{
+    color:#8e879f;
+
+    font-size:11px;
+
+    margin-top:3px;
 }
 
-.row .muted {
-    color: #9ca3af;
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-label{
+    display:block;
+
+    color:#ddd7e8;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
 }
 
-.row strong {
-    text-align: right;
-    word-break: break-word;
+.input-row{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        150px;
+
+    gap:10px;
 }
 
-.total {
-    border-top: 1px solid var(--border);
-    margin-top: 8px;
-    padding-top: 15px;
+.input{
+    width:100%;
+
+    height:50px;
+
+    border:1px solid var(--line);
+
+    border-radius:13px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color:white;
+
+    outline:none;
+
+    padding:0 15px;
+
+    font:
+        600 13px Inter;
+
+    transition:.2s;
 }
 
-.total strong {
-    color: #c4b5fd;
-    font-size: 18px;
+.input::placeholder{
+    color:#716a80;
 }
 
-/* =========================
+.input:focus{
+    border-color:
+        rgba(155,77,255,.65);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(155,77,255,.08);
+}
+
+
+/* =========================================================
+   INFORMATION
+========================================================= */
+
+.info-box{
+    margin-top:18px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:1px solid var(--line);
+
+    color:#8f889e;
+
+    font-size:11px;
+
+    line-height:1.6;
+}
+
+.info-box strong{
+    color:#ddd7e8;
+}
+
+
+/* =========================================================
+   SECTION LABEL
+========================================================= */
+
+.section-label{
+    font-size:13px;
+
+    font-weight:800;
+
+    margin:
+        25px 0
+        12px;
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
+.products{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+}
+
+.product{
+    position:relative;
+
+    border:1px solid var(--line);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-radius:15px;
+
+    padding:15px 12px;
+
+    cursor:pointer;
+
+    transition:.2s ease;
+
+    overflow:hidden;
+}
+
+.product:hover{
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(155,77,255,.45);
+
+    background:
+        rgba(155,77,255,.07);
+}
+
+.product.active{
+    border-color:var(--purple);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(155,77,255,.16),
+            rgba(38,183,255,.06)
+        );
+
+    box-shadow:
+        0 0 0 1px
+        rgba(155,77,255,.15),
+
+        0 8px 25px
+        rgba(109,40,217,.12);
+}
+
+.product-check{
+    position:absolute;
+
+    top:8px;
+
+    right:9px;
+
+    width:19px;
+    height:19px;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--blue)
+        );
+
+    font-size:10px;
+
+    font-weight:900;
+}
+
+.product.active .product-check{
+    display:flex;
+}
+
+.product-icon{
+    font-size:22px;
+
+    margin-bottom:8px;
+}
+
+.product-name{
+    display:block;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    line-height:1.35;
+
+    padding-right:20px;
+}
+
+.product-desc{
+    display:block;
+
+    margin-top:5px;
+
+    color:#938ca2;
+
+    font-size:10px;
+
+    line-height:1.4;
+}
+
+.product-price{
+    margin-top:10px;
+
+    color:#c4b5fd;
+
+    font-size:13px;
+
+    font-weight:800;
+}
+
+
+/* =========================================================
    PAYMENT
-========================= */
+========================================================= */
 
-.payment-title {
-    margin-top: 20px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    font-weight: 800;
+.payment-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
 }
 
-.payment-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
+.payment{
+    border:1px solid var(--line);
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-radius:14px;
+
+    padding:13px 10px;
+
+    cursor:pointer;
+
+    text-align:center;
+
+    transition:.2s;
 }
 
-.payment {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 8px;
-    text-align: center;
-    font-size: 11px;
-    color: #d1d5db;
-    background: rgba(255,255,255,.025);
-    cursor: pointer;
-    transition: .2s;
+.payment:hover{
+    border-color:
+        rgba(155,77,255,.45);
+
+    transform:translateY(-1px);
 }
 
-.payment:hover {
-    border-color: rgba(139,92,246,.5);
+.payment.active{
+    border-color:var(--blue);
+
+    background:
+        rgba(38,183,255,.07);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(38,183,255,.1);
 }
 
-.payment.active {
-    border-color: var(--purple);
-    background: rgba(139,92,246,.1);
-    color: white;
+.payment-icon{
+    font-size:19px;
+
+    margin-bottom:6px;
 }
 
-.payment-icon {
-    font-size: 18px;
-    margin-bottom: 5px;
+.payment strong{
+    font-size:11px;
 }
 
-/* =========================
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.summary{
+    position:sticky;
+
+    top:94px;
+}
+
+.game-banner{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding-bottom:20px;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid var(--line);
+}
+
+.ml-logo{
+    width:54px;
+    height:54px;
+
+    flex-shrink:0;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:16px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            rgba(38,183,255,.7),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #162a68,
+            #090d25
+        );
+
+    border:1px solid
+        rgba(38,183,255,.3);
+
+    box-shadow:
+        0 0 25px
+        rgba(38,183,255,.1);
+
+    font-size:26px;
+}
+
+.game-banner h2{
+    font-size:16px;
+}
+
+.game-banner p{
+    color:#8f889e;
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+.detail{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:10px 0;
+
+    color:#9992a7;
+
+    font-size:12px;
+}
+
+.detail strong{
+    color:#eee;
+
+    text-align:right;
+
+    max-width:180px;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+}
+
+.total{
+    margin-top:12px;
+
+    padding-top:17px;
+
+    border-top:1px solid var(--line);
+
+    display:flex;
+
+    align-items:end;
+
+    justify-content:space-between;
+}
+
+.total span{
+    color:#9c95aa;
+
+    font-size:12px;
+}
+
+.total strong{
+    font-size:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--blue)
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+
+/* =========================================================
    ORDER
-========================= */
+========================================================= */
 
-.order-btn {
-    width: 100%;
-    margin-top: 18px;
-    border: 0;
-    border-radius: 14px;
-    padding: 15px;
-    color: white;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 800;
-    cursor: pointer;
-    background: linear-gradient(100deg,#7c3aed,#3b82f6,#ec4899);
-    box-shadow: 0 12px 30px rgba(124,58,237,.25);
-    transition: .2s;
+.order-btn{
+    width:100%;
+
+    height:52px;
+
+    margin-top:20px;
+
+    border:0;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font:
+        800 13px Inter;
+
+    background:
+        linear-gradient(
+            110deg,
+            var(--purple2),
+            var(--purple),
+            var(--blue)
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(109,40,217,.25);
+
+    transition:.2s ease;
 }
 
-.order-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 35px rgba(124,58,237,.35);
+.order-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 13px 35px
+        rgba(109,40,217,.35);
 }
 
-.order-btn:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-    transform: none;
+.order-btn:active{
+    transform:translateY(0);
 }
 
-.test-note {
-    text-align: center;
-    color: #71788a;
-    font-size: 10px;
-    line-height: 1.5;
-    margin-top: 10px;
+.order-btn:disabled{
+    opacity:.6;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
 }
 
-/* =========================
+.notice{
+    display:flex;
+
+    gap:9px;
+
+    margin-top:14px;
+
+    color:#817a90;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
-footer {
-    text-align: center;
-    padding: 30px 15px 45px;
-    color: #646b7d;
-    font-size: 11px;
+footer{
+    text-align:center;
+
+    color:#5f596b;
+
+    font-size:10px;
+
+    padding:
+        0 0 35px;
 }
 
-/* =========================
+
+/* =========================================================
    TOAST
-========================= */
+========================================================= */
 
-.toast {
-    position: fixed;
-    left: 50%;
-    bottom: 25px;
-    transform: translate(-50%, 100px);
-    z-index: 999;
-    padding: 13px 18px;
-    border-radius: 13px;
-    background: rgba(20,23,42,.95);
-    border: 1px solid var(--border);
-    box-shadow: 0 15px 40px rgba(0,0,0,.4);
-    font-size: 12px;
-    transition: .3s;
-    opacity: 0;
-    max-width: calc(100% - 30px);
-    text-align: center;
+.toast{
+    position:fixed;
+
+    left:50%;
+
+    bottom:25px;
+
+    z-index:999;
+
+    transform:
+        translate(-50%,100px);
+
+    opacity:0;
+
+    max-width:
+        calc(100% - 30px);
+
+    padding:13px 18px;
+
+    border-radius:13px;
+
+    background:
+        rgba(20,15,35,.96);
+
+    border:1px solid var(--line);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.4);
+
+    font-size:12px;
+
+    text-align:center;
+
+    transition:.3s;
 }
 
-.toast.show {
-    transform: translate(-50%, 0);
-    opacity: 1;
+.toast.show{
+    transform:
+        translate(-50%,0);
+
+    opacity:1;
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width: 850px) {
+@media(max-width:900px){
 
-    .main-grid {
-        grid-template-columns: 1fr;
+    .topup-layout{
+        grid-template-columns:
+            1fr;
     }
 
-    .left-card {
-        position: static;
+    .summary{
+        position:static;
     }
 
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 520px) {
-
-    .container {
-        width: min(100% - 20px, 1180px);
-    }
-
-    .nav-inner {
-        height: 62px;
-    }
-
-    .logo {
-        font-size: 22px;
-    }
-
-    .hero {
-        padding: 38px 0 25px;
-    }
-
-    .hero h1 {
-        font-size: 39px;
-    }
-
-    .hero p {
-        font-size: 12px;
-    }
-
-    .left-card,
-    .right-card {
-        padding: 17px;
-        border-radius: 18px;
-    }
-
-    .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-    }
-
-    .product {
-        padding: 13px;
-        min-height: 112px;
-    }
-
-    .product-name {
-        font-size: 11px;
-    }
-
-    .product-price {
-        font-size: 13px;
-    }
-
-    .payment-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .products{
+        grid-template-columns:
+            repeat(2,1fr);
     }
 }
 
-@media(max-width: 350px) {
 
-    .products {
-        grid-template-columns: 1fr;
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:520px){
+
+    .navbar{
+        height:64px;
+
+        padding:0 4%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .back{
+        padding:9px 12px;
+
+        font-size:11px;
+    }
+
+    .page{
+        width:94%;
+
+        padding-top:35px;
+    }
+
+    .heading{
+        margin-bottom:27px;
+    }
+
+    .heading h1{
+        font-size:36px;
+
+        letter-spacing:-1.8px;
+    }
+
+    .heading p{
+        font-size:13px;
+    }
+
+    .card{
+        padding:18px;
+
+        border-radius:18px;
+    }
+
+    .input-row{
+        grid-template-columns:
+            1fr 105px;
+    }
+
+    .products{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .payment-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .product{
+        padding:14px 11px;
+    }
+
+    .product-name{
+        font-size:12px;
+    }
+
+    .product-price{
+        font-size:12px;
+    }
+
+    .total strong{
+        font-size:22px;
     }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(max-width:360px){
+
+    .input-row{
+        grid-template-columns:
+            1fr;
+    }
+
+    .heading h1{
+        font-size:32px;
+    }
+
+    .products{
+        gap:8px;
+    }
+
+    .payment-grid{
+        gap:8px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+        scroll-behavior:auto!important;
+
+        transition:none!important;
+
+        animation:none!important;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
+
+<div class="background">
+
+    <div class="orb orb1"></div>
+
+    <div class="orb orb2"></div>
+
+    <div class="orb orb3"></div>
+
+</div>
+
+
+<!-- =====================================================
      NAVBAR
-========================= -->
+===================================================== -->
 
 <nav class="navbar">
 
-    <div class="container nav-inner">
+    <a
+        class="logo"
+        href="index.html"
+    >
+        MID<span>UUN</span>
+    </a>
 
-        <a href="#" class="logo">
-            Mid<span>uun</span>
-        </a>
-
-        <a href="#" class="nav-link">
-            Mobile Legends
-        </a>
-
-    </div>
+    <a
+        class="back"
+        href="index.html"
+    >
+        ← Kembali
+    </a>
 
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
+<!-- =====================================================
+     PAGE
+===================================================== -->
 
-<section class="hero">
+<main class="page">
 
-    <div class="container">
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="heading">
 
         <div class="badge">
-            ⚡ TOP UP CEPAT & AMAN
+
+            <i></i>
+
+            TOP UP CEPAT & MUDAH
+
         </div>
+
 
         <h1>
-            Top Up <span class="gradient">Mobile Legends</span>
+
+            Mobile Legends
+            <span>Top Up</span>
+
         </h1>
 
+
         <p>
-            Masukkan User ID dan Zone ID kamu,
-            pilih jumlah Diamonds dan metode pembayaran,
-            lalu lanjutkan pesanan melalui Miduun.
+
+            Isi Diamond Mobile Legends kamu
+            dengan proses yang simpel.
+            Masukkan ID, pilih nominal,
+            lalu pilih metode pembayaran.
+
         </p>
 
-    </div>
-
-</section>
+    </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
+    <!-- =================================================
+         MAIN LAYOUT
+    ================================================== -->
 
-<main class="container main-grid">
-
-
-    <!-- =====================
-         DATA AKUN
-    ====================== -->
-
-    <section class="card left-card">
-
-        <div class="section-title">
-            🎮 Data Akun
-        </div>
+    <div class="topup-layout">
 
 
-        <label class="label" for="userId">
-            User ID
-        </label>
+        <!-- =================================================
+             LEFT : ACCOUNT
+        ================================================== -->
 
-        <div class="input-wrap">
+        <section class="card">
 
-            <input
-                type="text"
-                id="userId"
-                placeholder="Contoh: 123456789"
-                inputmode="numeric"
-                autocomplete="off"
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    🎮
+                </div>
+
+                <div>
+
+                    <h2>
+                        Data Akun
+                    </h2>
+
+                    <p>
+                        Masukkan informasi akun Mobile Legends
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- USER ID -->
+
+            <label
+                class="input-label"
+                for="userId"
             >
-
-        </div>
-
-
-        <label class="label" for="zoneId">
-            Zone ID
-        </label>
-
-        <div class="input-wrap">
-
-            <input
-                type="text"
-                id="zoneId"
-                placeholder="Contoh: 1234"
-                inputmode="numeric"
-                autocomplete="off"
-            >
-
-        </div>
+                User ID
+            </label>
 
 
-        <div class="info-box">
+            <div class="input-row">
 
-            <strong style="color:#ddd;">
-                📌 Informasi
-            </strong>
-
-            <br>
-
-            Pastikan User ID dan Zone ID
-            Mobile Legends yang kamu masukkan
-            sudah benar sebelum melakukan order.
-
-            <br><br>
-
-            User ID dan Zone ID dapat dilihat
-            pada bagian profil akun Mobile Legends.
-
-        </div>
-
-    </section>
+                <input
+                    id="userId"
+                    class="input"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Contoh: 123456789"
+                >
 
 
-    <!-- =====================
-         PRODUK + PEMBAYARAN
-    ====================== -->
+                <input
+                    id="zoneId"
+                    class="input"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="Zone ID"
+                >
 
-    <section class="card right-card">
-
-
-        <div class="products-title">
-
-            <h2>
-                💎 Pilih Produk
-            </h2>
-
-            <span>
-                Harga Miduun
-            </span>
-
-        </div>
+            </div>
 
 
-        <div
-            class="products"
-            id="productsContainer"
-        ></div>
+            <!-- INFORMATION -->
+
+            <div class="info-box">
+
+                <strong>
+                    📌 Informasi
+                </strong>
+
+                <br><br>
+
+                Pastikan User ID dan Zone ID
+                Mobile Legends yang kamu masukkan
+                sudah benar sebelum melakukan order.
+
+                <br><br>
+
+                User ID dan Zone ID dapat dilihat
+                pada bagian profil akun
+                Mobile Legends.
+
+            </div>
 
 
-        <!-- =================
-             SUMMARY
-        ================== -->
-
-        <div class="summary">
-
-            <h3>
-                📋 Ringkasan Pesanan
-            </h3>
+        </section>
 
 
-            <div class="row">
+        <!-- =================================================
+             RIGHT : PRODUCTS + PAYMENT
+        ================================================== -->
 
-                <span class="muted">
+        <section class="card">
+
+
+            <!-- PRODUCT TITLE -->
+
+            <div class="card-title">
+
+                <div class="card-icon">
+                    💎
+                </div>
+
+                <div>
+
+                    <h2>
+                        Pilih Diamond
+                    </h2>
+
+                    <p>
+                        Pilih nominal yang ingin kamu beli
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCTS -->
+
+            <div
+                class="products"
+                id="products"
+            ></div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="section-label">
+
+                💳 Metode Pembayaran
+
+            </div>
+
+
+            <div class="payment-grid">
+
+
+                <div
+                    class="payment active"
+                    data-payment="QRIS"
+                >
+
+                    <div class="payment-icon">
+                        ▦
+                    </div>
+
+                    <strong>
+                        QRIS
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="payment"
+                    data-payment="DANA"
+                >
+
+                    <div class="payment-icon">
+                        💙
+                    </div>
+
+                    <strong>
+                        DANA
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="payment"
+                    data-payment="OVO"
+                >
+
+                    <div class="payment-icon">
+                        🟣
+                    </div>
+
+                    <strong>
+                        OVO
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="payment"
+                    data-payment="GoPay"
+                >
+
+                    <div class="payment-icon">
+                        🟦
+                    </div>
+
+                    <strong>
+                        GoPay
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="payment"
+                    data-payment="ShopeePay"
+                >
+
+                    <div class="payment-icon">
+                        🟠
+                    </div>
+
+                    <strong>
+                        ShopeePay
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="payment"
+                    data-payment="VA"
+                >
+
+                    <div class="payment-icon">
+                        🏦
+                    </div>
+
+                    <strong>
+                        Virtual Account
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             RIGHT SUMMARY
+        ================================================== -->
+
+        <aside class="card summary">
+
+
+            <div class="game-banner">
+
+                <div class="ml-logo">
+                    ⚔️
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Mobile Legends
+                    </h2>
+
+                    <p>
+                        Diamond • Instant Top Up
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="detail">
+
+                <span>
                     User ID
                 </span>
 
-                <strong id="summaryUser">
+                <strong id="summaryId">
                     -
                 </strong>
 
             </div>
 
 
-            <div class="row">
+            <div class="detail">
 
-                <span class="muted">
+                <span>
                     Zone ID
                 </span>
 
@@ -762,9 +1571,9 @@ footer {
             </div>
 
 
-            <div class="row">
+            <div class="detail">
 
-                <span class="muted">
+                <span>
                     Produk
                 </span>
 
@@ -775,9 +1584,9 @@ footer {
             </div>
 
 
-            <div class="row">
+            <div class="detail">
 
-                <span class="muted">
+                <span>
                     Pembayaran
                 </span>
 
@@ -788,10 +1597,10 @@ footer {
             </div>
 
 
-            <div class="row total">
+            <div class="total">
 
-                <span class="muted">
-                    Total
+                <span>
+                    Total Bayar
                 </span>
 
                 <strong id="summaryPrice">
@@ -800,145 +1609,57 @@ footer {
 
             </div>
 
-        </div>
 
-
-        <!-- =================
-             PAYMENT
-        ================== -->
-
-        <div class="payment-title">
-            💳 Metode Pembayaran
-        </div>
-
-
-        <div class="payment-grid">
-
-
-            <div
-                class="payment active"
-                data-payment="QRIS"
-                onclick="selectPayment(this)"
+            <button
+                type="button"
+                class="order-btn"
+                id="orderBtn"
             >
 
-                <div class="payment-icon">
-                    ▦
-                </div>
+                ⚡ ORDER SEKARANG
 
-                QRIS
+            </button>
+
+
+            <div class="notice">
+
+                🔒
+
+                <span>
+
+                    Transaksi akan diproses
+                    setelah pembayaran berhasil.
+                    Pastikan User ID dan Zone ID
+                    sudah benar.
+
+                </span>
 
             </div>
 
 
-            <div
-                class="payment"
-                data-payment="DANA"
-                onclick="selectPayment(this)"
-            >
-
-                <div class="payment-icon">
-                    💙
-                </div>
-
-                DANA
-
-            </div>
+        </aside>
 
 
-            <div
-                class="payment"
-                data-payment="OVO"
-                onclick="selectPayment(this)"
-            >
+    </div>
 
-                <div class="payment-icon">
-                    🟣
-                </div>
-
-                OVO
-
-            </div>
-
-
-            <div
-                class="payment"
-                data-payment="GoPay"
-                onclick="selectPayment(this)"
-            >
-
-                <div class="payment-icon">
-                    🟦
-                </div>
-
-                GoPay
-
-            </div>
-
-
-            <div
-                class="payment"
-                data-payment="ShopeePay"
-                onclick="selectPayment(this)"
-            >
-
-                <div class="payment-icon">
-                    🟠
-                </div>
-
-                ShopeePay
-
-            </div>
-
-
-            <div
-                class="payment"
-                data-payment="VA"
-                onclick="selectPayment(this)"
-            >
-
-                <div class="payment-icon">
-                    🏦
-                </div>
-
-                Virtual Account
-
-            </div>
-
-        </div>
-
-
-        <!-- =================
-             ORDER BUTTON
-        ================== -->
-
-        <button
-            type="button"
-            class="order-btn"
-            id="orderButton"
-            onclick="prosesOrder()"
-        >
-            ⚡ ORDER SEKARANG
-        </button>
-
-
-        <div class="test-note">
-
-            Pesanan akan dikirim ke server Miduun
-            untuk diproses.
-
-        </div>
-
-    </section>
 
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-    © 2026 Miduun — Top Up Mobile Legends
+    © 2026 Miduun • Mobile Legends Top Up
 
 </footer>
 
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
 
 <div
     class="toast"
@@ -948,167 +1669,179 @@ footer {
 
 <script>
 
-/* =====================================================
-   KONFIGURASI BACKEND
-===================================================== */
+
+/* =========================================================
+   BACKEND MIDUUN
+========================================================= */
 
 const ORDER_API =
     "https://miduun-api.vercel.app/api/order";
 
 
-/* =====================================================
-   DATA PRODUK
-===================================================== */
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
 const products = [
 
     {
-        name: "55 Diamonds",
-        desc: "50 + 5 Bonus • 2x Bonus First Top Up",
-        price: 16000,
-        service: "MLGLOBAL22590-S14"
+        name:"55 Diamonds",
+        desc:"50 + 5 Bonus • 2x Bonus First Top Up",
+        price:16000,
+        service:"MLGLOBAL22590-S14"
     },
 
     {
-        name: "86 Diamonds",
-        desc: "78 + 8 Bonus",
-        price: 25000,
-        service: "MLGLOBAL13-S14"
+        name:"86 Diamonds",
+        desc:"78 + 8 Bonus",
+        price:25000,
+        service:"MLGLOBAL13-S14"
     },
 
     {
-        name: "Weekly Diamond Pass",
-        desc: "1x Weekly Diamond Pass",
-        price: 31000,
-        service: "MLGLOBAL16642-S14"
+        name:"Weekly Diamond Pass",
+        desc:"1x Weekly Diamond Pass",
+        price:31000,
+        service:"MLGLOBAL16642-S14"
     },
 
     {
-        name: "165 Diamonds",
-        desc: "150 + 15 Bonus • 2x Bonus First Top Up",
-        price: 46000,
-        service: "MLGLOBAL22591-S14"
+        name:"165 Diamonds",
+        desc:"150 + 15 Bonus • 2x Bonus First Top Up",
+        price:46000,
+        service:"MLGLOBAL22591-S14"
     },
 
     {
-        name: "172 Diamonds",
-        desc: "156 + 16 Bonus",
-        price: 48000,
-        service: "MLGLOBAL23-S14"
+        name:"172 Diamonds",
+        desc:"156 + 16 Bonus",
+        price:48000,
+        service:"MLGLOBAL23-S14"
     },
 
     {
-        name: "257 Diamonds",
-        desc: "234 + 23 Bonus",
-        price: 69000,
-        service: "MLGLOBAL25-S14"
+        name:"257 Diamonds",
+        desc:"234 + 23 Bonus",
+        price:69000,
+        service:"MLGLOBAL25-S14"
     },
 
     {
-        name: "275 Diamonds",
-        desc: "250 + 25 Bonus • 2x Bonus First Top Up",
-        price: 73000,
-        service: "MLGLOBAL22592-S14"
+        name:"275 Diamonds",
+        desc:"250 + 25 Bonus • 2x Bonus First Top Up",
+        price:73000,
+        service:"MLGLOBAL22592-S14"
     },
 
     {
-        name: "565 Diamonds",
-        desc: "500 + 65 Bonus • 2x Bonus First Top Up",
-        price: 145000,
-        service: "MLGLOBAL22593-S14"
+        name:"565 Diamonds",
+        desc:"500 + 65 Bonus • 2x Bonus First Top Up",
+        price:145000,
+        service:"MLGLOBAL22593-S14"
     },
 
     {
-        name: "Twilight Pass",
-        desc: "Mobile Legends Twilight Pass",
-        price: 152000,
-        service: "MLGLOBAL33-S14"
+        name:"Twilight Pass",
+        desc:"Mobile Legends Twilight Pass",
+        price:152000,
+        service:"MLGLOBAL33-S14"
     },
 
     {
-        name: "706 Diamonds",
-        desc: "625 + 81 Bonus",
-        price: 180000,
-        service: "MLGLOBAL26-S14"
+        name:"706 Diamonds",
+        desc:"625 + 81 Bonus",
+        price:180000,
+        service:"MLGLOBAL26-S14"
     },
 
     {
-        name: "2.195 Diamonds",
-        desc: "1.860 + 335 Bonus",
-        price: 530000,
-        service: "MLGLOBAL27-S14"
+        name:"2.195 Diamonds",
+        desc:"1.860 + 335 Bonus",
+        price:530000,
+        service:"MLGLOBAL27-S14"
     },
 
     {
-        name: "3.688 Diamonds",
-        desc: "3.099 + 589 Bonus",
-        price: 880000,
-        service: "MLGLOBAL28-S14"
+        name:"3.688 Diamonds",
+        desc:"3.099 + 589 Bonus",
+        price:880000,
+        service:"MLGLOBAL28-S14"
     },
 
     {
-        name: "5.532 Diamonds",
-        desc: "4.649 + 883 Bonus",
-        price: 1330000,
-        service: "MLGLOBAL29-S14"
+        name:"5.532 Diamonds",
+        desc:"4.649 + 883 Bonus",
+        price:1330000,
+        service:"MLGLOBAL29-S14"
     },
 
     {
-        name: "9.288 Diamonds",
-        desc: "7.740 + 1.548 Bonus",
-        price: 2200000,
-        service: "MLGLOBAL30-S14"
+        name:"9.288 Diamonds",
+        desc:"7.740 + 1.548 Bonus",
+        price:2200000,
+        service:"MLGLOBAL30-S14"
     }
 
 ];
 
 
-/* =====================================================
+/* =========================================================
    STATE
-===================================================== */
+========================================================= */
 
 let selectedProduct = null;
+
 let selectedPayment = "QRIS";
 
 
-/* =====================================================
-   FORMAT RUPIAH
-===================================================== */
+/* =========================================================
+   ELEMENT
+========================================================= */
 
-function formatRupiah(number) {
+const userId =
+    document.getElementById("userId");
+
+const zoneId =
+    document.getElementById("zoneId");
+
+const productsContainer =
+    document.getElementById("products");
+
+const orderBtn =
+    document.getElementById("orderBtn");
+
+
+/* =========================================================
+   RUPIAH
+========================================================= */
+
+function rupiah(number){
 
     return new Intl.NumberFormat(
         "id-ID",
         {
-            style: "currency",
-            currency: "IDR",
-            maximumFractionDigits: 0
+            style:"currency",
+            currency:"IDR",
+            maximumFractionDigits:0
         }
     ).format(number);
 
 }
 
 
-/* =====================================================
-   RENDER PRODUK
-===================================================== */
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
 
-function renderProducts() {
+function renderProducts(){
 
-    const container =
-        document.getElementById(
-            "productsContainer"
-        );
-
-    container.innerHTML = "";
+    productsContainer.innerHTML = "";
 
     products.forEach(
-        (product, index) => {
+        (product,index) => {
 
             const element =
-                document.createElement(
-                    "div"
-                );
+                document.createElement("div");
 
             element.className =
                 "product";
@@ -1132,21 +1865,24 @@ function renderProducts() {
                 </div>
 
                 <div class="product-price">
-                    ${formatRupiah(product.price)}
+                    ${rupiah(product.price)}
                 </div>
 
             `;
 
             element.addEventListener(
                 "click",
-                () =>
+                () => {
+
                     selectProduct(
-                        index,
+                        product,
                         element
-                    )
+                    );
+
+                }
             );
 
-            container.appendChild(
+            productsContainer.appendChild(
                 element
             );
 
@@ -1156,17 +1892,17 @@ function renderProducts() {
 }
 
 
-/* =====================================================
-   PILIH PRODUK
-===================================================== */
+/* =========================================================
+   SELECT PRODUCT
+========================================================= */
 
 function selectProduct(
-    index,
+    product,
     element
-) {
+){
 
     selectedProduct =
-        products[index];
+        product;
 
     document
         .querySelectorAll(".product")
@@ -1185,83 +1921,76 @@ function selectProduct(
     updateSummary();
 
     showToast(
-        selectedProduct.name +
+        product.name +
         " dipilih"
     );
 
 }
 
 
-/* =====================================================
-   PILIH PEMBAYARAN
-===================================================== */
+/* =========================================================
+   SELECT PAYMENT
+========================================================= */
 
-function selectPayment(element) {
+document
+    .querySelectorAll(".payment")
+    .forEach(payment => {
 
-    document
-        .querySelectorAll(".payment")
-        .forEach(item => {
+        payment.addEventListener(
+            "click",
+            () => {
 
-            item.classList.remove(
-                "active"
-            );
+                document
+                    .querySelectorAll(".payment")
+                    .forEach(item => {
 
-        });
+                        item.classList.remove(
+                            "active"
+                        );
 
-    element.classList.add(
-        "active"
-    );
+                    });
 
-    selectedPayment =
-        element.dataset.payment;
+                payment.classList.add(
+                    "active"
+                );
 
-    document.getElementById(
-        "summaryPayment"
-    ).innerText =
-        selectedPayment;
+                selectedPayment =
+                    payment.dataset.payment;
 
-    showToast(
-        "Pembayaran: " +
-        selectedPayment
-    );
+                updateSummary();
 
-}
+                showToast(
+                    "Pembayaran: " +
+                    selectedPayment
+                );
+
+            }
+        );
+
+    });
 
 
-/* =====================================================
+/* =========================================================
    UPDATE SUMMARY
-===================================================== */
+========================================================= */
 
-function updateSummary() {
-
-    const userId =
-        document
-            .getElementById("userId")
-            .value
-            .trim();
-
-    const zoneId =
-        document
-            .getElementById("zoneId")
-            .value
-            .trim();
-
+function updateSummary(){
 
     document.getElementById(
-        "summaryUser"
-    ).innerText =
-        userId || "-";
+        "summaryId"
+    ).textContent =
+        userId.value.trim() || "-";
 
 
     document.getElementById(
         "summaryZone"
-    ).innerText =
-        zoneId || "-";
+    ).textContent =
+        zoneId.value.trim() || "-";
 
 
     document.getElementById(
         "summaryProduct"
-    ).innerText =
+    ).textContent =
         selectedProduct
             ? selectedProduct.name
             : "-";
@@ -1269,15 +1998,15 @@ function updateSummary() {
 
     document.getElementById(
         "summaryPayment"
-    ).innerText =
+    ).textContent =
         selectedPayment;
 
 
     document.getElementById(
         "summaryPrice"
-    ).innerText =
+    ).textContent =
         selectedProduct
-            ? formatRupiah(
+            ? rupiah(
                 selectedProduct.price
             )
             : "Rp0";
@@ -1285,58 +2014,67 @@ function updateSummary() {
 }
 
 
-/* =====================================================
-   INPUT LISTENER
-===================================================== */
+/* =========================================================
+   INPUT
+========================================================= */
 
-document
-    .getElementById("userId")
-    .addEventListener(
-        "input",
-        updateSummary
-    );
+userId.addEventListener(
+    "input",
+    updateSummary
+);
 
-
-document
-    .getElementById("zoneId")
-    .addEventListener(
-        "input",
-        updateSummary
-    );
+zoneId.addEventListener(
+    "input",
+    updateSummary
+);
 
 
-/* =====================================================
-   PROSES ORDER
-===================================================== */
+/* =========================================================
+   ORDER
+========================================================= */
 
-async function prosesOrder() {
-
-    const userId =
-        document
-            .getElementById("userId")
-            .value
-            .trim();
-
-    const zoneId =
-        document
-            .getElementById("zoneId")
-            .value
-            .trim();
-
-    const button =
-        document.getElementById(
-            "orderButton"
-        );
+orderBtn.addEventListener(
+    "click",
+    prosesOrder
+);
 
 
-    /* =========================
-       VALIDASI
-    ========================= */
+async function prosesOrder(){
 
-    if (!userId || !zoneId) {
+    const id =
+        userId.value.trim();
+
+    const zone =
+        zoneId.value.trim();
+
+
+    /* VALIDASI */
+
+    if(!id || !zone){
 
         alert(
-            "Masukkan User ID dan Zone ID terlebih dahulu."
+            "⚠️ Masukkan User ID dan Zone ID terlebih dahulu."
+        );
+
+        if(!id){
+
+            userId.focus();
+
+        }else{
+
+            zoneId.focus();
+
+        }
+
+        return;
+
+    }
+
+
+    if(!selectedProduct){
+
+        alert(
+            "⚠️ Silakan pilih produk terlebih dahulu."
         );
 
         return;
@@ -1344,10 +2082,10 @@ async function prosesOrder() {
     }
 
 
-    if (!selectedProduct) {
+    if(!selectedProduct.service){
 
         alert(
-            "Silakan pilih produk terlebih dahulu."
+            "⚠️ Service produk tidak ditemukan."
         );
 
         return;
@@ -1355,96 +2093,72 @@ async function prosesOrder() {
     }
 
 
-    if (!selectedProduct.service) {
-
-        alert(
-            "Service produk tidak ditemukan."
-        );
-
-        return;
-
-    }
-
-
-    /* =========================
-       KONFIRMASI
-    ========================= */
+    /* KONFIRMASI */
 
     const confirmOrder =
         confirm(
 
             "KONFIRMASI ORDER\n\n" +
 
+            "Mobile Legends\n" +
+
             "User ID: " +
-            userId +
+            id +
 
             "\nZone ID: " +
-            zoneId +
+            zone +
 
             "\nProduk: " +
             selectedProduct.name +
 
-            "\nHarga: " +
-            formatRupiah(
-                selectedProduct.price
-            ) +
-
             "\nPembayaran: " +
             selectedPayment +
+
+            "\nTotal: " +
+            rupiah(
+                selectedProduct.price
+            ) +
 
             "\n\nLanjutkan order?"
 
         );
 
 
-    if (!confirmOrder) {
+    if(!confirmOrder){
+
         return;
+
     }
 
 
-    /* =========================
-       KIRIM ORDER
-    ========================= */
+    /* LOADING */
 
-    try {
+    try{
 
-        button.disabled = true;
+        orderBtn.disabled =
+            true;
 
-        button.innerText =
+        orderBtn.textContent =
             "⏳ Mengirim Order...";
-
-
-        console.log(
-            "Mengirim order:",
-            {
-                user_id: userId,
-                zone_id: zoneId,
-                service:
-                    selectedProduct.service,
-                payment:
-                    selectedPayment
-            }
-        );
 
 
         const response =
             await fetch(
                 ORDER_API,
                 {
-                    method: "POST",
 
-                    headers: {
+                    method:"POST",
+
+                    headers:{
                         "Content-Type":
                             "application/json"
                     },
 
-                    body: JSON.stringify({
+                    body:JSON.stringify({
 
-                        user_id:
-                            userId,
+                        user_id:id,
 
-                        zone_id:
-                            zoneId,
+                        zone_id:zone,
 
                         service:
                             selectedProduct.service,
@@ -1453,43 +2167,28 @@ async function prosesOrder() {
                             selectedPayment
 
                     })
+
                 }
             );
 
-
-        /* =========================
-           RESPONSE
-        ========================= */
 
         const text =
             await response.text();
 
 
-        console.log(
-            "HTTP Status:",
-            response.status
-        );
-
-
-        console.log(
-            "Raw Response:",
-            text
-        );
-
-
         let data;
 
-        try {
+
+        try{
 
             data =
                 JSON.parse(text);
 
-        } catch (error) {
+        }catch(error){
 
             alert(
 
-                "Server mengembalikan " +
-                "response yang tidak valid.\n\n" +
+                "❌ Server mengembalikan response yang tidak valid.\n\n" +
 
                 "HTTP: " +
                 response.status +
@@ -1511,13 +2210,11 @@ async function prosesOrder() {
         );
 
 
-        /* =========================
-           BERHASIL
-        ========================= */
+        /* SUCCESS */
 
-        if (
+        if(
             data.result === true
-        ) {
+        ){
 
             alert(
 
@@ -1527,13 +2224,18 @@ async function prosesOrder() {
                 selectedProduct.name +
 
                 "\nUser ID: " +
-                userId +
+                id +
 
                 "\nZone ID: " +
-                zoneId +
+                zone +
 
                 "\nPembayaran: " +
                 selectedPayment +
+
+                "\nTotal: " +
+                rupiah(
+                    selectedProduct.price
+                ) +
 
                 "\n\n" +
 
@@ -1552,11 +2254,9 @@ async function prosesOrder() {
         }
 
 
-        /* =========================
-           GAGAL
-        ========================= */
+        /* ERROR */
 
-        else {
+        else{
 
             alert(
 
@@ -1577,7 +2277,7 @@ async function prosesOrder() {
         }
 
 
-    } catch (error) {
+    }catch(error){
 
         console.error(
             "ORDER ERROR:",
@@ -1587,20 +2287,21 @@ async function prosesOrder() {
 
         alert(
 
-            "❌ GAGAL TERHUBUNG " +
-            "KE SERVER ORDER\n\n" +
+            "❌ GAGAL TERHUBUNG KE SERVER ORDER\n\n" +
 
-            "Detail:\n" +
             error.message
 
         );
 
+    }
 
-    } finally {
 
-        button.disabled = false;
+    finally{
 
-        button.innerText =
+        orderBtn.disabled =
+            false;
+
+        orderBtn.innerHTML =
             "⚡ ORDER SEKARANG";
 
     }
@@ -1608,18 +2309,18 @@ async function prosesOrder() {
 }
 
 
-/* =====================================================
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 
-function showToast(message) {
+function showToast(message){
 
     const toast =
         document.getElementById(
             "toast"
         );
 
-    toast.innerText =
+    toast.textContent =
         message;
 
     toast.classList.add(
@@ -1641,9 +2342,9 @@ function showToast(message) {
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* =========================================================
+   INITIAL
+========================================================= */
 
 renderProducts();
 
@@ -1653,4 +2354,3 @@ updateSummary();
 
 </body>
 </html>
-```
