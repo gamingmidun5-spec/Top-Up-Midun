@@ -18,10 +18,6 @@ rel="stylesheet"
 
 <style>
 
-/* =========================================================
-   ROOT
-========================================================= */
-
 :root{
     --purple:#9b4dff;
     --purple-dark:#6d28d9;
@@ -41,11 +37,6 @@ rel="stylesheet"
     --success:#4ade80;
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
-
 *{
     margin:0;
     padding:0;
@@ -58,13 +49,9 @@ html{
 
 body{
     font-family:Inter,Arial,sans-serif;
-
     color:var(--text);
-
     background:var(--bg);
-
     min-height:100vh;
-
     overflow-x:hidden;
 }
 
@@ -76,50 +63,39 @@ body{
 .background{
     position:fixed;
     inset:0;
-
     z-index:-10;
-
     overflow:hidden;
 
     background:
-
         radial-gradient(
             circle at 10% 10%,
             rgba(155,77,255,.14),
             transparent 28%
         ),
-
         radial-gradient(
             circle at 90% 25%,
             rgba(38,183,255,.10),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 50% 100%,
             rgba(255,61,242,.08),
             transparent 35%
         ),
-
         var(--bg);
 }
 
 .background::before{
     content:"";
-
     position:absolute;
-
     inset:-50%;
-
     opacity:.08;
 
     background-image:
-
         linear-gradient(
             rgba(155,77,255,.4) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
             rgba(38,183,255,.3) 1px,
@@ -135,20 +111,15 @@ body{
 
 .orb{
     position:absolute;
-
     border-radius:50%;
-
     pointer-events:none;
-
     filter:blur(10px);
-
     opacity:.22;
 }
 
 .orb1{
     width:400px;
     height:400px;
-
     left:-220px;
     top:160px;
 
@@ -163,7 +134,6 @@ body{
 .orb2{
     width:420px;
     height:420px;
-
     right:-220px;
     top:280px;
 
@@ -178,7 +148,6 @@ body{
 .orb3{
     width:350px;
     height:350px;
-
     left:40%;
     bottom:-230px;
 
@@ -197,17 +166,13 @@ body{
 
 .navbar{
     position:sticky;
-
     top:0;
-
     z-index:100;
 
     height:70px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     padding:0 clamp(18px,5vw,70px);
@@ -217,19 +182,15 @@ body{
     border-bottom:1px solid var(--line);
 
     backdrop-filter:blur(18px);
-
     -webkit-backdrop-filter:blur(18px);
 }
 
 .logo{
     color:white;
-
     text-decoration:none;
 
     font-size:23px;
-
     font-weight:900;
-
     letter-spacing:-1.2px;
 }
 
@@ -250,23 +211,18 @@ body{
 
 .back{
     display:flex;
-
     align-items:center;
-
     gap:7px;
 
     color:#ddd7e8;
-
     text-decoration:none;
 
     font-size:12px;
-
     font-weight:700;
 
     padding:9px 14px;
 
     border:1px solid var(--line);
-
     border-radius:11px;
 
     background:rgba(255,255,255,.035);
@@ -276,9 +232,7 @@ body{
 
 .back:hover{
     border-color:rgba(155,77,255,.55);
-
     background:rgba(155,77,255,.07);
-
     transform:translateY(-1px);
 }
 
@@ -289,9 +243,7 @@ body{
 
 .page{
     width:min(1160px,92%);
-
     margin:auto;
-
     padding:55px 0 70px;
 }
 
@@ -302,21 +254,17 @@ body{
 
 .heading{
     text-align:center;
-
     margin-bottom:38px;
 }
 
 .badge{
     display:inline-flex;
-
     align-items:center;
-
     gap:8px;
 
     padding:8px 13px;
 
     border:1px solid rgba(155,77,255,.28);
-
     border-radius:999px;
 
     background:rgba(155,77,255,.07);
@@ -324,9 +272,7 @@ body{
     color:#d8c5ff;
 
     font-size:11px;
-
     font-weight:800;
-
     letter-spacing:.3px;
 }
 
@@ -346,7 +292,6 @@ body{
     margin-top:16px;
 
     font-size:clamp(34px,5vw,56px);
-
     line-height:1;
 
     letter-spacing:-2.7px;
@@ -370,13 +315,11 @@ body{
 
 .heading p{
     max-width:620px;
-
     margin:16px auto 0;
 
     color:var(--muted);
 
     line-height:1.7;
-
     font-size:13px;
 }
 
@@ -426,9 +369,7 @@ body{
 
 .card-title{
     display:flex;
-
     align-items:center;
-
     gap:12px;
 
     margin-bottom:22px;
@@ -441,7 +382,6 @@ body{
     flex-shrink:0;
 
     display:grid;
-
     place-items:center;
 
     border-radius:13px;
@@ -460,15 +400,12 @@ body{
 
 .card-title h2{
     font-size:16px;
-
     font-weight:800;
 }
 
 .card-title p{
     margin-top:3px;
-
     color:#8e879f;
-
     font-size:10px;
 }
 
@@ -483,7 +420,6 @@ body{
     color:#ddd7e8;
 
     font-size:11px;
-
     font-weight:800;
 
     margin-bottom:8px;
@@ -501,11 +437,9 @@ body{
 
 .input{
     width:100%;
-
     height:49px;
 
     border:1px solid var(--line);
-
     border-radius:13px;
 
     background:rgba(255,255,255,.045);
@@ -584,7 +518,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:12px;
@@ -592,13 +525,11 @@ body{
 
 .section-label span:first-child{
     font-size:13px;
-
     font-weight:800;
 }
 
 .section-label small{
     color:#70697d;
-
     font-size:9px;
 }
 
@@ -710,7 +641,6 @@ body{
         );
 
     font-size:9px;
-
     font-weight:900;
 
     z-index:2;
@@ -722,9 +652,7 @@ body{
 
 .product-icon{
     position:relative;
-
     font-size:21px;
-
     margin-bottom:8px;
 }
 
@@ -736,7 +664,6 @@ body{
     padding-right:17px;
 
     font-size:12px;
-
     font-weight:800;
 
     line-height:1.35;
@@ -750,7 +677,6 @@ body{
     color:#898294;
 
     font-size:9px;
-
     line-height:1.4;
 }
 
@@ -762,7 +688,6 @@ body{
     color:#cbbaff;
 
     font-size:12px;
-
     font-weight:800;
 }
 
@@ -784,9 +709,7 @@ body{
     min-height:66px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     gap:8px;
@@ -819,18 +742,37 @@ body{
         0 0 0 1px rgba(38,183,255,.08);
 }
 
+
+/* =========================================================
+   PAYMENT IMAGE
+========================================================= */
+
 .payment-icon{
-    width:28px;
-    height:28px;
+    width:38px;
+    height:38px;
 
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    border-radius:9px;
+    flex-shrink:0;
+
+    border-radius:10px;
 
     background:rgba(255,255,255,.055);
 
-    font-size:14px;
+    overflow:hidden;
+}
+
+.payment-icon img{
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+    padding:5px;
+
+    display:block;
 }
 
 .payment strong{
@@ -864,42 +806,44 @@ body{
     border-bottom:1px solid var(--line);
 }
 
+
+/* =========================================================
+   GUSION IMAGE
+========================================================= */
+
 .ml-logo{
     width:54px;
     height:54px;
 
     flex-shrink:0;
 
-    display:grid;
-
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     border-radius:16px;
 
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(38,183,255,.7),
-            transparent 35%
-        ),
+    overflow:hidden;
 
-        linear-gradient(
-            145deg,
-            #162a68,
-            #090d25
-        );
+    background:#090d25;
 
     border:1px solid rgba(38,183,255,.3);
 
     box-shadow:
         0 0 25px rgba(38,183,255,.1);
+}
 
-    font-size:25px;
+.ml-logo img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
 }
 
 .game-banner h2{
     font-size:15px;
-
     font-weight:800;
 }
 
@@ -920,7 +864,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:space-between;
 
     gap:15px;
@@ -957,7 +900,6 @@ body{
     display:flex;
 
     align-items:flex-end;
-
     justify-content:space-between;
 
     gap:15px;
@@ -971,13 +913,11 @@ body{
 
 .total span{
     color:#918a9e;
-
     font-size:11px;
 }
 
 .total strong{
     font-size:24px;
-
     font-weight:900;
 
     background:
@@ -1002,13 +942,11 @@ body{
     position:relative;
 
     width:100%;
-
     height:52px;
 
     margin-top:19px;
 
     border:0;
-
     border-radius:14px;
 
     cursor:pointer;
@@ -1111,7 +1049,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     gap:6px;
@@ -1197,7 +1134,6 @@ footer{
 
     .summary{
         position:relative;
-
         top:auto;
     }
 
@@ -1216,7 +1152,6 @@ footer{
 
     .navbar{
         height:64px;
-
         padding:0 4%;
     }
 
@@ -1226,7 +1161,6 @@ footer{
 
     .back{
         padding:8px 11px;
-
         font-size:10px;
     }
 
@@ -1244,7 +1178,6 @@ footer{
 
     .heading h1{
         font-size:35px;
-
         letter-spacing:-1.8px;
     }
 
@@ -1254,7 +1187,6 @@ footer{
 
     .card{
         padding:18px;
-
         border-radius:18px;
     }
 
@@ -1272,7 +1204,6 @@ footer{
 
     .product{
         min-height:120px;
-
         padding:13px 10px;
     }
 
@@ -1285,6 +1216,11 @@ footer{
 
     .payment{
         min-height:62px;
+    }
+
+    .payment-icon{
+        width:34px;
+        height:34px;
     }
 
     .total strong{
@@ -1327,6 +1263,11 @@ footer{
     .payment strong{
         font-size:9px;
     }
+
+    .payment-icon{
+        width:32px;
+        height:32px;
+    }
 }
 
 
@@ -1338,9 +1279,7 @@ footer{
 
     *{
         scroll-behavior:auto!important;
-
         transition:none!important;
-
         animation:none!important;
     }
 }
@@ -1352,10 +1291,6 @@ footer{
 <body>
 
 
-<!-- =====================================================
-     BACKGROUND
-===================================================== -->
-
 <div class="background">
 
     <div class="orb orb1"></div>
@@ -1364,10 +1299,6 @@ footer{
 
 </div>
 
-
-<!-- =====================================================
-     NAVBAR
-===================================================== -->
 
 <nav class="navbar">
 
@@ -1387,10 +1318,6 @@ footer{
 
 </nav>
 
-
-<!-- =====================================================
-     PAGE
-===================================================== -->
 
 <main class="page">
 
@@ -1425,21 +1352,11 @@ footer{
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <div class="topup-layout">
 
 
-<!-- =====================================================
-     LEFT
-===================================================== -->
-
 <section class="card">
 
-
-    <!-- ACCOUNT -->
 
     <div class="card-title">
 
@@ -1514,8 +1431,6 @@ footer{
     <div class="divider"></div>
 
 
-    <!-- PRODUCTS -->
-
     <div class="section-label">
 
         <span>
@@ -1537,8 +1452,6 @@ footer{
 
     <div class="divider"></div>
 
-
-    <!-- PAYMENT -->
 
     <div class="section-label">
 
@@ -1562,7 +1475,10 @@ footer{
         >
 
             <div class="payment-icon">
-                ▦
+                <img
+                    src="qris.png"
+                    alt="QRIS"
+                >
             </div>
 
             <strong>
@@ -1578,7 +1494,10 @@ footer{
         >
 
             <div class="payment-icon">
-                💙
+                <img
+                    src="dana.png"
+                    alt="DANA"
+                >
             </div>
 
             <strong>
@@ -1594,7 +1513,10 @@ footer{
         >
 
             <div class="payment-icon">
-                🟣
+                <img
+                    src="ovo.png"
+                    alt="OVO"
+                >
             </div>
 
             <strong>
@@ -1610,7 +1532,10 @@ footer{
         >
 
             <div class="payment-icon">
-                🟦
+                <img
+                    src="gopay.png"
+                    alt="GoPay"
+                >
             </div>
 
             <strong>
@@ -1626,7 +1551,10 @@ footer{
         >
 
             <div class="payment-icon">
-                🟠
+                <img
+                    src="shopeepay.png"
+                    alt="ShopeePay"
+                >
             </div>
 
             <strong>
@@ -1642,7 +1570,10 @@ footer{
         >
 
             <div class="payment-icon">
-                🏦
+                <img
+                    src="va.png"
+                    alt="Virtual Account"
+                >
             </div>
 
             <strong>
@@ -1658,17 +1589,18 @@ footer{
 </section>
 
 
-<!-- =====================================================
-     SUMMARY
-===================================================== -->
-
 <aside class="card summary">
 
 
     <div class="game-banner">
 
         <div class="ml-logo">
-            ⚔️
+
+            <img
+                src="gusion.jfif"
+                alt="Gusion Mobile Legends"
+            >
+
         </div>
 
         <div>
@@ -1804,6 +1736,7 @@ footer{
 
 
 <script>
+
 
 /* =========================================================
    BACKEND MIDUUN
