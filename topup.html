@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -18,15 +19,11 @@
 
 :root {
     --bg: #070812;
-    --bg2: #0c1020;
     --card: rgba(17, 20, 40, .72);
-    --card2: rgba(22, 25, 49, .88);
     --border: rgba(255,255,255,.09);
     --purple: #8b5cf6;
-    --purple2: #a855f7;
     --blue: #3b82f6;
     --pink: #ec4899;
-    --green: #22c55e;
     --text: #fff;
     --muted: #9ca3af;
 }
@@ -60,7 +57,10 @@ body::before {
     margin: auto;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+========================= */
+
 .navbar {
     position: sticky;
     top: 0;
@@ -96,14 +96,12 @@ body::before {
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    transition: .2s;
 }
 
-.nav-link:hover {
-    color: white;
-}
+/* =========================
+   HERO
+========================= */
 
-/* HERO */
 .hero {
     text-align: center;
     padding: 55px 0 30px;
@@ -144,7 +142,10 @@ body::before {
     font-size: 14px;
 }
 
-/* MAIN GRID */
+/* =========================
+   MAIN
+========================= */
+
 .main-grid {
     display: grid;
     grid-template-columns: 360px 1fr;
@@ -160,7 +161,10 @@ body::before {
     box-shadow: 0 20px 60px rgba(0,0,0,.22);
 }
 
-/* LEFT */
+/* =========================
+   LEFT
+========================= */
+
 .left-card {
     padding: 23px;
     height: fit-content;
@@ -205,50 +209,6 @@ input:focus {
     box-shadow: 0 0 0 3px rgba(139,92,246,.1);
 }
 
-.nickname-btn {
-    width: 100%;
-    border: 1px solid rgba(139,92,246,.35);
-    background: rgba(139,92,246,.12);
-    color: #c4b5fd;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.nickname-btn:hover {
-    background: rgba(139,92,246,.2);
-}
-
-.nickname-btn:disabled {
-    opacity: .55;
-    cursor: not-allowed;
-}
-
-.nickname-result {
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 12px;
-    display: none;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.nickname-result.success {
-    display: block;
-    color: #86efac;
-    background: rgba(34,197,94,.08);
-    border: 1px solid rgba(34,197,94,.2);
-}
-
-.nickname-result.error {
-    display: block;
-    color: #fca5a5;
-    background: rgba(239,68,68,.08);
-    border: 1px solid rgba(239,68,68,.2);
-}
-
 .info-box {
     margin-top: 18px;
     padding: 14px;
@@ -260,7 +220,10 @@ input:focus {
     line-height: 1.6;
 }
 
-/* RIGHT */
+/* =========================
+   RIGHT
+========================= */
+
 .right-card {
     padding: 23px;
 }
@@ -308,8 +271,9 @@ input:focus {
     border-color: var(--purple);
     background:
         linear-gradient(145deg, rgba(139,92,246,.17), rgba(59,130,246,.06));
-    box-shadow: 0 0 0 1px rgba(139,92,246,.15),
-                0 12px 30px rgba(139,92,246,.1);
+    box-shadow:
+        0 0 0 1px rgba(139,92,246,.15),
+        0 12px 30px rgba(139,92,246,.1);
 }
 
 .product-check {
@@ -362,7 +326,10 @@ input:focus {
     margin-top: 10px;
 }
 
-/* SUMMARY */
+/* =========================
+   SUMMARY
+========================= */
+
 .summary {
     margin-top: 20px;
     padding: 19px;
@@ -390,6 +357,7 @@ input:focus {
 
 .row strong {
     text-align: right;
+    word-break: break-word;
 }
 
 .total {
@@ -403,7 +371,10 @@ input:focus {
     font-size: 18px;
 }
 
-/* PAYMENT */
+/* =========================
+   PAYMENT
+========================= */
+
 .payment-title {
     margin-top: 20px;
     margin-bottom: 12px;
@@ -426,6 +397,11 @@ input:focus {
     color: #d1d5db;
     background: rgba(255,255,255,.025);
     cursor: pointer;
+    transition: .2s;
+}
+
+.payment:hover {
+    border-color: rgba(139,92,246,.5);
 }
 
 .payment.active {
@@ -439,7 +415,10 @@ input:focus {
     margin-bottom: 5px;
 }
 
-/* ORDER */
+/* =========================
+   ORDER
+========================= */
+
 .order-btn {
     width: 100%;
     margin-top: 18px;
@@ -475,7 +454,10 @@ input:focus {
     margin-top: 10px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
+
 footer {
     text-align: center;
     padding: 30px 15px 45px;
@@ -483,7 +465,10 @@ footer {
     font-size: 11px;
 }
 
-/* TOAST */
+/* =========================
+   TOAST
+========================= */
+
 .toast {
     position: fixed;
     left: 50%;
@@ -507,8 +492,12 @@ footer {
     opacity: 1;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media(max-width: 850px) {
+
     .main-grid {
         grid-template-columns: 1fr;
     }
@@ -523,6 +512,7 @@ footer {
 }
 
 @media(max-width: 520px) {
+
     .container {
         width: min(100% - 20px, 1180px);
     }
@@ -577,6 +567,7 @@ footer {
 }
 
 @media(max-width: 350px) {
+
     .products {
         grid-template-columns: 1fr;
     }
@@ -586,19 +577,33 @@ footer {
 
 <body>
 
-<!-- NAVBAR -->
+<!-- =========================
+     NAVBAR
+========================= -->
+
 <nav class="navbar">
+
     <div class="container nav-inner">
-        <a href="#" class="logo">Mid<span>uun</span></a>
+
+        <a href="#" class="logo">
+            Mid<span>uun</span>
+        </a>
 
         <a href="#" class="nav-link">
             Mobile Legends
         </a>
+
     </div>
+
 </nav>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
+
     <div class="container">
 
         <div class="badge">
@@ -610,28 +615,40 @@ footer {
         </h1>
 
         <p>
-            Masukkan User ID dan Zone ID kamu, pilih jumlah Diamonds,
+            Masukkan User ID dan Zone ID kamu,
+            pilih jumlah Diamonds dan metode pembayaran,
             lalu lanjutkan pesanan melalui Miduun.
         </p>
 
     </div>
+
 </section>
 
-<!-- MAIN -->
+
+<!-- =========================
+     MAIN
+========================= -->
+
 <main class="container main-grid">
 
-    <!-- LEFT -->
+
+    <!-- =====================
+         DATA AKUN
+    ====================== -->
+
     <section class="card left-card">
 
         <div class="section-title">
             🎮 Data Akun
         </div>
 
+
         <label class="label" for="userId">
             User ID
         </label>
 
         <div class="input-wrap">
+
             <input
                 type="text"
                 id="userId"
@@ -639,13 +656,16 @@ footer {
                 inputmode="numeric"
                 autocomplete="off"
             >
+
         </div>
+
 
         <label class="label" for="zoneId">
             Zone ID
         </label>
 
         <div class="input-wrap">
+
             <input
                 type="text"
                 id="zoneId"
@@ -653,152 +673,259 @@ footer {
                 inputmode="numeric"
                 autocomplete="off"
             >
+
         </div>
 
-        <button
-            type="button"
-            class="nickname-btn"
-            id="nicknameButton"
-            onclick="cekNickname()"
-        >
-            🔍 Cek Nickname
-        </button>
-
-        <div
-            id="nicknameResult"
-            class="nickname-result"
-        ></div>
 
         <div class="info-box">
-            <strong style="color:#ddd;">Cara menemukan User ID:</strong><br>
-            Buka profil Mobile Legends kamu.
-            User ID dan Zone ID dapat dilihat pada bagian profil akun.
+
+            <strong style="color:#ddd;">
+                📌 Informasi
+            </strong>
+
+            <br>
+
+            Pastikan User ID dan Zone ID
+            Mobile Legends yang kamu masukkan
+            sudah benar sebelum melakukan order.
+
+            <br><br>
+
+            User ID dan Zone ID dapat dilihat
+            pada bagian profil akun Mobile Legends.
+
         </div>
 
     </section>
 
 
-    <!-- RIGHT -->
+    <!-- =====================
+         PRODUK + PEMBAYARAN
+    ====================== -->
+
     <section class="card right-card">
 
+
         <div class="products-title">
-            <h2>💎 Pilih Produk</h2>
-            <span>Harga Miduun</span>
+
+            <h2>
+                💎 Pilih Produk
+            </h2>
+
+            <span>
+                Harga Miduun
+            </span>
+
         </div>
 
-        <div class="products" id="productsContainer"></div>
+
+        <div
+            class="products"
+            id="productsContainer"
+        ></div>
 
 
-        <!-- SUMMARY -->
+        <!-- =================
+             SUMMARY
+        ================== -->
+
         <div class="summary">
 
-            <h3>📋 Ringkasan Pesanan</h3>
+            <h3>
+                📋 Ringkasan Pesanan
+            </h3>
+
 
             <div class="row">
-                <span class="muted">Nickname</span>
-                <strong id="summaryNickname">-</strong>
+
+                <span class="muted">
+                    User ID
+                </span>
+
+                <strong id="summaryUser">
+                    -
+                </strong>
+
             </div>
 
-            <div class="row">
-                <span class="muted">User ID</span>
-                <strong id="summaryUser">-</strong>
-            </div>
 
             <div class="row">
-                <span class="muted">Zone ID</span>
-                <strong id="summaryZone">-</strong>
+
+                <span class="muted">
+                    Zone ID
+                </span>
+
+                <strong id="summaryZone">
+                    -
+                </strong>
+
             </div>
 
+
             <div class="row">
-                <span class="muted">Produk</span>
-                <strong id="summaryProduct">-</strong>
+
+                <span class="muted">
+                    Produk
+                </span>
+
+                <strong id="summaryProduct">
+                    -
+                </strong>
+
             </div>
+
+
+            <div class="row">
+
+                <span class="muted">
+                    Pembayaran
+                </span>
+
+                <strong id="summaryPayment">
+                    QRIS
+                </strong>
+
+            </div>
+
 
             <div class="row total">
-                <span class="muted">Total</span>
-                <strong id="summaryPrice">Rp0</strong>
+
+                <span class="muted">
+                    Total
+                </span>
+
+                <strong id="summaryPrice">
+                    Rp0
+                </strong>
+
             </div>
 
         </div>
 
 
-        <!-- PAYMENT -->
+        <!-- =================
+             PAYMENT
+        ================== -->
+
         <div class="payment-title">
             💳 Metode Pembayaran
         </div>
 
+
         <div class="payment-grid">
+
 
             <div
                 class="payment active"
                 data-payment="QRIS"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">▦</div>
+
+                <div class="payment-icon">
+                    ▦
+                </div>
+
                 QRIS
+
             </div>
+
 
             <div
                 class="payment"
                 data-payment="DANA"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">💙</div>
+
+                <div class="payment-icon">
+                    💙
+                </div>
+
                 DANA
+
             </div>
+
 
             <div
                 class="payment"
                 data-payment="OVO"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">🟣</div>
+
+                <div class="payment-icon">
+                    🟣
+                </div>
+
                 OVO
+
             </div>
+
 
             <div
                 class="payment"
                 data-payment="GoPay"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">🟦</div>
+
+                <div class="payment-icon">
+                    🟦
+                </div>
+
                 GoPay
+
             </div>
+
 
             <div
                 class="payment"
                 data-payment="ShopeePay"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">🟠</div>
+
+                <div class="payment-icon">
+                    🟠
+                </div>
+
                 ShopeePay
+
             </div>
+
 
             <div
                 class="payment"
                 data-payment="VA"
                 onclick="selectPayment(this)"
             >
-                <div class="payment-icon">🏦</div>
+
+                <div class="payment-icon">
+                    🏦
+                </div>
+
                 Virtual Account
+
             </div>
 
         </div>
 
 
-        <!-- ORDER BUTTON -->
+        <!-- =================
+             ORDER BUTTON
+        ================== -->
+
         <button
             type="button"
             class="order-btn"
             id="orderButton"
             onclick="prosesOrder()"
         >
-            ⚡ TES ORDER VIPAYMENT
+            ⚡ ORDER SEKARANG
         </button>
 
+
         <div class="test-note">
-            Mode pengujian. Tombol ini langsung mengirim request
-            order ke VIPayment tanpa payment gateway.
+
+            Pesanan akan dikirim ke server Miduun
+            untuk diproses.
+
         </div>
 
     </section>
@@ -807,11 +934,16 @@ footer {
 
 
 <footer>
+
     © 2026 Miduun — Top Up Mobile Legends
+
 </footer>
 
 
-<div class="toast" id="toast"></div>
+<div
+    class="toast"
+    id="toast"
+></div>
 
 
 <script>
@@ -819,9 +951,6 @@ footer {
 /* =====================================================
    KONFIGURASI BACKEND
 ===================================================== */
-
-const NICKNAME_API =
-    "https://miduun-api.vercel.app/api/nickname";
 
 const ORDER_API =
     "https://miduun-api.vercel.app/api/order";
@@ -940,7 +1069,6 @@ const products = [
 
 let selectedProduct = null;
 let selectedPayment = "QRIS";
-let nickname = "";
 
 
 /* =====================================================
@@ -968,49 +1096,62 @@ function formatRupiah(number) {
 function renderProducts() {
 
     const container =
-        document.getElementById("productsContainer");
+        document.getElementById(
+            "productsContainer"
+        );
 
     container.innerHTML = "";
 
-    products.forEach((product, index) => {
+    products.forEach(
+        (product, index) => {
 
-        const element =
-            document.createElement("div");
+            const element =
+                document.createElement(
+                    "div"
+                );
 
-        element.className = "product";
+            element.className =
+                "product";
 
-        element.innerHTML = `
+            element.innerHTML = `
 
-            <div class="product-check">
-                ✓
-            </div>
+                <div class="product-check">
+                    ✓
+                </div>
 
-            <div class="product-icon">
-                💎
-            </div>
+                <div class="product-icon">
+                    💎
+                </div>
 
-            <div class="product-name">
-                ${product.name}
-            </div>
+                <div class="product-name">
+                    ${product.name}
+                </div>
 
-            <div class="product-desc">
-                ${product.desc}
-            </div>
+                <div class="product-desc">
+                    ${product.desc}
+                </div>
 
-            <div class="product-price">
-                ${formatRupiah(product.price)}
-            </div>
+                <div class="product-price">
+                    ${formatRupiah(product.price)}
+                </div>
 
-        `;
+            `;
 
-        element.addEventListener(
-            "click",
-            () => selectProduct(index, element)
-        );
+            element.addEventListener(
+                "click",
+                () =>
+                    selectProduct(
+                        index,
+                        element
+                    )
+            );
 
-        container.appendChild(element);
+            container.appendChild(
+                element
+            );
 
-    });
+        }
+    );
 
 }
 
@@ -1019,22 +1160,33 @@ function renderProducts() {
    PILIH PRODUK
 ===================================================== */
 
-function selectProduct(index, element) {
+function selectProduct(
+    index,
+    element
+) {
 
-    selectedProduct = products[index];
+    selectedProduct =
+        products[index];
 
     document
         .querySelectorAll(".product")
         .forEach(item => {
-            item.classList.remove("active");
+
+            item.classList.remove(
+                "active"
+            );
+
         });
 
-    element.classList.add("active");
+    element.classList.add(
+        "active"
+    );
 
     updateSummary();
 
     showToast(
-        selectedProduct.name + " dipilih"
+        selectedProduct.name +
+        " dipilih"
     );
 
 }
@@ -1049,161 +1201,29 @@ function selectPayment(element) {
     document
         .querySelectorAll(".payment")
         .forEach(item => {
-            item.classList.remove("active");
+
+            item.classList.remove(
+                "active"
+            );
+
         });
 
-    element.classList.add("active");
+    element.classList.add(
+        "active"
+    );
 
     selectedPayment =
         element.dataset.payment;
 
+    document.getElementById(
+        "summaryPayment"
+    ).innerText =
+        selectedPayment;
+
     showToast(
-        "Pembayaran: " + selectedPayment
+        "Pembayaran: " +
+        selectedPayment
     );
-
-}
-
-
-/* =====================================================
-   CEK NICKNAME
-===================================================== */
-
-async function cekNickname() {
-
-    const userId =
-        document
-            .getElementById("userId")
-            .value
-            .trim();
-
-    const zoneId =
-        document
-            .getElementById("zoneId")
-            .value
-            .trim();
-
-    const button =
-        document.getElementById(
-            "nicknameButton"
-        );
-
-    const result =
-        document.getElementById(
-            "nicknameResult"
-        );
-
-
-    if (!userId || !zoneId) {
-
-        result.className =
-            "nickname-result error";
-
-        result.innerText =
-            "Masukkan User ID dan Zone ID terlebih dahulu.";
-
-        return;
-    }
-
-
-    try {
-
-        button.disabled = true;
-
-        button.innerText =
-            "⏳ Mengecek...";
-
-        result.className =
-            "nickname-result";
-
-        result.innerText = "";
-
-
-        const response =
-            await fetch(
-                NICKNAME_API,
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        user_id: userId,
-                        zone_id: zoneId,
-                        code: "mobile-legends"
-                    })
-                }
-            );
-
-
-        const data =
-            await response.json();
-
-
-        console.log(
-            "Nickname Response:",
-            data
-        );
-
-
-        if (data.result === true) {
-
-            nickname =
-                data.data || "-";
-
-            result.className =
-                "nickname-result success";
-
-            result.innerHTML =
-                "✓ Nickname: <strong>" +
-                escapeHtml(nickname) +
-                "</strong>";
-
-            updateSummary();
-
-            showToast(
-                "Nickname berhasil ditemukan!"
-            );
-
-        } else {
-
-            nickname = "";
-
-            result.className =
-                "nickname-result error";
-
-            result.innerText =
-                data.message ||
-                "Nickname tidak ditemukan.";
-
-            updateSummary();
-
-        }
-
-
-    } catch (error) {
-
-        console.error(
-            "NICKNAME ERROR:",
-            error
-        );
-
-        result.className =
-            "nickname-result error";
-
-        result.innerText =
-            "Gagal terhubung ke server nickname.";
-
-    } finally {
-
-        button.disabled = false;
-
-        button.innerText =
-            "🔍 Cek Nickname";
-
-    }
 
 }
 
@@ -1228,12 +1248,6 @@ function updateSummary() {
 
 
     document.getElementById(
-        "summaryNickname"
-    ).innerText =
-        nickname || "-";
-
-
-    document.getElementById(
         "summaryUser"
     ).innerText =
         userId || "-";
@@ -1254,12 +1268,18 @@ function updateSummary() {
 
 
     document.getElementById(
+        "summaryPayment"
+    ).innerText =
+        selectedPayment;
+
+
+    document.getElementById(
         "summaryPrice"
     ).innerText =
         selectedProduct
             ? formatRupiah(
                 selectedProduct.price
-              )
+            )
             : "Rp0";
 
 }
@@ -1320,6 +1340,7 @@ async function prosesOrder() {
         );
 
         return;
+
     }
 
 
@@ -1330,6 +1351,7 @@ async function prosesOrder() {
         );
 
         return;
+
     }
 
 
@@ -1340,6 +1362,7 @@ async function prosesOrder() {
         );
 
         return;
+
     }
 
 
@@ -1349,12 +1372,10 @@ async function prosesOrder() {
 
     const confirmOrder =
         confirm(
-            "TES ORDER VIPAYMENT\n\n" +
 
-            "Nickname: " +
-            (nickname || "-") +
+            "KONFIRMASI ORDER\n\n" +
 
-            "\nUser ID: " +
+            "User ID: " +
             userId +
 
             "\nZone ID: " +
@@ -1371,7 +1392,8 @@ async function prosesOrder() {
             "\nPembayaran: " +
             selectedPayment +
 
-            "\n\nLanjut kirim order?"
+            "\n\nLanjutkan order?"
+
         );
 
 
@@ -1379,6 +1401,10 @@ async function prosesOrder() {
         return;
     }
 
+
+    /* =========================
+       KIRIM ORDER
+    ========================= */
 
     try {
 
@@ -1394,14 +1420,12 @@ async function prosesOrder() {
                 user_id: userId,
                 zone_id: zoneId,
                 service:
-                    selectedProduct.service
+                    selectedProduct.service,
+                payment:
+                    selectedPayment
             }
         );
 
-
-        /* =========================
-           REQUEST KE VERCEL
-        ========================= */
 
         const response =
             await fetch(
@@ -1416,12 +1440,17 @@ async function prosesOrder() {
 
                     body: JSON.stringify({
 
-                        user_id: userId,
+                        user_id:
+                            userId,
 
-                        zone_id: zoneId,
+                        zone_id:
+                            zoneId,
 
                         service:
-                            selectedProduct.service
+                            selectedProduct.service,
+
+                        payment:
+                            selectedPayment
 
                     })
                 }
@@ -1429,7 +1458,7 @@ async function prosesOrder() {
 
 
         /* =========================
-           CEK RESPONSE
+           RESPONSE
         ========================= */
 
         const text =
@@ -1440,6 +1469,7 @@ async function prosesOrder() {
             "HTTP Status:",
             response.status
         );
+
 
         console.log(
             "Raw Response:",
@@ -1457,14 +1487,21 @@ async function prosesOrder() {
         } catch (error) {
 
             alert(
-                "Server mengembalikan response yang tidak valid.\n\n" +
+
+                "Server mengembalikan " +
+                "response yang tidak valid.\n\n" +
+
                 "HTTP: " +
                 response.status +
+
                 "\n\n" +
+
                 text
+
             );
 
             return;
+
         }
 
 
@@ -1475,7 +1512,7 @@ async function prosesOrder() {
 
 
         /* =========================
-           ORDER BERHASIL
+           BERHASIL
         ========================= */
 
         if (
@@ -1483,6 +1520,7 @@ async function prosesOrder() {
         ) {
 
             alert(
+
                 "✅ ORDER BERHASIL!\n\n" +
 
                 "Produk: " +
@@ -1494,12 +1532,16 @@ async function prosesOrder() {
                 "\nZone ID: " +
                 zoneId +
 
+                "\nPembayaran: " +
+                selectedPayment +
+
                 "\n\n" +
 
                 (
                     data.message ||
                     "Pesanan berhasil dikirim."
                 )
+
             );
 
 
@@ -1509,19 +1551,22 @@ async function prosesOrder() {
 
         }
 
+
         /* =========================
-           ORDER GAGAL
+           GAGAL
         ========================= */
 
         else {
 
             alert(
+
                 "❌ ORDER GAGAL\n\n" +
 
                 (
                     data.message ||
                     "Pesanan ditolak oleh server."
                 )
+
             );
 
 
@@ -1541,9 +1586,13 @@ async function prosesOrder() {
 
 
         alert(
-            "❌ GAGAL TERHUBUNG KE SERVER ORDER\n\n" +
+
+            "❌ GAGAL TERHUBUNG " +
+            "KE SERVER ORDER\n\n" +
+
             "Detail:\n" +
             error.message
+
         );
 
 
@@ -1552,7 +1601,7 @@ async function prosesOrder() {
         button.disabled = false;
 
         button.innerText =
-            "⚡ TES ORDER VIPAYMENT";
+            "⚡ ORDER SEKARANG";
 
     }
 
@@ -1570,39 +1619,24 @@ function showToast(message) {
             "toast"
         );
 
-    toast.innerText = message;
+    toast.innerText =
+        message;
 
-    toast.classList.add("show");
-
-
-    setTimeout(() => {
-
-        toast.classList.remove(
-            "show"
-        );
-
-    }, 2500);
-
-}
+    toast.classList.add(
+        "show"
+    );
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+    setTimeout(
+        () => {
 
-function escapeHtml(value) {
+            toast.classList.remove(
+                "show"
+            );
 
-    return String(value)
-
-        .replaceAll("&", "&amp;")
-
-        .replaceAll("<", "&lt;")
-
-        .replaceAll(">", "&gt;")
-
-        .replaceAll('"', "&quot;")
-
-        .replaceAll("'", "&#039;");
+        },
+        2500
+    );
 
 }
 
@@ -1619,3 +1653,4 @@ updateSummary();
 
 </body>
 </html>
+```
