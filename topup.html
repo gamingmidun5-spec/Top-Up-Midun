@@ -395,7 +395,16 @@ body{
 
     border:1px solid rgba(155,77,255,.22);
 
-    font-size:19px;
+    overflow:hidden;
+}
+
+/* LOGO MOBILE LEGENDS */
+.card-icon img{
+    width:30px;
+    height:30px;
+
+    object-fit:contain;
+    display:block;
 }
 
 .card-title h2{
@@ -723,92 +732,166 @@ body{
 /* =========================================================
    MIDUUN SNAP EMBED POPUP
 ========================================================= */
+
 .snap-overlay{
     position:fixed;
     inset:0;
     z-index:9999;
+
     display:none;
+
     align-items:center;
     justify-content:center;
+
     padding:18px;
+
     background:rgba(0,0,0,.72);
+
     backdrop-filter:blur(10px);
     -webkit-backdrop-filter:blur(10px);
 }
-.snap-overlay.show{display:flex;}
+
+.snap-overlay.show{
+    display:flex;
+}
+
 .snap-popup{
     position:relative;
+
     width:min(460px,100%);
     min-width:320px;
+
     height:min(680px,88vh);
     min-height:560px;
+
     overflow:hidden;
+
     border:1px solid rgba(155,77,255,.45);
+
     border-radius:22px;
+
     background:#05030b;
-    box-shadow:0 25px 90px rgba(0,0,0,.65),0 0 55px rgba(155,77,255,.16);
+
+    box-shadow:
+        0 25px 90px rgba(0,0,0,.65),
+        0 0 55px rgba(155,77,255,.16);
 }
+
 .snap-popup-head{
     height:58px;
+
     display:flex;
+
     align-items:center;
     justify-content:space-between;
+
     padding:0 14px 0 18px;
+
     border-bottom:1px solid rgba(255,255,255,.08);
-    background:linear-gradient(90deg,rgba(5,3,11,.98),rgba(22,10,38,.98));
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5,3,11,.98),
+            rgba(22,10,38,.98)
+        );
 }
+
 .snap-popup-brand{
     display:flex;
+
     align-items:center;
+
     gap:9px;
+
     font-size:14px;
     font-weight:900;
+
     letter-spacing:.5px;
 }
-.snap-popup-brand span{color:#d9c8ff;}
-.snap-popup-brand b{color:#fff;}
-.snap-popup-close{
-    width:34px;height:34px;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:11px;
-    background:rgba(255,255,255,.055);
+
+.snap-popup-brand span{
+    color:#d9c8ff;
+}
+
+.snap-popup-brand b{
     color:#fff;
+}
+
+.snap-popup-close{
+    width:34px;
+    height:34px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:11px;
+
+    background:rgba(255,255,255,.055);
+
+    color:#fff;
+
     cursor:pointer;
+
     font-size:18px;
     line-height:1;
 }
+
 .snap-popup-close:hover{
     background:rgba(155,77,255,.18);
     border-color:rgba(155,77,255,.45);
 }
+
 #snap-container{
     width:100%;
+
     height:calc(100% - 58px);
+
     min-height:502px;
+
     overflow:auto;
+
     background:#05030b;
 }
+
 @media(max-width:520px){
-    .snap-overlay{padding:10px;}
+
+    .snap-overlay{
+        padding:10px;
+    }
+
     .snap-popup{
         width:94vw;
+
         height:min(680px,88vh);
+
         border-radius:20px;
     }
-    .snap-popup-head{height:54px;}
+
+    .snap-popup-head{
+        height:54px;
+    }
+
     #snap-container{
         height:calc(100% - 54px);
+
         min-height:506px;
     }
 }
+
 @media(max-height:620px){
+
     .snap-overlay{
         align-items:flex-start;
+
         padding-top:8px;
         padding-bottom:8px;
     }
-    .snap-popup{height:calc(100vh - 16px);}
+
+    .snap-popup{
+        height:calc(100vh - 16px);
+    }
 }
+
 
 /* =========================================================
    SUMMARY
@@ -1255,27 +1338,17 @@ footer{
         transition:none!important;
         animation:none!important;
     }
-.card-icon{
-    width:52px;
-    height:52px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-    overflow:hidden;
-}
 
-.card-icon img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    display:block;
 }
 
 </style>
-<script type="text/javascript"
+
+
+<script
+    type="text/javascript"
     src="https://app.midtrans.com/snap/snap.js"
-    data-client-key="Mid-client-_vWigHvEyU3P9izT"></script>
+    data-client-key="Mid-client-_vWigHvEyU3P9izT">
+</script>
 
 </head>
 
@@ -1353,8 +1426,13 @@ footer{
     <div class="card-title">
 
         <div class="card-icon">
-    <img src="130513-removebg-preview.png" alt="Mobile Legends">
-</div>
+
+            <img
+                src="130513-removebg-preview.png"
+                alt="Mobile Legends"
+            >
+
+        </div>
 
         <div>
 
@@ -1444,21 +1522,30 @@ footer{
 
     <div class="divider"></div>
 
+
     <div class="section-label">
+
         <span>
             💜 MIDUUN CHECKOUT
         </span>
 
-        <small>
-            
-        </small>
+        <small></small>
+
     </div>
 
+
     <div class="snap-note">
-        <strong>🔒 Pembayaran Aman • MIDUUN × Midtrans</strong>
-        Klik <b>LANJUT KE PEMBAYARAN</b> untuk membuka checkout
-        Midtrans sebagai popup di dalam halaman MIDUUN.
-        Pilihan pembayaran akan tersedia langsung di checkout.
+
+        <strong>
+            🔒 Pembayaran Aman • MIDUUN × Midtrans
+        </strong>
+
+        Klik <b>LANJUT KE PEMBAYARAN</b>
+        untuk membuka checkout Midtrans sebagai popup
+        di dalam halaman MIDUUN.
+        Pilihan pembayaran akan tersedia langsung
+        di checkout.
+
     </div>
 
 </section>
@@ -1539,7 +1626,7 @@ footer{
         </span>
 
         <strong id="summaryPayment">
-           
+            Midtrans SNAP
         </strong>
 
     </div>
@@ -1573,10 +1660,10 @@ footer{
 
         <span>
 
-            Pastikan Data Yang Dimasukan Benar
-            Setelah pembayaran terkonfirmasi, pesanan
-            akan diproses otomatis. Pastikan User ID
-            dan Zone ID sudah benar.
+            Pastikan Data Yang Dimasukan Benar.
+            Setelah pembayaran terkonfirmasi,
+            pesanan akan diproses otomatis.
+            Pastikan User ID dan Zone ID sudah benar.
 
         </span>
 
@@ -1979,18 +2066,21 @@ async function prosesOrder(){
     try{
 
         orderBtn.disabled = true;
+
         orderBtn.textContent =
             "⏳ Menyiapkan Pembayaran...";
 
-        // Minta Snap Token dari backend Miduun.
+
         const response =
             await fetch(
                 PAYMENT_API,
                 {
                     method:"POST",
+
                     headers:{
                         "Content-Type":"application/json"
                     },
+
                     body:JSON.stringify({
                         user_id:id,
                         zone_id:zone,
@@ -2001,25 +2091,39 @@ async function prosesOrder(){
                 }
             );
 
+
         const text =
             await response.text();
 
+
         let data;
 
+
         try{
-            data = JSON.parse(text);
+
+            data =
+                JSON.parse(text);
+
         }catch(error){
+
             throw new Error(
                 "Server mengembalikan response yang tidak valid."
             );
+
         }
+
 
         console.log(
             "RESPONSE:",
             data
         );
 
-        if(!response.ok || data.result !== true || !data.token){
+
+        if(
+            !response.ok ||
+            data.result !== true ||
+            !data.token
+        ){
 
             throw new Error(
                 data.message ||
@@ -2028,20 +2132,49 @@ async function prosesOrder(){
 
         }
 
-        // Buka SNAP sebagai popup custom MIDUUN.
-        const snapOverlay = document.getElementById("snapOverlay");
-        const snapContainer = document.getElementById("snap-container");
+
+        /* =====================================================
+           SNAP POPUP
+        ===================================================== */
+
+        const snapOverlay =
+            document.getElementById(
+                "snapOverlay"
+            );
+
+        const snapContainer =
+            document.getElementById(
+                "snap-container"
+            );
+
 
         snapContainer.innerHTML = "";
-        snapOverlay.classList.add("show");
-        snapOverlay.setAttribute("aria-hidden", "false");
-        document.body.style.overflow = "hidden";
+
+
+        snapOverlay.classList.add(
+            "show"
+        );
+
+
+        snapOverlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        document.body.style.overflow =
+            "hidden";
+
 
         window.snap.embed(
             data.token,
             {
-                embedId: "snap-container",
-                language:"id",
+                embedId:
+                    "snap-container",
+
+                language:
+                    "id",
+
 
                 onSuccess:function(result){
 
@@ -2050,18 +2183,19 @@ async function prosesOrder(){
                         result
                     );
 
+
                     showToast(
                         "✅ Pembayaran berhasil diterima."
                     );
 
-                    // Penting: pengiriman diamond nantinya dilakukan
-                    // oleh payment-callback setelah Midtrans mengonfirmasi
-                    // transaksi, bukan hanya berdasarkan callback browser.
+
                     showToast(
-                        "✅ Pembayaran berhasil • Order " + data.order_id
+                        "✅ Pembayaran berhasil • Order " +
+                        data.order_id
                     );
 
                 },
+
 
                 onPending:function(result){
 
@@ -2070,11 +2204,14 @@ async function prosesOrder(){
                         result
                     );
 
+
                     showToast(
-                        "⏳ Pembayaran masih menunggu • Order " + data.order_id
+                        "⏳ Pembayaran masih menunggu • Order " +
+                        data.order_id
                     );
 
                 },
+
 
                 onError:function(result){
 
@@ -2083,23 +2220,27 @@ async function prosesOrder(){
                         result
                     );
 
+
                     showToast(
                         "❌ Pembayaran gagal. Silakan coba lagi."
                     );
 
                 },
 
-               onClose:function(){
 
-    closeSnapPopup();
+                onClose:function(){
 
-    showToast(
-        "Checkout ditutup."
-    );
+                    closeSnapPopup();
 
-}
+                    showToast(
+                        "Checkout ditutup."
+                    );
+
+                }
+
             }
         );
+
 
     }catch(error){
 
@@ -2108,13 +2249,18 @@ async function prosesOrder(){
             error
         );
 
+
         showToast(
-            "❌ Gagal membuat pembayaran: " + error.message
+            "❌ Gagal membuat pembayaran: " +
+            error.message
         );
+
 
     }finally{
 
-        orderBtn.disabled = false;
+        orderBtn.disabled =
+            false;
+
         orderBtn.innerHTML =
             "⚡ LANJUT KE PEMBAYARAN";
 
@@ -2134,8 +2280,10 @@ function showToast(message){
             "toast"
         );
 
+
     toast.textContent =
         message;
+
 
     toast.classList.add(
         "show"
@@ -2172,20 +2320,24 @@ updateSummary();
 function closeSnapPopup(){
 
     const overlay =
-        document.getElementById("snapOverlay");
+        document.getElementById(
+            "snapOverlay"
+        );
 
-    if(!overlay) return;
 
-    /*
-       Tutup SNAP jika tersedia
-    */
+    if(!overlay)
+        return;
+
+
     if(
         window.snap &&
         typeof window.snap.hide === "function"
     ){
 
         try{
+
             window.snap.hide();
+
         }catch(e){
 
             console.warn(
@@ -2197,37 +2349,40 @@ function closeSnapPopup(){
 
     }
 
-    /*
-       Tutup popup MIDUUN
-    */
-    overlay.classList.remove("show");
+
+    overlay.classList.remove(
+        "show"
+    );
+
 
     overlay.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.style.overflow = "";
 
-    /*
-       Bersihkan isi SNAP
-       supaya saat dibuka lagi
-       tidak menumpuk
-    */
+    document.body.style.overflow =
+        "";
+
+
     const container =
         document.getElementById(
             "snap-container"
         );
 
+
     if(container){
-        container.innerHTML = "";
+
+        container.innerHTML =
+            "";
+
     }
 
 }
 
 
 /* =========================================================
-   PASANG EVENT SETELAH HTML SELESAI DIMUAT
+   EVENT POPUP
 ========================================================= */
 
 document.addEventListener(
@@ -2239,15 +2394,13 @@ document.addEventListener(
                 "snapPopupClose"
             );
 
+
         const overlay =
             document.getElementById(
                 "snapOverlay"
             );
 
 
-        /*
-           Tombol X
-        */
         if(closeButton){
 
             closeButton.addEventListener(
@@ -2262,16 +2415,15 @@ document.addEventListener(
         }
 
 
-        /*
-           Klik area gelap di luar popup
-        */
         if(overlay){
 
             overlay.addEventListener(
                 "click",
                 function(e){
 
-                    if(e.target === overlay){
+                    if(
+                        e.target === overlay
+                    ){
 
                         closeSnapPopup();
 
@@ -2283,14 +2435,13 @@ document.addEventListener(
         }
 
 
-        /*
-           Tombol ESC
-        */
         document.addEventListener(
             "keydown",
             function(e){
 
-                if(e.key === "Escape"){
+                if(
+                    e.key === "Escape"
+                ){
 
                     closeSnapPopup();
 
@@ -2301,23 +2452,58 @@ document.addEventListener(
 
     }
 );
+
 </script>
 
 
-<!-- MIDUUN SNAP POPUP -->
-<div class="snap-overlay" id="snapOverlay" aria-hidden="true">
-    <div class="snap-popup" role="dialog" aria-modal="true" aria-label="Pembayaran MIDUUN">
+<!-- =========================================================
+     MIDUUN SNAP POPUP
+========================================================= -->
+
+<div
+    class="snap-overlay"
+    id="snapOverlay"
+    aria-hidden="true"
+>
+
+    <div
+        class="snap-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Pembayaran MIDUUN"
+    >
+
         <div class="snap-popup-head">
+
             <div class="snap-popup-brand">
+
                 <span>💜</span>
+
                 <b>MIDUUN</b>
+
                 <span>× Midtrans</span>
+
             </div>
-            <button type="button" class="snap-popup-close" id="snapPopupClose" aria-label="Tutup pembayaran">×</button>
+
+
+            <button
+                type="button"
+                class="snap-popup-close"
+                id="snapPopupClose"
+                aria-label="Tutup pembayaran"
+            >
+                ×
+            </button>
+
         </div>
+
+
         <div id="snap-container"></div>
+
     </div>
+
 </div>
+
 
 </body>
 </html>
