@@ -707,6 +707,11 @@ body{
     line-height:1.6;
 }
 
+.snap-note b{
+    color:#d9c8ff;
+    font-weight:800;
+}
+
 .snap-note strong{
     display:block;
     color:#fff;
@@ -1226,7 +1231,7 @@ footer{
 
         Isi Diamond Mobile Legends dengan mudah.
         Masukkan User ID dan Zone ID, pilih nominal,
-        lalu lakukan pembayaran melalui QRIS.
+        lalu lanjutkan pembayaran aman melalui MIDUUN.
 
     </p>
 
@@ -1333,25 +1338,22 @@ footer{
 
     <div class="divider"></div>
 
-
     <div class="section-label">
-
         <span>
-            💳 Pembayaran
+            💜 MIDUUN CHECKOUT
         </span>
 
         <small>
-            Diproses oleh Midtrans
+            Powered by Midtrans
         </small>
-
     </div>
 
-
     <div class="snap-note">
-        <strong>🔒 Pembayaran Aman dengan Midtrans</strong>
-        Setelah menekan tombol pembayaran, pilihan QRIS, GoPay,
-        ShopeePay, Virtual Account, dan metode lain yang aktif
-        akan muncul langsung di checkout Midtrans.
+        <strong>🔒 Pembayaran Aman • MIDUUN × Midtrans</strong>
+        Klik <b>BAYAR SEKARANG</b> untuk membuka checkout
+        Midtrans langsung sebagai popup. Pilihan QRIS, GoPay,
+        ShopeePay, Virtual Account, dan metode aktif lainnya
+        akan tersedia di dalam checkout.
     </div>
 
 </section>
@@ -1456,7 +1458,7 @@ footer{
         class="order-btn"
         id="orderBtn"
     >
-        ⚡ BAYAR SEKARANG
+        ⚡ LANJUT KE PEMBAYARAN
     </button>
 
 
@@ -1832,7 +1834,7 @@ async function prosesOrder(){
 
     if(!id || !zone){
 
-        alert(
+        showToast(
             "⚠️ User ID dan Zone ID wajib diisi."
         );
 
@@ -1849,7 +1851,7 @@ async function prosesOrder(){
 
     if(!selectedProduct){
 
-        alert(
+        showToast(
             "⚠️ Silakan pilih produk terlebih dahulu."
         );
 
@@ -1860,7 +1862,7 @@ async function prosesOrder(){
 
     if(!selectedProduct.service){
 
-        alert(
+        showToast(
             "⚠️ Service produk tidak ditemukan."
         );
 
@@ -1921,7 +1923,7 @@ async function prosesOrder(){
 
         }
 
-        // Buka checkout SNAP sebagai popup.
+        // Buka checkout SNAP sebagai popup — tetap di halaman MIDUUN.
         window.snap.pay(
             data.token,
             {
@@ -1941,13 +1943,8 @@ async function prosesOrder(){
                     // Penting: pengiriman diamond nantinya dilakukan
                     // oleh payment-callback setelah Midtrans mengonfirmasi
                     // transaksi, bukan hanya berdasarkan callback browser.
-                    alert(
-                        "✅ PEMBAYARAN BERHASIL\n\n" +
-                        "Order: " +
-                        data.order_id +
-                        "\n\n" +
-                        "Pembayaran sedang diverifikasi.\n" +
-                        "Pesanan akan diproses otomatis setelah pembayaran terkonfirmasi."
+                    showToast(
+                        "✅ Pembayaran berhasil • Order " + data.order_id
                     );
 
                 },
@@ -1959,11 +1956,8 @@ async function prosesOrder(){
                         result
                     );
 
-                    alert(
-                        "⏳ PEMBAYARAN MENUNGGU\n\n" +
-                        "Silakan selesaikan pembayaran melalui metode yang kamu pilih.\n\n" +
-                        "Order: " +
-                        data.order_id
+                    showToast(
+                        "⏳ Pembayaran masih menunggu • Order " + data.order_id
                     );
 
                 },
@@ -1975,9 +1969,8 @@ async function prosesOrder(){
                         result
                     );
 
-                    alert(
-                        "❌ PEMBAYARAN GAGAL\n\n" +
-                        "Silakan coba lagi."
+                    showToast(
+                        "❌ Pembayaran gagal. Silakan coba lagi."
                     );
 
                 },
@@ -1999,16 +1992,15 @@ async function prosesOrder(){
             error
         );
 
-        alert(
-            "❌ GAGAL MEMBUAT PEMBAYARAN\n\n" +
-            error.message
+        showToast(
+            "❌ Gagal membuat pembayaran: " + error.message
         );
 
     }finally{
 
         orderBtn.disabled = false;
         orderBtn.innerHTML =
-            "⚡ BAYAR SEKARANG";
+            "⚡ LANJUT KE PEMBAYARAN";
 
     }
 
