@@ -1262,11 +1262,12 @@ footer{
     align-items:center;
     justify-content:center;
     flex-shrink:0;
+    overflow:hidden;
 }
 
 .card-icon img{
-    width:48px;
-    height:48px;
+    width:100%;
+    height:100%;
     object-fit:contain;
     display:block;
 }
@@ -1449,7 +1450,7 @@ footer{
         </span>
 
         <small>
-            Powered by Midtrans
+            
         </small>
     </div>
 
@@ -1538,7 +1539,7 @@ footer{
         </span>
 
         <strong id="summaryPayment">
-            Midtrans SNAP
+           
         </strong>
 
     </div>
@@ -1572,7 +1573,7 @@ footer{
 
         <span>
 
-            Pembayaran dilakukan melalui Midtrans.
+            Pastikan Data Yang Dimasukan Benar
             Setelah pembayaran terkonfirmasi, pesanan
             akan diproses otomatis. Pastikan User ID
             dan Zone ID sudah benar.
@@ -2014,7 +2015,7 @@ async function prosesOrder(){
         }
 
         console.log(
-            "SNAP RESPONSE:",
+            "RESPONSE:",
             data
         );
 
@@ -2022,7 +2023,7 @@ async function prosesOrder(){
 
             throw new Error(
                 data.message ||
-                "Gagal membuat pembayaran Midtrans."
+                "Gagal membuat pembayaran."
             );
 
         }
@@ -2050,7 +2051,7 @@ async function prosesOrder(){
                     );
 
                     showToast(
-                        "✅ Pembayaran berhasil diterima Midtrans."
+                        "✅ Pembayaran berhasil diterima."
                     );
 
                     // Penting: pengiriman diamond nantinya dilakukan
