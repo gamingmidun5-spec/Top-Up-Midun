@@ -2074,13 +2074,15 @@ async function prosesOrder(){
 
                 },
 
-                onClose:function(){
+               onClose:function(){
 
-                    showToast(
-                        "Checkout ditutup."
-                    );
+    closeSnapPopup();
 
-                }
+    showToast(
+        "Checkout ditutup."
+    );
+
+}
             }
         );
 
@@ -2151,39 +2153,139 @@ updateSummary();
 /* =========================================================
    SNAP POPUP CONTROLS
 ========================================================= */
+
 function closeSnapPopup(){
 
-    const overlay = document.getElementById("snapOverlay");
+    const overlay =
+        document.getElementById("snapOverlay");
 
-    if(window.snap && typeof window.snap.hide === "function"){
+    if(!overlay) return;
+
+    /*
+       Tutup SNAP jika tersedia
+    */
+    if(
+        window.snap &&
+        typeof window.snap.hide === "function"
+    ){
+
         try{
             window.snap.hide();
         }catch(e){
-            console.warn("SNAP HIDE:", e);
+
+            console.warn(
+                "SNAP HIDE:",
+                e
+            );
+
         }
+
     }
 
+    /*
+       Tutup popup MIDUUN
+    */
     overlay.classList.remove("show");
-    overlay.setAttribute("aria-hidden", "true");
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
     document.body.style.overflow = "";
+
+    /*
+       Bersihkan isi SNAP
+       supaya saat dibuka lagi
+       tidak menumpuk
+    */
+    const container =
+        document.getElementById(
+            "snap-container"
+        );
+
+    if(container){
+        container.innerHTML = "";
+    }
+
 }
 
-document.getElementById("snapPopupClose")
-    .addEventListener("click", closeSnapPopup);
 
-document.getElementById("snapOverlay")
-    .addEventListener("click", function(e){
-        if(e.target === this){
-            closeSnapPopup();
+/* =========================================================
+   PASANG EVENT SETELAH HTML SELESAI DIMUAT
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const closeButton =
+            document.getElementById(
+                "snapPopupClose"
+            );
+
+        const overlay =
+            document.getElementById(
+                "snapOverlay"
+            );
+
+
+        /*
+           Tombol X
+        */
+        if(closeButton){
+
+            closeButton.addEventListener(
+                "click",
+                function(){
+
+                    closeSnapPopup();
+
+                }
+            );
+
         }
-    });
 
-document.addEventListener("keydown", function(e){
-    if(e.key === "Escape"){
-        closeSnapPopup();
+
+        /*
+           Klik area gelap di luar popup
+        */
+        if(overlay){
+
+            overlay.addEventListener(
+                "click",
+                function(e){
+
+                    if(e.target === overlay){
+
+                        closeSnapPopup();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+           Tombol ESC
+        */
+        document.addEventListener(
+            "keydown",
+            function(e){
+
+                if(e.key === "Escape"){
+
+                    closeSnapPopup();
+
+                }
+
+            }
+        );
+
     }
-});
-
+);
 </script>
 
 
