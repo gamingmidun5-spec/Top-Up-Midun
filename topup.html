@@ -748,8 +748,8 @@ body{
 ========================================================= */
 
 .payment-icon{
-    width:38px;
-    height:38px;
+    width:44px;
+    height:44px;
 
     display:flex;
     align-items:center;
@@ -757,9 +757,11 @@ body{
 
     flex-shrink:0;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    background:rgba(255,255,255,.055);
+    background:#fff;
+    border:1px solid rgba(255,255,255,.22);
+    box-shadow:0 5px 16px rgba(0,0,0,.18);
 
     overflow:hidden;
 }
@@ -769,14 +771,15 @@ body{
     height:100%;
 
     object-fit:contain;
-
-    padding:5px;
+    padding:6px;
 
     display:block;
 }
 
 .payment strong{
-    font-size:10px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:-.1px;
 }
 
 
@@ -1219,8 +1222,8 @@ footer{
     }
 
     .payment-icon{
-        width:34px;
-        height:34px;
+        width:40px;
+        height:40px;
     }
 
     .total strong{
@@ -1265,11 +1268,180 @@ footer{
     }
 
     .payment-icon{
-        width:32px;
-        height:32px;
+        width:38px;
+        height:38px;
     }
 }
 
+
+/* =========================================================
+   CUSTOM ORDER MODAL
+========================================================= */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    background:rgba(3,2,8,.78);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+.modal-overlay.show{
+    display:flex;
+    animation:modalFade .18s ease;
+}
+
+.modal-box{
+    width:min(430px,100%);
+    padding:22px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    background:linear-gradient(145deg,rgba(22,14,38,.98),rgba(8,6,17,.98));
+    box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 45px rgba(155,77,255,.13);
+    transform:translateY(8px) scale(.98);
+    animation:modalPop .2s ease forwards;
+}
+
+.modal-head{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:18px;
+}
+
+.modal-icon{
+    width:46px;
+    height:46px;
+    display:grid;
+    place-items:center;
+    flex-shrink:0;
+    border-radius:14px;
+    background:linear-gradient(135deg,rgba(155,77,255,.22),rgba(38,183,255,.16));
+    border:1px solid rgba(155,77,255,.3);
+    font-size:21px;
+}
+
+.modal-title{
+    font-size:17px;
+    font-weight:900;
+    letter-spacing:-.4px;
+}
+
+.modal-subtitle{
+    margin-top:3px;
+    color:var(--muted);
+    font-size:11px;
+}
+
+.modal-details{
+    display:grid;
+    gap:9px;
+    padding:14px;
+    border:1px solid var(--line);
+    border-radius:15px;
+    background:rgba(255,255,255,.035);
+}
+
+.modal-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    font-size:12px;
+}
+
+.modal-row span{
+    color:var(--muted);
+}
+
+.modal-row strong{
+    text-align:right;
+    color:#fff;
+    word-break:break-word;
+}
+
+.modal-total{
+    margin-top:2px;
+    padding-top:10px;
+    border-top:1px solid var(--line);
+}
+
+.modal-total strong{
+    color:#bca0ff;
+    font-size:18px;
+}
+
+.modal-warning{
+    margin-top:13px;
+    padding:11px 12px;
+    border-radius:12px;
+    background:rgba(255,193,7,.07);
+    border:1px solid rgba(255,193,7,.14);
+    color:#d8d1e4;
+    font-size:10px;
+    line-height:1.5;
+}
+
+.modal-actions{
+    display:grid;
+    grid-template-columns:1fr 1.35fr;
+    gap:9px;
+    margin-top:16px;
+}
+
+.modal-btn{
+    min-height:45px;
+    border:0;
+    border-radius:13px;
+    cursor:pointer;
+    font:800 12px Inter,Arial,sans-serif;
+    transition:.18s;
+}
+
+.modal-btn.cancel{
+    color:#ddd7e8;
+    background:rgba(255,255,255,.055);
+    border:1px solid var(--line);
+}
+
+.modal-btn.confirm{
+    color:#fff;
+    background:linear-gradient(135deg,var(--purple-dark),var(--purple),var(--blue));
+    box-shadow:0 10px 24px rgba(109,40,217,.28);
+}
+
+.modal-btn:hover{
+    transform:translateY(-1px);
+}
+
+.modal-btn:active{
+    transform:translateY(0);
+}
+
+@keyframes modalFade{
+    from{opacity:0}
+    to{opacity:1}
+}
+
+@keyframes modalPop{
+    to{transform:translateY(0) scale(1)}
+}
+
+@media(max-width:420px){
+    .modal-box{
+        padding:18px;
+        border-radius:19px;
+    }
+
+    .modal-row{
+        font-size:11px;
+    }
+}
 
 /* =========================================================
    REDUCED MOTION
@@ -1735,6 +1907,30 @@ footer{
 ></div>
 
 
+<!-- CUSTOM ORDER MODAL -->
+<div class="modal-overlay" id="orderModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-head">
+            <div class="modal-icon" id="modalIcon">🛒</div>
+            <div>
+                <div class="modal-title" id="modalTitle">Konfirmasi Order</div>
+                <div class="modal-subtitle" id="modalSubtitle">Periksa detail pesanan sebelum dilanjutkan.</div>
+            </div>
+        </div>
+
+        <div class="modal-details" id="modalDetails"></div>
+
+        <div class="modal-warning" id="modalWarning">
+            🔒 Pastikan User ID dan Zone ID sudah benar sebelum melanjutkan.
+        </div>
+
+        <div class="modal-actions">
+            <button type="button" class="modal-btn cancel" id="modalCancel">Batal</button>
+            <button type="button" class="modal-btn confirm" id="modalConfirm">Lanjutkan</button>
+        </div>
+    </div>
+</div>
+
 <script>
 
 
@@ -1877,6 +2073,32 @@ const productsContainer =
 
 const orderBtn =
     document.getElementById("orderBtn");
+
+const orderModal =
+    document.getElementById("orderModal");
+
+const modalIcon =
+    document.getElementById("modalIcon");
+
+const modalTitle =
+    document.getElementById("modalTitle");
+
+const modalSubtitle =
+    document.getElementById("modalSubtitle");
+
+const modalDetails =
+    document.getElementById("modalDetails");
+
+const modalWarning =
+    document.getElementById("modalWarning");
+
+const modalCancel =
+    document.getElementById("modalCancel");
+
+const modalConfirm =
+    document.getElementById("modalConfirm");
+
+let modalResolver = null;
 
 
 /* =========================================================
@@ -2082,6 +2304,102 @@ zoneId.addEventListener(
 );
 
 
+function closeOrderModal(result=false){
+
+    orderModal.classList.remove("show");
+    orderModal.setAttribute("aria-hidden","true");
+
+    if(modalResolver){
+        const resolve = modalResolver;
+        modalResolver = null;
+        resolve(result);
+    }
+}
+
+function openOrderConfirm(){
+
+    modalIcon.textContent = "🛒";
+    modalTitle.textContent = "Konfirmasi Order";
+    modalSubtitle.textContent = "Periksa detail pesanan sebelum dilanjutkan.";
+    modalWarning.innerHTML = "🔒 Pastikan User ID dan Zone ID sudah benar sebelum melanjutkan.";
+    modalConfirm.textContent = "Lanjutkan Order";
+
+    modalDetails.innerHTML = `
+        <div class="modal-row"><span>Game</span><strong>Mobile Legends</strong></div>
+        <div class="modal-row"><span>User ID</span><strong>${escapeHtml(userId.value.trim())}</strong></div>
+        <div class="modal-row"><span>Zone ID</span><strong>${escapeHtml(zoneId.value.trim())}</strong></div>
+        <div class="modal-row"><span>Produk</span><strong>${escapeHtml(selectedProduct.name)}</strong></div>
+        <div class="modal-row"><span>Pembayaran</span><strong>${escapeHtml(selectedPayment)}</strong></div>
+        <div class="modal-row modal-total"><span>Total Bayar</span><strong>${rupiah(selectedProduct.price)}</strong></div>
+    `;
+
+    orderModal.classList.add("show");
+    orderModal.setAttribute("aria-hidden","false");
+
+    return new Promise(resolve => {
+        modalResolver = resolve;
+    });
+}
+
+function showOrderResult(success, message){
+
+    modalIcon.textContent = success ? "✓" : "!";
+    modalTitle.textContent = success ? "Order Berhasil" : "Order Gagal";
+    modalSubtitle.textContent = success
+        ? "Pesanan sudah diterima oleh server."
+        : "Pesanan belum dapat diproses.";
+    modalDetails.innerHTML = `
+        <div class="modal-row"><span>Produk</span><strong>${escapeHtml(selectedProduct.name)}</strong></div>
+        <div class="modal-row"><span>User ID</span><strong>${escapeHtml(userId.value.trim())}</strong></div>
+        <div class="modal-row"><span>Zone ID</span><strong>${escapeHtml(zoneId.value.trim())}</strong></div>
+        <div class="modal-row"><span>Pembayaran</span><strong>${escapeHtml(selectedPayment)}</strong></div>
+        <div class="modal-row modal-total"><span>Total</span><strong>${rupiah(selectedProduct.price)}</strong></div>
+    `;
+    modalWarning.innerHTML = (success ? "✅ " : "⚠️ ") + escapeHtml(message || (success ? "Pesanan berhasil dikirim." : "Pesanan ditolak oleh server."));
+    modalConfirm.textContent = "Tutup";
+    modalCancel.style.display = "none";
+
+    orderModal.classList.add("show");
+    orderModal.setAttribute("aria-hidden","false");
+}
+
+function escapeHtml(value){
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/\"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+modalCancel.addEventListener("click", () => {
+    modalCancel.style.display = "block";
+    closeOrderModal(false);
+});
+
+modalConfirm.addEventListener("click", () => {
+    if(modalCancel.style.display === "none"){
+        modalCancel.style.display = "block";
+        closeOrderModal(false);
+        return;
+    }
+    closeOrderModal(true);
+});
+
+orderModal.addEventListener("click", event => {
+    if(event.target === orderModal){
+        modalCancel.style.display = "block";
+        closeOrderModal(false);
+    }
+});
+
+document.addEventListener("keydown", event => {
+    if(event.key === "Escape" && orderModal.classList.contains("show")){
+        modalCancel.style.display = "block";
+        closeOrderModal(false);
+    }
+});
+
 /* =========================================================
    ORDER
 ========================================================= */
@@ -2145,38 +2463,10 @@ async function prosesOrder(){
 
 
     const confirmOrder =
-        confirm(
-
-            "KONFIRMASI ORDER\n\n" +
-
-            "Mobile Legends\n" +
-
-            "User ID: " +
-            id +
-
-            "\nZone ID: " +
-            zone +
-
-            "\nProduk: " +
-            selectedProduct.name +
-
-            "\nPembayaran: " +
-            selectedPayment +
-
-            "\nTotal: " +
-            rupiah(
-                selectedProduct.price
-            ) +
-
-            "\n\nLanjutkan order?"
-
-        );
-
+        await openOrderConfirm();
 
     if(!confirmOrder){
-
         return;
-
     }
 
 
@@ -2261,36 +2551,10 @@ async function prosesOrder(){
             data.result === true
         ){
 
-            alert(
-
-                "✅ ORDER BERHASIL!\n\n" +
-
-                "Produk: " +
-                selectedProduct.name +
-
-                "\nUser ID: " +
-                id +
-
-                "\nZone ID: " +
-                zone +
-
-                "\nPembayaran: " +
-                selectedPayment +
-
-                "\nTotal: " +
-                rupiah(
-                    selectedProduct.price
-                ) +
-
-                "\n\n" +
-
-                (
-                    data.message ||
-                    "Pesanan berhasil dikirim."
-                )
-
+            showOrderResult(
+                true,
+                data.message || "Pesanan berhasil dikirim."
             );
-
 
             showToast(
                 "Order berhasil dikirim!"
@@ -2300,17 +2564,10 @@ async function prosesOrder(){
 
         else{
 
-            alert(
-
-                "❌ ORDER GAGAL\n\n" +
-
-                (
-                    data.message ||
-                    "Pesanan ditolak oleh server."
-                )
-
+            showOrderResult(
+                false,
+                data.message || "Pesanan ditolak oleh server."
             );
-
 
             showToast(
                 "Order gagal."
